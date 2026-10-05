@@ -1,0 +1,28 @@
+# Ignorar datos pesados
+data/
+
+# Ignorar archivos del sistema  y caché
+__pycache__/
+*.ipynb_checkpoints
+.DS_Store
+
+# Ignorar entornos virtuales
+venv/
+env/
+
+# Pesos de modelos YOLO (se descargan automáticamente)
+*.pt
+
+# Archivos de estado en runtime (no versionar)
+telegram_connection.json
+water_status.json
+maintenance_log.json
+
+# Archivos temporales de editores
+*.tmp
+*.tmp.*
+
+# Seguridad
+.env
+telegram_config.py
+variables.txt

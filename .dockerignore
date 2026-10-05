@@ -1,0 +1,27 @@
+# Entornos y caché
+venv/
+env/
+__pycache__/
+*.pyc
+*.ipynb_checkpoints
+
+# Control de versiones
+.git/
+.gitignore
+
+# Secretos y estado en runtime (se pasan por env / volúmenes, no se hornean)
+.env
+telegram_connection.json
+water_status.json
+maintenance_log.json
+telegram_config.py
+variables.txt
+
+# Material pesado / no necesario en la imagen
+data/
+notebooks/
+assets/
+*.md
+
+# Pesos YOLO: la imagen los pre-descarga en el build, no copiar los del host
+*.pt

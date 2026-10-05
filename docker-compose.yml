@@ -1,0 +1,25 @@
+services:
+  sipca:
+    build: .
+    container_name: sipca
+    ports:
+      - "8501:8501"
+    # Carga TELEGRAM_TOKEN y demás variables desde .env (si existe)
+    env_file:
+      - .env
+    environment:
+      # El LLM local corre en el HOST (LM Studio / Ollama), no en el contenedor.
+      # host.docker.internal apunta a la máquina anfitriona.
+      LOCAL_LLM_BASE_URL: "http://host.docker.internal:1234/v1"
+      LOCAL_LLM_MODEL: "mistral-7b-instruct-v0.1"
+      # Para análisis de imágenes carga un modelo multimodal (llava, qwen2-vl)
+      # y cambia este valor al id que muestre LM Studio.
+      LOCAL_VISION_MODEL: "mistral-7b-instruct-v0.1"
+    # Necesario en Linux para que host.docker.internal resuelva al host.
+    # (En Docker Desktop Windows/Mac ya funciona, pero no estorba.)
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+    # Nota: el estado (telegram_connection.json, water_status.json,
+    # maintenance_log.json) es efímero y se reinicia al recrear el contenedor.
+    # El usuario solo debe volver a "Sincronizar con Bot" tras un reinicio.
