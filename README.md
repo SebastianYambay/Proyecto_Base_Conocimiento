@@ -3,7 +3,6 @@
 
 - **Autor:** [Sebastian Yambay](https://github.com/SebastianYambay)
 - **Repositorio:** [SebastianYambay/Proyecto_Base_Conocimiento](https://github.com/SebastianYambay/Proyecto_Base_Conocimiento)
-- **Curso:** Samsung Innovation Campus – Inteligencia Artificial (Ecuador 2025)
 
 ---
 
@@ -175,6 +174,5 @@ python model_train.py          # debe ejecutarse DENTRO de src/
 
 - **Autor:** [Sebastian Yambay](https://github.com/SebastianYambay)
 - **Repositorio:** [https://github.com/SebastianYambay/Proyecto_Base_Conocimiento](https://github.com/SebastianYambay/Proyecto_Base_Conocimiento)
-- **Programa:** Samsung Innovation Campus – Inteligencia Artificial (Ecuador 2025)
 - **Licencia:** Distribuido bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
 
