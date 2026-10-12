@@ -283,44 +283,5 @@ Acción: 🌐 Traducir a ES
 Output: [El clima está hermoso hoy]
 ```
 
----
 
-## 🤝 Contribuir
 
-¿Quieres mejorar la app?
-
-1. Fork del repo
-2. Crea rama: `git checkout -b feature/mi-feature`
-3. Commit: `git commit -m "Add feature"`
-4. Push: `git push origin feature/mi-feature`
-5. Pull request
-
----
-
-## 📝 Licencia
-
-MIT License
-
----
-
-## 📞 Soporte
-
-- 📧 Email: support@transformerweb.dev
-- 🐛 Issues: GitHub Issues
-- 💬 Chat: Discord community
-
----
-
-## 🙏 Agradecimientos
-
-- 🤗 Hugging Face Transformers
-- ⚡ PyTorch
-- 🎈 Streamlit
-- 🔤 Tesseract OCR
-- 🇪🇸 Comunidad de traducción Helsinki-NLP
-
----
-
-**Made with ❤️ using Transformers**
-
-*Última actualización: 2026-03-30*
