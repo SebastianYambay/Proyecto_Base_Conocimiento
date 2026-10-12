@@ -1,4 +1,4 @@
-# Core dependencies (already in main requirements.txt, but listed here for web-specific setup)
+# Core dependencies
 torch>=2.0.0
 transformers>=4.36.0
 datasets>=2.14.0
@@ -6,6 +6,9 @@ datasets>=2.14.0
 # Web Framework
 streamlit>=1.28.0
 streamlit-chat>=0.1.1
+
+# Audio & Signal Processing
+scipy>=1.10.0
 
 # Image Processing & OCR
 Pillow>=10.0.0
@@ -24,5 +27,5 @@ python-dotenv>=1.0.0
 pyyaml>=6.0
 tqdm>=4.66.0
 
-# Optional: Performance monitoring
+# Performance monitoring
 psutil>=5.9.0
