@@ -56,44 +56,91 @@ def page_translator():
     return render_template("translator.html")
 
 
-# ==================== API ENDPOINTS ====================
+# ==================== MOTOR DE CONOCIMIENTO Y ASISTENTE ====================
+
+def fetch_encyclopedic_summary(query_text: str) -> str:
+    """Consulta la enciclopedia libre para obtener una definición real y precisa de cualquier tema."""
+    import urllib.request
+    import urllib.parse
+    import json
+    import re
+
+    clean = re.sub(r'[¿\?¡\!"\'\.,;:_]', '', query_text).strip()
+    prefixes = [
+        'que es el ', 'que es la ', 'que es un ', 'que es una ', 'que es ',
+        'qué es el ', 'qué es la ', 'qué es un ', 'qué es una ', 'qué es ',
+        'quien fue ', 'quién fue ', 'quien es ', 'quién es ',
+        'explicame que es ', 'explícame qué es ', 'explicame ', 'explícame ',
+        'como funciona el ', 'como funciona la ', 'como funciona ',
+        'cómo funciona el ', 'cómo funciona la ', 'cómo funciona ',
+        'definicion de ', 'definición de '
+    ]
+    query = clean
+    clean_lower = clean.lower()
+    for pref in prefixes:
+        if clean_lower.startswith(pref):
+            query = clean[len(pref):].strip()
+            break
+
+    if not query:
+        query = clean
+
+    # 1. Intentar resumen directo en Wikipedia
+    try:
+        url = f'https://es.wikipedia.org/api/rest_v1/page/summary/{urllib.parse.quote(query)}'
+        req = urllib.request.Request(url, headers={'User-Agent': 'TransformerStudio/1.0 (academic; student)'})
+        with urllib.request.urlopen(req, timeout=3) as resp:
+            data = json.loads(resp.read().decode('utf-8'))
+            extract = data.get('extract')
+            if extract and len(extract) > 40:
+                return extract
+    except Exception:
+        pass
+
+    # 2. Intentar búsqueda en OpenSearch para temas aproximados
+    try:
+        search_url = f'https://es.wikipedia.org/w/api.php?action=opensearch&search={urllib.parse.quote(query)}&limit=1&namespace=0&format=json'
+        req = urllib.request.Request(search_url, headers={'User-Agent': 'TransformerStudio/1.0'})
+        with urllib.request.urlopen(req, timeout=3) as resp:
+            data = json.loads(resp.read().decode('utf-8'))
+            if data and len(data) >= 4 and data[1]:
+                best_title = data[1][0]
+                url2 = f'https://es.wikipedia.org/api/rest_v1/page/summary/{urllib.parse.quote(best_title)}'
+                req2 = urllib.request.Request(url2, headers={'User-Agent': 'TransformerStudio/1.0'})
+                with urllib.request.urlopen(req2, timeout=3) as r2:
+                    d2 = json.loads(r2.read().decode('utf-8'))
+                    if d2.get('extract'):
+                        return d2.get('extract')
+    except Exception:
+        pass
+
+    return f"«{query_text}»: Concepto procesado por los modelos Transformer. Puedes traducir o sintetizar este contenido utilizando los controles inferiores."
+
 
 def generate_assistant_response(prompt: str) -> str:
-    """Genera respuestas educativas inteligentes para el chat multimodal."""
+    """Genera respuestas educativas reales para el chat multimodal."""
     p = prompt.lower().strip()
     if not p:
         return "Por favor, escribe una pregunta o tema para analizar."
 
-    if any(w in p for w in ["fotosíntesis", "fotosintesis"]):
-        return "La fotosíntesis es el proceso bioquímico mediante el cual las plantas capturan la luz del sol, agua y dióxido de carbono para transformarlos en glucosa y oxígeno vital para la atmósfera."
-    elif any(w in p for w in ["ciclo del agua", "ciclo hidrologico"]):
-        return "El ciclo del agua describe la circulación continua del agua en la Tierra: evaporación hacia la atmósfera, condensación formando nubes y precipitación hacia la superficie en forma de lluvia o nieve."
-    elif any(w in p for w in ["cuento", "historia", "narracion"]):
-        return "En un vasto universo digital, una pequeña red Transformer descubrió que al prestar atención a todas las palabras al mismo tiempo, podía comprender y conectar los pensamientos de toda la humanidad."
-    elif any(w in p for w in ["transformer", "atencion", "self-attention", "mecanismo"]):
+    # Respuestas especializadas sobre la arquitectura del sistema
+    if any(w in p for w in ["transformer", "atencion", "self-attention"]):
         return "La arquitectura Transformer utiliza mecanismos de auto-atención multi-cabezal para procesar secuencias en paralelo, capturando relaciones complejas entre palabras sin depender de bucles recurrentes."
-    elif any(w in p for w in ["inteligencia artificial", " ia ", "deep learning", "aprendizaje profundo", "redes neuronales"]):
-        return "La Inteligencia Artificial emula capacidades cognitivas humanas. En este sistema integra traducción neuronal bidireccional (MarianMT), síntesis de voz acústica (MMS-TTS) y visión computacional (OCR)."
-    elif any(w in p for w in ["mms", "voz", "audio", "tts", "sintesis", "hablar"]):
+    elif any(w in p for w in ["mms", "mms-tts"]):
         return "El modelo Meta MMS-TTS transforma representaciones fonéticas en ondas acústicas continuas a 16 kHz con entonación natural, facilitando accesibilidad y aprendizaje auditivo."
-    elif any(w in p for w in ["marian", "traduc", "traduccion", "translation"]):
+    elif any(w in p for w in ["marian", "marianmt"]):
         return "MarianMT es un modelo Transformer encoder-decoder desarrollado por Helsinki-NLP, optimizado para traducción automática rápida y de alta fidelidad entre inglés y español."
-    elif any(w in p for w in ["ocr", "imagen", "foto", "vision", "documento", "escaner"]):
+    elif any(w in p for w in ["ocr", "reconocimiento optico"]):
         return "El sistema OCR reconoce los patrones visuales de letras y palabras en imágenes escaneadas o fotografías, convirtiéndolas en texto editable para traducción o lectura en voz alta."
-    elif any(w in p for w in ["gravedad"]):
-        return "La gravedad es la fuerza física de atracción que experimentan los cuerpos con masa. En la teoría de la relatividad general de Einstein, representa la curvatura del espacio-tiempo provocada por la materia y la energía."
-    elif any(w in p for w in ["atomo", "átomo", "materia"]):
-        return "El átomo es la unidad básica de la materia. Consiste en un núcleo denso formado por protones y neutrones, rodeado por electrones organizados en capas cuánticas de energía."
-    elif any(w in p for w in ["celula", "célula", "adn"]):
-        return "La célula es la unidad biológica estructural de todo ser vivo. Alberga el ADN celular, el cual almacena la información genética necesaria para la vida y el funcionamiento del organismo."
-    elif any(w in p for w in ["python", "programacion", "codigo"]):
-        return "Python es un lenguaje de programación de alto nivel apreciado por su sintaxis limpia y su enorme potencia en computación científica, desarrollo web y librerías de Inteligencia Artificial como PyTorch y Transformers."
-    elif any(w in p for w in ["hola", "buenos días", "buenas", "saludos", "que tal"]):
-        return "¡Hola! Bienvenido a Transformer Studio. Puedes hacerme cualquier pregunta técnica o educativa, traducir respuestas en tiempo real o escucharlas en voz alta."
     elif any(w in p for w in ["quien eres", "que haces", "ayuda"]):
         return "Soy el Asistente Multimodal de Transformer Studio. Permito formular consultas, generar respuestas explicativas, escucharlas en audio natural mediante MMS-TTS y traducirlas con MarianMT."
-    else:
-        return f"Respecto a «{prompt}»: Este tema es analizado por los modelos Transformer del sistema. Puedes escuchar esta explicación o traducirla al inglés con los botones didácticos inferiores."
+    elif any(w in p for w in ["hola", "buenos días", "buenas", "saludos", "que tal"]):
+        return "¡Hola! Bienvenido a Transformer Studio. Puedes hacerme cualquier pregunta técnica o educativa, traducir respuestas en tiempo real o escucharlas en voz alta."
+    elif any(w in p for w in ["cuento", "narracion"]):
+        return "En un vasto universo digital, una pequeña red Transformer descubrió que al prestar atención a todas las palabras al mismo tiempo, podía comprender y conectar los pensamientos de toda la humanidad."
+
+    # Motor enciclopédico dinámico para cualquier pregunta científica o general (ej. física, gravedad, células, etc.)
+    return fetch_encyclopedic_summary(prompt)
 
 
 @app.route("/api/chat", methods=["POST"])
