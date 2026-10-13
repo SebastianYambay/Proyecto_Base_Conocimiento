@@ -12,11 +12,12 @@ import numpy as np
 
 logger = logging.getLogger(__name__)
 
-# Intentar Tesseract
+# Intentar Tesseract solo si el binario de sistema está presente
 try:
     import pytesseract
-    TESSERACT_AVAILABLE = True
-except ImportError:
+    import shutil
+    TESSERACT_AVAILABLE = bool(shutil.which("tesseract"))
+except Exception:
     TESSERACT_AVAILABLE = False
 
 # Intentar EasyOCR (fallback local en Python sin dependencias de sistema)
@@ -52,6 +53,8 @@ def extract_text_from_image(image_file) -> Dict[str, str]:
         if image.mode != "RGB":
             image = image.convert("RGB")
 
+        img_w, img_h = image.width, image.height
+
         # 1. Intentar con Tesseract si está instalado y en PATH
         if TESSERACT_AVAILABLE:
             try:
@@ -71,7 +74,10 @@ def extract_text_from_image(image_file) -> Dict[str, str]:
                         "language": "multilingual",
                         "time_seconds": round(elapsed, 2),
                         "status": "success",
-                        "engine": "Tesseract"
+                        "engine": "Tesseract",
+                        "boxes": [],
+                        "image_width": img_w,
+                        "image_height": img_h
                     }
             except Exception as tess_err:
                 logger.warning(f"Tesseract no pudo procesar ({tess_err}), usando EasyOCR...")
@@ -84,12 +90,40 @@ def extract_text_from_image(image_file) -> Dict[str, str]:
             
             lines = []
             scores = []
+            boxes = []
+
             for item in results:
                 # item: (bbox, text, prob)
-                lines.append(item[1])
-                scores.append(float(item[2]))
+                text_clean = str(item[1]).strip()
+                if not text_clean:
+                    continue
+                lines.append(text_clean)
+                score = float(item[2])
+                scores.append(score)
 
-            extracted_text = " ".join(lines).strip()
+                pts = item[0]
+                xs = [float(p[0]) for p in pts]
+                ys = [float(p[1]) for p in pts]
+                x_min, x_max = max(0, min(xs)), min(img_w, max(xs))
+                y_min, y_max = max(0, min(ys)), min(img_h, max(ys))
+
+                left_pct = round((x_min / img_w) * 100, 2)
+                top_pct = round((y_min / img_h) * 100, 2)
+                width_pct = round(((x_max - x_min) / img_w) * 100, 2)
+                height_pct = round(((y_max - y_min) / img_h) * 100, 2)
+
+                boxes.append({
+                    "text": text_clean,
+                    "confidence": round(score * 100, 1),
+                    "box": {
+                        "left": left_pct,
+                        "top": top_pct,
+                        "width": width_pct,
+                        "height": height_pct
+                    }
+                })
+
+            extracted_text = "\n".join(lines).strip()
             avg_confidence = (sum(scores) / len(scores) * 100) if scores else 0.0
             elapsed = time.time() - start_time
 
@@ -99,7 +133,10 @@ def extract_text_from_image(image_file) -> Dict[str, str]:
                 "language": "es+en",
                 "time_seconds": round(elapsed, 2),
                 "status": "success",
-                "engine": "EasyOCR"
+                "engine": "EasyOCR",
+                "boxes": boxes,
+                "image_width": img_w,
+                "image_height": img_h
             }
 
         # 3. Si ninguno está disponible

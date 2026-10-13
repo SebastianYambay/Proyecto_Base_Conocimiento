@@ -756,6 +756,17 @@
         });
       }
 
+      // Verificar si hay una consulta pendiente importada desde Visión & OCR
+      const pendingOCR = sessionStorage.getItem('pendingChatQuery');
+      if (pendingOCR && area) {
+        sessionStorage.removeItem('pendingChatQuery');
+        area.value = pendingOCR;
+        showAppToast('📷 Texto de ejercicio importado desde Visión & OCR. Consultando...', 'success');
+        setTimeout(() => {
+          handleSendMessage();
+        }, 600);
+      }
+
       // Input de imagen para OCR
       const fileInput = document.getElementById('chat-file-input');
       if (fileInput) {
@@ -763,7 +774,8 @@
           const file = e.target.files[0];
           if (!file) return;
 
-          if (area) area.value = 'Analizando imagen con EasyOCR...';
+          if (area) area.value = '🔍 Analizando imagen con EasyOCR...';
+          showAppToast('📷 Analizando imagen con EasyOCR...', 'info');
           const fd = new FormData();
           fd.append('file', file);
 
@@ -772,11 +784,14 @@
             const data = await res.json();
             if (data.status === 'success' && data.text) {
               if (area) area.value = data.text;
+              showAppToast('✅ Texto extraído de la foto con éxito', 'success');
             } else {
               if (area) area.value = 'No se detectó texto claro en la imagen.';
+              showAppToast('No se detectó texto legible en la imagen', 'warning');
             }
           } catch(err) {
             if (area) area.value = 'Error al procesar la imagen.';
+            showAppToast('Error de conexión al procesar imagen', 'error');
           }
         });
       }
