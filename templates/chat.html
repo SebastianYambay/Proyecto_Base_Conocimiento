@@ -18,7 +18,7 @@
 <div class="fixed bottom-0 left-[280px] right-0 p-space-md bg-gradient-to-t from-background via-background/95 to-transparent backdrop-blur-md z-30">
 <div class="max-w-5xl mx-auto flex flex-col gap-space-xs">
 <!-- Quick Prompt Chips -->
-<div class="flex items-center gap-space-xs overflow-x-auto pb-1 scrollbar-none"><button class="shrink-0 bg-surface-container hover:bg-surface-container-high text-on-surface px-space-md py-1.5 rounded-full font-body-sm text-body-sm flex items-center gap-space-xs transition-all shadow-sm" onclick="insertPrompt('¿Cómo explicar el ciclo del agua?')"><span class="">✨</span> Explicar un concepto</button><button class="shrink-0 bg-surface-container hover:bg-surface-container-high text-on-surface px-space-md py-1.5 rounded-full font-body-sm text-body-sm flex items-center gap-space-xs transition-all shadow-sm" onclick="insertPrompt('Lee el texto de este documento y resúmelo')"><span class="">📷</span> Leer texto de una foto</button><button class="shrink-0 bg-surface-container hover:bg-surface-container-high text-on-surface px-space-md py-1.5 rounded-full font-body-sm text-body-sm flex items-center gap-space-xs transition-all shadow-sm" onclick="insertPrompt('Convierte esta historia en un cuento en audio')"><span class="">🎙️</span> Crear narración en audio</button></div>
+<div class="flex items-center gap-space-xs overflow-x-auto pb-1 scrollbar-none"><button class="shrink-0 bg-surface-container hover:bg-surface-container-high text-on-surface px-space-md py-1.5 rounded-full font-body-sm text-body-sm flex items-center gap-space-xs transition-all shadow-sm" onclick="insertPrompt('¿Cómo explicar el ciclo del agua?')"><span class="">✨</span> Explicar un concepto</button><button class="shrink-0 bg-surface-container hover:bg-surface-container-high text-on-surface px-space-md py-1.5 rounded-full font-body-sm text-body-sm flex items-center gap-space-xs transition-all shadow-sm" onclick="document.getElementById('chat-file-input').click()"><span class="">📷</span> Leer texto de una foto</button><button class="shrink-0 bg-surface-container hover:bg-surface-container-high text-on-surface px-space-md py-1.5 rounded-full font-body-sm text-body-sm flex items-center gap-space-xs transition-all shadow-sm" onclick="insertPrompt('Convierte esta historia en un cuento en audio')"><span class="">🎙️</span> Crear narración en audio</button></div>
 <!-- Main Input Surface Panel -->
 <div class="bg-surface-container-low rounded-xl p-space-sm shadow-xl flex flex-col gap-space-xs">
 <textarea class="w-full bg-transparent resize-none text-on-surface placeholder:text-outline font-body-md text-body-md p-space-xs focus:outline-none" id="chat-textarea" placeholder="Escribe un mensaje, pega un fragmento de código o arrastra un archivo..." rows="2"></textarea>
@@ -27,7 +27,7 @@
 <div class="flex items-center gap-space-xs">
 <!-- OCR File Upload Button -->
 <label class="p-space-xs rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors flex items-center justify-center" title="Subir imagen para OCR">
-<input accept="image/*" class="hidden" onchange="alert('Imagen cargada en pipeline OCR')" type="file">
+<input accept="image/*" class="hidden" id="chat-file-input" type="file">
 <span class="material-symbols-outlined text-[20px]">add_photo_alternate</span>
 </label>
 <!-- Audio Input Button -->
@@ -57,18 +57,14 @@
 </main></div>
 <script>
   let currentAudio = null;
+  let currentAiText = '';
 
   function insertPrompt(text) {
     const area = document.getElementById('chat-textarea');
     if (area) {
-      area.value = text + ": ";
+      area.value = text;
       area.focus();
     }
-  }
-
-  function togglePlayAudio() {
-    const p = document.querySelector('p.font-body-lg');
-    if (p) playTTS(p.innerText, 'es');
   }
 
   function updatePlayIcon(name) {
@@ -82,6 +78,9 @@
   async function playTTS(text, lang='es') {
     if (!text) return;
     const cleanText = text.replace(/«|»/g, '').trim();
+    if (!cleanText) return;
+
+    updatePlayIcon('pause');
     try {
       const res = await fetch('/api/tts', {
         method: 'POST',
@@ -94,11 +93,12 @@
         currentAudio = new Audio('data:audio/wav;base64,' + data.audio_base64);
         currentAudio.onended = () => updatePlayIcon('play_arrow');
         currentAudio.play();
-        updatePlayIcon('pause');
       } else {
+        updatePlayIcon('play_arrow');
         alert('Error generando audio: ' + (data.error || 'Desconocido'));
       }
     } catch(err) {
+      updatePlayIcon('play_arrow');
       console.error(err);
     }
   }
@@ -107,7 +107,10 @@
     const p = document.querySelector('p.font-body-lg');
     if (!p) return;
     const text = p.innerText.replace(/«|»/g, '').trim();
-    p.innerText = 'Traduciendo...';
+    if (!text) return;
+
+    const prev = p.innerText;
+    p.innerText = 'Traduciendo con MarianMT...';
     try {
       const res = await fetch('/api/translate', {
         method: 'POST',
@@ -120,12 +123,18 @@
       });
       const data = await res.json();
       if (data.status === 'success') {
+        currentAiText = data.translated;
         p.innerText = '«' + data.translated + '»';
+        // Toggle label
+        const btnText = document.querySelector('button.bg-surface-container-high span:last-child');
+        if (btnText) {
+          btnText.innerText = targetLang === 'en' ? 'Ver en Español (Spanish)' : 'Ver en Inglés (English)';
+        }
       } else {
-        p.innerText = '«' + text + '»';
+        p.innerText = prev;
       }
     } catch(err) {
-      p.innerText = '«' + text + '»';
+      p.innerText = prev;
     }
   }
 
@@ -140,21 +149,22 @@
     area.value = '';
 
     const aiP = document.querySelector('p.font-body-lg');
-    if (aiP) aiP.innerText = 'Procesando con Transformer...';
+    if (aiP) aiP.innerText = 'Procesando consulta con la arquitectura Transformer...';
 
-    // Call translation to give immediate smart multilingual response
+    // Call chat API
     try {
-      const res = await fetch('/api/translate', {
+      const res = await fetch('/api/chat', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({text: text, source_lang: 'es', target_lang: 'en'})
+        body: JSON.stringify({prompt: text})
       });
       const data = await res.json();
       if (aiP) {
-        if (data.status === 'success') {
-          aiP.innerText = '«' + data.translated + '»';
+        if (data.status === 'success' && data.response) {
+          currentAiText = data.response;
+          aiP.innerText = '«' + data.response + '»';
         } else {
-          aiP.innerText = '«' + text + '»';
+          aiP.innerText = '«Consulta procesada con éxito.»';
         }
       }
     } catch(e) {
@@ -178,7 +188,9 @@
     if (transBtn) {
       transBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        translateResponse('en');
+        const btnText = transBtn.querySelector('span:last-child');
+        const isEnglishNow = btnText && btnText.innerText.includes('Español');
+        translateResponse(isEnglishNow ? 'es' : 'en');
       });
     }
 
@@ -192,7 +204,58 @@
         }
       });
     }
+
+    // File input for OCR
+    const fileInput = document.getElementById('chat-file-input');
+    if (fileInput) {
+      fileInput.addEventListener('change', async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        if (area) area.value = 'Analizando imagen con OCR...';
+        const fd = new FormData();
+        fd.append('file', file);
+        try {
+          const res = await fetch('/api/ocr', { method: 'POST', body: fd });
+          const data = await res.json();
+          if (data.status === 'success' && data.text) {
+            if (area) area.value = data.text;
+          } else {
+            if (area) area.value = 'No se detectó texto en la imagen.';
+          }
+        } catch(err) {
+          if (area) area.value = 'Error al procesar la imagen.';
+        }
+      });
+    }
+
+    // Mic dictation (Web Speech API)
+    const micBtn = document.querySelector('button[title="Dictado por voz"]');
+    if (micBtn && ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      const recognizer = new SpeechRecognition();
+      recognizer.lang = 'es-ES';
+      recognizer.continuous = false;
+      recognizer.interimResults = false;
+
+      recognizer.onresult = (ev) => {
+        const spoken = ev.results[0][0].transcript;
+        if (area) area.value = spoken;
+      };
+
+      micBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        try {
+          recognizer.start();
+          if (area) area.placeholder = 'Escuchando... habla ahora.';
+        } catch(err) {}
+      });
+
+      recognizer.onend = () => {
+        if (area) area.placeholder = 'Escribe un mensaje, pega un fragmento de código o arrastra un archivo...';
+      };
+    }
   });
 </script>
+
 
 </body></html>
