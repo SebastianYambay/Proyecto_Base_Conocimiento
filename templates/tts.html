@@ -1,380 +1,808 @@
-<!DOCTYPE html><html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"tertiary-fixed-dim":"#4cd7f6","tertiary-fixed":"#acedff","primary-fixed-dim":"#c0c1ff","secondary":"#d0bcff","on-background":"#dfe2ee","on-surface-variant":"#c7c4d7","error":"#ffb4ab","background":"#0f131c","on-secondary-fixed":"#23005c","surface-container-low":"#181c24","surface-container":"#1c2028","on-tertiary-fixed":"#001f26","surface-container-lowest":"#0a0e16","on-secondary-container":"#c4abff","on-tertiary-container":"#002f38","surface-tint":"#c0c1ff","on-primary-container":"#0d0096","on-tertiary":"#003640","surface-bright":"#353942","on-secondary-fixed-variant":"#5516be","primary-fixed":"#e1e0ff","primary-container":"#8083ff","secondary-container":"#571bc1","surface-container-highest":"#31353e","inverse-on-surface":"#2c3039","on-secondary":"#3c0091","surface-variant":"#31353e","on-primary-fixed":"#07006c","outline-variant":"#464554","tertiary-container":"#009eb9","secondary-fixed-dim":"#d0bcff","surface-dim":"#0f131c","on-primary":"#1000a9","on-error":"#690005","on-primary-fixed-variant":"#2f2ebe","inverse-primary":"#494bd6","primary":"#c0c1ff","surface":"#0f131c","error-container":"#93000a","on-tertiary-fixed-variant":"#004e5c","on-surface":"#dfe2ee","tertiary":"#4cd7f6","surface-container-high":"#262a33","on-error-container":"#ffdad6","secondary-fixed":"#e9ddff","outline":"#908fa0","inverse-surface":"#dfe2ee"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"space-xl":"2rem","margin-desktop":"2rem","gutter-desktop":"1.5rem","gutter":"1rem","space-2xl":"3rem","space-lg":"1.5rem","space-sm":"0.5rem","space-md":"1rem","space-xs":"0.25rem","margin":"1rem","space-2xs":"0.125rem"},fontFamily:{"body-lg":["Inter"],"body-sm":["Inter"],"headline-xl":["Geist"],"label-md":["JetBrains Mono"],"headline-md":["Geist"],"headline-lg":["Geist"],"headline-lg-mobile":["Geist"],"body-md":["Inter"],"headline-xl-mobile":["Geist"],"metric-stat":["JetBrains Mono"],"label-sm":["JetBrains Mono"]},fontSize:{"body-lg":["1.125rem",{"lineHeight":"1.6","letterSpacing":"-0.005em","fontWeight":"400"}],"body-sm":["0.75rem",{"lineHeight":"1.45","letterSpacing":"0.005em","fontWeight":"400"}],"headline-xl":["3rem",{"lineHeight":"1.15","letterSpacing":"-0.03em","fontWeight":"600"}],"label-md":["0.8125rem",{"lineHeight":"1.3","letterSpacing":"-0.01em","fontWeight":"500"}],"headline-md":["1.25rem",{"lineHeight":"1.4","letterSpacing":"-0.01em","fontWeight":"500"}],"headline-lg":["2rem",{"lineHeight":"1.25","letterSpacing":"-0.02em","fontWeight":"600"}],"headline-lg-mobile":["1.5rem",{"lineHeight":"1.3","letterSpacing":"-0.01em","fontWeight":"600"}],"body-md":["0.875rem",{"lineHeight":"1.5","letterSpacing":"0em","fontWeight":"400"}],"headline-xl-mobile":["2rem",{"lineHeight":"1.2","letterSpacing":"-0.02em","fontWeight":"600"}],"metric-stat":["1.5rem",{"lineHeight":"1","letterSpacing":"-0.03em","fontWeight":"600"}],"label-sm":["0.6875rem",{"lineHeight":"1.25","letterSpacing":"0.02em","fontWeight":"400"}]}}}};</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 bottom-0 w-[280px] bg-surface-container-low/95 backdrop-blur-xl z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col gap-space-md p-space-md"><div class="flex items-center justify-between pb-space-sm"><div class="flex items-center gap-space-sm"><img alt="Transformer Studio Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZwPucOpeNcfAK_HW3TIVBeHEz3pkO4ip_7oP5yb8wGFseAaNAaddDGd_U41ZTU6Wxf3jI0kKUixY1Tc1mNimf56EqXPZLCh-9Za1ACFhnU3lX4BmqhZKq90tpYIc3TfPWEc6Jps7GhaohXSJSSnLprp9XbynejF2HMW2Ln4yy3yyASNBQbAUaROFQFrD8HxU5wSwiCH4am_au9pYis0hy-OY894vAkjS_otPKvMdB3uXlreWp5nb1VA"><div class="flex flex-col"><span class="font-headline-md text-headline-md tracking-tight text-on-surface font-semibold">Transformer</span><span class="font-label-sm text-label-sm text-tertiary-fixed-dim uppercase tracking-wider">Studio Orchestrator</span></div></div><span class="font-label-sm text-label-sm bg-surface-container-high px-space-xs py-space-2xs rounded text-on-surface-variant">v2.4 LTS</span></div><div class="bg-surface-container p-space-sm rounded-lg flex flex-col gap-space-xs"><div class="flex items-center justify-between"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-[16px] text-tertiary">memory</span><span class="font-label-md text-label-md text-on-surface font-medium">RTX 4090</span></div><span class="font-label-sm text-label-sm text-on-surface-variant">CUDA 12.4</span></div><div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm mt-space-2xs"><span class="">VRAM Allocated</span><span class="text-tertiary-fixed-dim">6.2 / 24 GB (26%)</span></div><div class="w-full h-1.5 bg-surface-container-highest rounded-full overflow-hidden"><div class="h-full bg-tertiary rounded-full" style="width: 26%"></div></div><div class="flex items-center justify-between pt-space-2xs font-label-sm text-label-sm"><span class="text-on-surface-variant flex items-center gap-space-2xs"><span class="material-symbols-outlined text-[13px] text-error">thermostat</span> 48°C</span><span class="text-on-surface-variant flex items-center gap-space-2xs"><span class="material-symbols-outlined text-[13px] text-tertiary">timer</span> 12ms p99</span></div></div><div class="flex flex-col gap-space-xs mt-space-2xs"><div class="flex items-center justify-between px-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-medium">Loaded Models</span><span class="font-label-sm text-label-sm bg-surface-container-high text-primary px-1.5 py-0.5 rounded-full">3 Live</span></div><div class="bg-surface-container/60 p-space-sm rounded-lg flex flex-col gap-space-sm"><div class="flex items-start justify-between gap-space-xs"><div class="flex items-center gap-space-xs"><span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span><div class="flex flex-col"><span class="font-label-md text-label-md text-on-surface">Facebook MMS-TTS</span><span class="font-label-sm text-label-sm text-on-surface-variant">EN/ES Vocoder Pipeline</span></div></div><span class="font-label-sm text-label-sm text-tertiary bg-tertiary-container/30 px-1.5 py-0.5 rounded">Audio</span></div><div class="flex items-start justify-between gap-space-xs"><div class="flex items-center gap-space-xs"><span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span><div class="flex flex-col"><span class="font-label-md text-label-md text-on-surface">MarianMT Seq2Seq</span><span class="font-label-sm text-label-sm text-on-surface-variant">en-es / es-en Bilingual</span></div></div><span class="font-label-sm text-label-sm text-secondary bg-secondary-container/40 px-1.5 py-0.5 rounded">NLP</span></div><div class="flex items-start justify-between gap-space-xs"><div class="flex items-center gap-space-xs"><span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim animate-pulse"></span><div class="flex flex-col"><span class="font-label-md text-label-md text-on-surface">Tesseract OCR 5.3</span><span class="font-label-sm text-label-sm text-on-surface-variant">Spatial Bounding Engine</span></div></div><span class="font-label-sm text-label-sm text-tertiary-fixed-dim bg-surface-container-high px-1.5 py-0.5 rounded">Vision</span></div></div></div><button class="flex items-center justify-center gap-space-xs w-full py-space-xs px-space-sm rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-all font-body-sm text-body-sm mt-space-xs"><span class="material-symbols-outlined text-[16px]">delete_sweep</span><span class="">Clear Session History</span></button></div><div class="p-space-md bg-surface-container-lowest/50"><div class="flex items-center justify-between p-space-xs rounded-lg bg-surface-container/70"><div class="flex items-center gap-space-sm"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIPG3b89wQcIGR5iXv3l5UTMg8NYQspUZFUTnG_lAIzQIU24jqFvaF1Mvq1kvSTEBrXG11dHPRLh5SD5Ky72g0vkxq9nj-tCgnPCJ3njYl4r3ObueJ6XJb5OPoA6Pw4UNfEIjclfgGX5JqbgranteulOQ_s1QG8NbujseSahjt9Mdc5o0vsb3k1CY-ae1Z-IVRaXNX-yN3DnjTYUd71-gPx6td4ARY96Y9thfqsL7880ELFILiGfdNSg"><div class="flex flex-col"><span class="font-label-md text-label-md text-on-surface leading-tight font-medium">Dr. Elena Rostova</span><span class="font-label-sm text-label-sm text-on-surface-variant leading-tight">AI Research Lead</span></div></div><button class="p-space-xs text-on-surface-variant hover:text-on-surface transition-colors flex items-center justify-center"><span class="material-symbols-outlined text-[18px]">settings</span></button></div></div></aside><div class="pl-[280px]"><header class="fixed top-0 left-[280px] right-0 h-16 bg-surface-container-low/90 backdrop-blur-xl z-40 px-gutter-desktop flex items-center justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm"><div class="flex flex-col"><span class="font-headline-md text-headline-md text-on-surface font-semibold">Multimodal AI Suite</span><div class="flex items-center gap-space-2xs"><span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span><span class="font-label-sm text-label-sm text-on-surface-variant">Cluster Online • 99.98% Uptime</span></div></div></div><nav class="flex items-center gap-space-xs bg-surface-container-lowest/60 p-1 rounded-xl"><a class="px-space-md py-space-xs text-on-surface-variant hover:text-on-surface font-body-sm transition-all" href="/chat">💬 Chat Multimodal</a><a class="px-space-md py-space-xs text-on-surface-variant hover:text-on-surface font-body-sm transition-all" href="/ocr">🖼️ Visión & OCR</a><a class="px-space-md py-space-xs transition-all bg-primary-container text-on-primary-container font-semibold rounded-lg shadow-sm font-body-sm" href="/tts">🔊 Texto a Voz (TTS)</a><a class="px-space-md py-space-xs text-on-surface-variant hover:text-on-surface font-body-sm transition-all" href="/translator">🌐 Traductor Neuronal</a></nav></div><div class="flex items-center gap-space-md"><div class="hidden xl:flex items-center gap-space-xs px-space-sm py-1 bg-surface-container rounded-lg font-label-sm text-label-sm text-on-surface-variant"><span class="material-symbols-outlined text-[15px] text-tertiary">bolt</span><span class="">Engine Latency: <span class="text-tertiary-fixed-dim font-medium">12ms</span></span></div><a class="flex items-center gap-space-2xs text-on-surface-variant hover:text-on-surface font-body-sm text-body-sm transition-colors" href="#"><span class="material-symbols-outlined text-[18px]">menu_book</span><span class="hidden md:inline">Docs API</span></a><div class="flex items-center gap-space-2xs p-1 bg-surface-container rounded-lg"><span class="material-symbols-outlined text-[16px] text-tertiary-fixed-dim px-1">dark_mode</span></div></div></header><main class="relative pt-16 bg-background min-h-screen w-full px-gutter-desktop py-space-lg"><div class="flex flex-col w-full"><!-- Friendly Header Section -->
-<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md mb-space-lg">
-  <div class="flex flex-col gap-space-xs">
-    <div class="flex items-center gap-space-xs">
-      <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-tertiary/10 text-tertiary font-label-sm text-label-sm">
-        <span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
-        Generador de Voz Activo
-      </span>
-    </div>
-    <h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Texto a Voz Inteligente</h1>
-    <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
-      Convierte cualquier texto en audio hablado natural y expresivo en segundos. Ideal para presentaciones, narraciones y asistentes virtuales.
-    </p>
-  </div>
-</div>
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Transformer Studio - Texto a Voz (TTS)</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "tertiary-fixed-dim": "#4cd7f6",
+            "tertiary-fixed": "#acedff",
+            "primary-fixed-dim": "#c0c1ff",
+            "secondary": "#d0bcff",
+            "on-background": "#dfe2ee",
+            "on-surface-variant": "#c7c4d7",
+            "error": "#ffb4ab",
+            "background": "#0f131c",
+            "on-secondary-fixed": "#23005c",
+            "surface-container-low": "#181c24",
+            "surface-container": "#1c2028",
+            "on-tertiary-fixed": "#001f26",
+            "surface-container-lowest": "#0a0e16",
+            "on-secondary-container": "#c4abff",
+            "on-tertiary-container": "#002f38",
+            "surface-tint": "#c0c1ff",
+            "on-primary-container": "#0d0096",
+            "on-tertiary": "#003640",
+            "surface-bright": "#353942",
+            "primary-fixed": "#e1e0ff",
+            "primary-container": "#8083ff",
+            "secondary-container": "#571bc1",
+            "surface-container-highest": "#31353e",
+            "on-secondary": "#3c0091",
+            "on-primary": "#1000a9",
+            "primary": "#c0c1ff",
+            "surface": "#0f131c",
+            "on-surface": "#dfe2ee",
+            "tertiary": "#4cd7f6",
+            "surface-container-high": "#262a33",
+            "outline-variant": "#464554",
+            "outline": "#908fa0"
+          },
+          spacing: {
+            "space-xl": "2rem",
+            "gutter-desktop": "1.5rem",
+            "space-lg": "1.5rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem",
+            "space-2xs": "0.125rem"
+          },
+          fontFamily: {
+            "body-lg": ["Inter"],
+            "body-sm": ["Inter"],
+            "headline-xl": ["Geist"],
+            "label-md": ["JetBrains Mono"],
+            "headline-md": ["Geist"],
+            "headline-lg": ["Geist"],
+            "body-md": ["Inter"],
+            "label-sm": ["JetBrains Mono"]
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    @keyframes waveBounce {
+      0%, 100% { height: 6px; }
+      50% { height: 26px; }
+    }
+    .wave-bar {
+      width: 4px;
+      border-radius: 9999px;
+      background-color: #4cd7f6;
+      transition: height 0.15s ease;
+    }
+    .playing .wave-bar:nth-child(1) { animation: waveBounce 0.8s ease-in-out infinite 0.1s; }
+    .playing .wave-bar:nth-child(2) { animation: waveBounce 0.6s ease-in-out infinite 0.2s; }
+    .playing .wave-bar:nth-child(3) { animation: waveBounce 0.9s ease-in-out infinite 0.15s; }
+    .playing .wave-bar:nth-child(4) { animation: waveBounce 0.7s ease-in-out infinite 0.3s; }
+    .playing .wave-bar:nth-child(5) { animation: waveBounce 1.0s ease-in-out infinite 0.05s; }
+    .playing .wave-bar:nth-child(6) { animation: waveBounce 0.5s ease-in-out infinite 0.25s; }
+    .playing .wave-bar:nth-child(7) { animation: waveBounce 0.8s ease-in-out infinite 0.18s; }
+    .playing .wave-bar:nth-child(8) { animation: waveBounce 0.6s ease-in-out infinite 0.08s; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-thumb { background: #31353e; border-radius: 4px; }
+  </style>
+</head>
+<body class="bg-background font-body-md text-on-surface antialiased min-h-screen">
 
-<!-- 3-Step Guided Studio Layout -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
-  <!-- Left Column: Steps 1, 2 & 3 -->
-  <div class="lg:col-span-8 flex flex-col gap-space-md">
-    
-    <!-- PASO 1: Escribe tu texto -->
-    <div class="bg-surface-container-low rounded-2xl p-space-md shadow-md border border-outline-variant/30 flex flex-col gap-space-sm">
-      <div class="flex items-center justify-between">
-        <div class="flex items-center gap-space-xs">
-          <span class="flex items-center justify-center w-7 h-7 rounded-full bg-primary/15 text-primary font-bold font-label-md text-label-md">1</span>
-          <h2 class="font-headline-md text-headline-md text-on-surface font-semibold">Escribe tu texto</h2>
-        </div>
-        <div class="flex items-center gap-space-xs">
-          <button class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-body-sm text-body-sm transition-all" onclick="loadSampleText()" type="button">
-            <span class="material-symbols-outlined text-[16px] text-tertiary">auto_awesome</span>
-            <span class="">Texto de ejemplo</span>
-          </button>
-          <button class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-error font-body-sm text-body-sm transition-all" onclick="clearText()" type="button">
-            <span class="material-symbols-outlined text-[16px]">delete</span>
-            <span class="">Limpiar</span>
-          </button>
-        </div>
-      </div>
-      
-      <div class="rounded-xl bg-surface-container-lowest p-space-sm focus-within:ring-2 focus-within:ring-primary/50 transition-all">
-        <textarea class="w-full bg-transparent text-on-surface font-body-lg text-body-lg resize-none outline-none placeholder:text-outline-variant leading-relaxed selection:bg-primary-container selection:text-on-primary-container" id="tts-input" oninput="handleTextChange()" placeholder="Escribe aquí el texto que te gustaría escuchar en voz alta..." rows="4">¡Hola a todos! Bienvenidos a esta demostración de voz neural. Gracias a la inteligencia artificial, ahora podemos narrar ideas, audiolibros o tutoriales con una entonación natural, cálida y comprensible.</textarea>
-      </div>
-
-      <div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm px-1">
-        <span id="char-counter" class="">205 caracteres</span>
-        <span id="time-estimate" class="text-tertiary-fixed-dim">⏱️ Lectura estimada: ~12 segundos</span>
-      </div>
-    </div>
-
-    <!-- PASO 2: Elige la voz y velocidad -->
-    <div class="bg-surface-container-low rounded-2xl p-space-md shadow-md border border-outline-variant/30 flex flex-col gap-space-md">
-      <div class="flex items-center gap-space-xs">
-        <span class="flex items-center justify-center w-7 h-7 rounded-full bg-primary/15 text-primary font-bold font-label-md text-label-md">2</span>
-        <h2 class="font-headline-md text-headline-md text-on-surface font-semibold">Elige la voz y velocidad</h2>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
-        <!-- Selector de Voz -->
-        <div class="flex flex-col gap-space-xs">
-          <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-medium">Idioma de la voz</span>
-          <div class="grid grid-cols-2 gap-space-xs">
-            <button class="flex items-center justify-center gap-2 p-space-sm rounded-xl border text-center transition-all bg-primary/15 text-primary-fixed border-primary/40 shadow-sm font-label-md text-label-md font-semibold cursor-pointer" id="lang-spa-btn" onclick="selectLanguage('spa')" type="button">
-              <span class="text-[22px]">🇪🇸</span>
-              <div class="flex flex-col text-left">
-                <span class="">Español</span>
-                <span class="font-label-sm text-label-sm text-tertiary font-normal">Voz Natural</span>
-              </div>
-            </button>
-            <button class="flex items-center justify-center gap-2 p-space-sm rounded-xl border text-center transition-all bg-surface-container hover:bg-surface-container-high text-on-surface-variant border-transparent cursor-pointer font-label-md text-label-md" id="lang-eng-btn" onclick="selectLanguage('eng')" type="button">
-              <span class="text-[22px]">🇬🇧</span>
-              <div class="flex flex-col text-left">
-                <span class="">Inglés</span>
-                <span class="font-label-sm text-label-sm text-on-surface-variant font-normal">Natural Voice</span>
-              </div>
-            </button>
-          </div>
-        </div>
-
-        <!-- Control simple de Velocidad -->
-        <div class="flex flex-col gap-space-xs">
-          <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-medium">Velocidad al hablar</span>
-          <div class="flex items-center gap-space-xs bg-surface-container p-1 rounded-xl h-full items-center justify-between">
-            <button class="speed-pill flex-1 py-2 text-center rounded-lg font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-all cursor-pointer" onclick="setSpeed(0.8, this)" type="button">🐢 Lento</button>
-            <button class="speed-pill flex-1 py-2 text-center rounded-lg font-label-sm text-label-sm bg-surface-container-high text-tertiary font-bold transition-all shadow-sm cursor-pointer" onclick="setSpeed(1.0, this)" type="button">✨ Normal</button>
-            <button class="speed-pill flex-1 py-2 text-center rounded-lg font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-all cursor-pointer" onclick="setSpeed(1.3, this)" type="button">⚡ Rápido</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- PASO 3: Botón de Conversión Grande -->
-    <div>
-      <button class="relative group w-full overflow-hidden rounded-2xl p-0.5 transition-all duration-300 hover:scale-[1.004] active:scale-[0.998] shadow-lg cursor-pointer" id="generate-btn" onclick="triggerSynthesis()" type="button">
-        <span class="absolute inset-0 bg-gradient-to-r from-primary-container via-tertiary-container to-secondary-container opacity-90 blur-sm group-hover:opacity-100 transition-opacity"></span>
-        <div class="relative flex items-center justify-center gap-space-sm bg-surface-container-lowest/90 px-space-xl py-space-md rounded-[14px] backdrop-blur-md">
-          <span class="material-symbols-outlined text-tertiary text-[28px] group-hover:scale-110 transition-transform">volume_up</span>
-          <span class="font-headline-md text-headline-md font-bold tracking-tight text-white">Convertir texto a voz</span>
-        </div>
-      </button>
-    </div>
-
-    <!-- Reproductor de Audio Limpio y Elegante -->
-    <div class="bg-surface-container-low rounded-2xl p-space-md shadow-md border border-outline-variant/30 flex flex-col gap-space-md">
-      <div class="flex items-center justify-between pb-space-xs">
+  <!-- SIDEBAR LATERAL UNIFICADO -->
+  <aside class="fixed left-0 top-0 bottom-0 w-[280px] bg-surface-container-low/95 backdrop-blur-xl z-50 flex flex-col justify-between shadow-xl border-r border-outline-variant/30">
+    <div class="flex flex-col gap-space-md p-space-md">
+      <!-- Logo de la Plataforma -->
+      <div class="flex items-center justify-between pb-space-sm border-b border-outline-variant/30">
         <div class="flex items-center gap-space-sm">
-          <div class="w-9 h-9 rounded-lg bg-tertiary/10 flex items-center justify-center text-tertiary">
-            <span class="material-symbols-outlined text-[22px]">graphic_eq</span>
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-primary-container to-tertiary flex items-center justify-center text-on-primary font-bold shadow-md">
+            <span class="material-symbols-outlined text-[20px]">psychology</span>
           </div>
           <div class="flex flex-col">
-            <span class="font-label-md text-label-md text-on-surface font-semibold">Voz Generada Lista</span>
-            <span class="font-label-sm text-label-sm text-on-surface-variant">Duración total: 00:12 min</span>
+            <span class="font-headline-md text-headline-md tracking-tight text-on-surface font-semibold text-sm">Transformer</span>
+            <span class="font-label-sm text-label-sm text-tertiary uppercase tracking-wider text-[10px]">Studio Orchestrator</span>
           </div>
         </div>
-        <button class="inline-flex items-center gap-2 px-space-md py-2 rounded-xl bg-surface-container hover:bg-surface-container-high text-tertiary hover:text-white transition-all shadow-sm font-label-md text-label-md font-medium cursor-pointer" onclick="triggerDownloadAlert()" type="button">
-          <span class="material-symbols-outlined text-[18px]">download</span>
-          <span class="">Descargar audio (.mp3 / .wav)</span>
-        </button>
+        <span class="font-label-sm text-label-sm bg-surface-container-high px-space-xs py-space-2xs rounded text-on-surface-variant text-[11px]">v2.4 LTS</span>
       </div>
 
-      <!-- Barra de progreso interactiva -->
-      <div class="bg-surface-container-lowest rounded-xl p-space-sm flex flex-col gap-2">
-        <div class="h-3 w-full bg-surface-container-highest rounded-full cursor-pointer relative overflow-hidden" id="waveform-track" onclick="scrubTimeline(event)">
-          <div class="h-full bg-tertiary rounded-full shadow-[0_0_8px_#4cd7f6] transition-all" id="progress-bar" style="width: 45%;"></div>
+      <!-- Estado del Sistema -->
+      <div class="bg-surface-container p-space-sm rounded-xl flex flex-col gap-space-xs border border-outline-variant/20">
+        <div class="flex items-center justify-between">
+          <span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Estado del Sistema</span>
+          <span class="flex items-center gap-1.5 font-label-sm text-label-sm text-tertiary bg-tertiary/10 px-2 py-0.5 rounded-full font-medium text-[11px]">
+            <span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>Listo y Activo
+          </span>
         </div>
-        <div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm font-mono pt-1">
-          <span id="current-timestamp" class="">00:05</span>
-          <span class="">00:12</span>
-        </div>
+        <p class="font-body-sm text-body-sm text-on-surface-variant text-xs mt-1">
+          Modelo Facebook MMS-TTS listo para síntesis neuronal en español e inglés a 16kHz.
+        </p>
       </div>
 
-      <!-- Controles de Audio Básicos -->
-      <div class="flex items-center justify-between bg-surface-container p-space-xs rounded-xl">
+      <!-- Módulos Activos -->
+      <div class="flex flex-col gap-space-xs">
+        <div class="flex items-center justify-between px-space-xs">
+          <span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-medium text-xs">Módulos de IA</span>
+          <span class="font-label-sm text-label-sm bg-surface-container-high text-primary px-1.5 py-0.5 rounded-full text-xs">3 de 3</span>
+        </div>
+        <div class="bg-surface-container/60 p-space-sm rounded-xl flex flex-col gap-space-sm border border-outline-variant/20">
+          <a href="/chat" class="flex items-center gap-space-sm hover:bg-surface-container p-1 rounded-lg transition-all">
+            <div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+              <span class="material-symbols-outlined text-[18px]">chat</span>
+            </div>
+            <div class="flex flex-col">
+              <span class="font-label-md text-label-md text-on-surface font-medium text-xs">1. Chat Multimodal</span>
+              <span class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">Asistente y Dictado</span>
+            </div>
+          </a>
+          <a href="/ocr" class="flex items-center gap-space-sm hover:bg-surface-container p-1 rounded-lg transition-all">
+            <div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-tertiary">
+              <span class="material-symbols-outlined text-[18px]">document_scanner</span>
+            </div>
+            <div class="flex flex-col">
+              <span class="font-label-md text-label-md text-on-surface font-medium text-xs">2. Visión Artificial & OCR</span>
+              <span class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">Escaneo & Bounding Boxes</span>
+            </div>
+          </a>
+          <a href="/tts" class="flex items-center gap-space-sm bg-surface-container p-1 rounded-lg transition-all border-l-2 border-secondary">
+            <div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary">
+              <span class="material-symbols-outlined text-[18px]">volume_up</span>
+            </div>
+            <div class="flex flex-col">
+              <span class="font-label-md text-label-md text-secondary font-semibold text-xs">3. Voz y Sonido (TTS)</span>
+              <span class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">Síntesis Facebook MMS</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="p-space-md border-t border-outline-variant/30 bg-surface-container-lowest/50">
+      <div class="flex items-center gap-space-sm">
+        <div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-xs">
+          TTS
+        </div>
+        <div class="flex flex-col">
+          <span class="font-label-md text-label-md text-on-surface font-medium text-xs">Facebook MMS Engine</span>
+          <span class="font-body-sm text-body-sm text-secondary text-[11px]">facebook/mms-tts</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <div class="pl-[280px] min-h-screen flex flex-col">
+
+    <!-- CABECERA SUPERIOR -->
+    <header class="fixed top-0 left-[280px] right-0 h-16 bg-surface-container-low/90 backdrop-blur-xl z-40 px-gutter-desktop flex items-center justify-between border-b border-outline-variant/30">
+      <div class="flex items-center gap-space-lg">
         <div class="flex items-center gap-space-sm">
-          <button class="w-11 h-11 rounded-xl bg-tertiary text-on-tertiary hover:bg-tertiary-fixed-dim transition-all flex items-center justify-center shadow-md cursor-pointer" id="play-pause-btn" onclick="togglePlayAudio()" type="button">
-            <span class="material-symbols-outlined text-[26px]" id="play-icon">play_arrow</span>
+          <span class="font-headline-md text-headline-md text-on-surface font-semibold text-base">Texto a Voz Inteligente (TTS)</span>
+          <span class="px-2 py-0.5 rounded-full bg-secondary/20 text-secondary font-label-sm text-label-sm text-xs font-semibold">Meta MMS Vocoder</span>
+        </div>
+        <nav class="hidden md:flex items-center gap-space-xs bg-surface-container-lowest/60 p-1 rounded-xl border border-outline-variant/20">
+          <a class="px-space-md py-1 text-on-surface-variant hover:text-on-surface font-body-sm text-xs transition-all" href="/chat">💬 Chat Multimodal</a>
+          <a class="px-space-md py-1 text-on-surface-variant hover:text-on-surface font-body-sm text-xs transition-all" href="/ocr">🖼️ Visión & OCR</a>
+          <a class="px-space-md py-1 transition-all bg-primary-container text-on-primary-container font-semibold rounded-lg shadow-sm font-body-sm text-xs" href="/tts">🔊 Texto a Voz (TTS)</a>
+          <a class="px-space-md py-1 text-on-surface-variant hover:text-on-surface font-body-sm text-xs transition-all" href="/translator">🌐 Traductor Neuronal</a>
+        </nav>
+      </div>
+
+      <div class="flex items-center gap-space-md">
+        <div class="flex items-center gap-1.5 px-3 py-1 bg-surface-container rounded-lg font-label-sm text-label-sm text-on-surface-variant text-xs border border-outline-variant/30">
+          <span class="material-symbols-outlined text-[16px] text-secondary">graphic_eq</span>
+          <span>Frecuencia: <b class="text-secondary">16,000 Hz WAV</b></span>
+        </div>
+      </div>
+    </header>
+
+    <!-- CUERPO PRINCIPAL -->
+    <main class="relative pt-20 px-gutter-desktop py-space-md flex-1 flex flex-col gap-space-md">
+
+      <!-- BARRA DE MUESTRAS ACADÉMICAS RÁPIDAS -->
+      <div class="bg-surface-container rounded-2xl p-space-md shadow-md border border-outline-variant/30 flex flex-col md:flex-row items-center justify-between gap-space-md">
+        <div class="flex items-center gap-space-sm">
+          <div class="w-10 h-10 rounded-xl bg-secondary/20 text-secondary flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-[24px]">record_voice_over</span>
+          </div>
+          <div class="flex flex-col">
+            <h2 class="font-headline-md text-headline-md font-semibold text-on-surface text-sm">Muestras Didácticas de Síntesis de Voz</h2>
+            <p class="font-body-sm text-body-sm text-on-surface-variant text-xs">Haz clic en cualquier muestra para cargar el texto y probar la entonación con un solo clic:</p>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-space-xs">
+          <button type="button" onclick="loadPreset('ciencia')" class="px-3 py-1.5 rounded-xl bg-surface-container-high hover:bg-secondary/20 text-on-surface hover:text-secondary text-xs font-semibold flex items-center gap-1.5 transition-all border border-outline-variant/30 cursor-pointer shadow-sm">
+            <span class="material-symbols-outlined text-[16px] text-secondary">psychology</span>
+            <span>🎓 Transformers (ES)</span>
           </button>
-          <span class="font-body-sm text-body-sm text-on-surface-variant">Presiona para escuchar el resultado</span>
-        </div>
-        <div class="flex items-center gap-2 pr-space-xs">
-          <span class="material-symbols-outlined text-[18px] text-on-surface-variant">volume_up</span>
-          <input class="w-24 accent-tertiary bg-surface-container-highest rounded-lg h-1.5 cursor-pointer" max="100" min="0" type="range" value="90">
+          <button type="button" onclick="loadPreset('english')" class="px-3 py-1.5 rounded-xl bg-surface-container-high hover:bg-tertiary/20 text-on-surface hover:text-tertiary text-xs font-semibold flex items-center gap-1.5 transition-all border border-outline-variant/30 cursor-pointer shadow-sm">
+            <span class="material-symbols-outlined text-[16px] text-tertiary">language</span>
+            <span>🇬🇧 Tech Voice (EN)</span>
+          </button>
+          <button type="button" onclick="loadPreset('fisica')" class="px-3 py-1.5 rounded-xl bg-surface-container-high hover:bg-primary/20 text-on-surface hover:text-primary text-xs font-semibold flex items-center gap-1.5 transition-all border border-outline-variant/30 cursor-pointer shadow-sm">
+            <span class="material-symbols-outlined text-[16px] text-primary">science</span>
+            <span>🔬 Física Cuántica</span>
+          </button>
         </div>
       </div>
-    </div>
 
+      <!-- LAYOUT DE 2 COLUMNAS (ESTUDIO DE VOZ Y PANEL EDUCATIVO) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md flex-1">
+
+        <!-- COLUMNA IZQUIERDA: CONFIGURADOR Y REPRODUCTOR (8 COLS) -->
+        <div class="lg:col-span-8 flex flex-col gap-space-md">
+
+          <!-- PASO 1: Escribe tu Texto -->
+          <div class="bg-surface-container rounded-2xl p-space-md shadow-md border border-outline-variant/30 flex flex-col gap-space-sm">
+            <div class="flex items-center justify-between pb-2 border-b border-outline-variant/20">
+              <div class="flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold text-xs">1</span>
+                <span class="font-headline-md text-headline-md font-semibold text-on-surface text-sm">Texto para Síntesis de Voz</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <button type="button" onclick="pasteFromClipboard()" class="px-2.5 py-1 rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface-variant hover:text-on-surface text-xs transition-all flex items-center gap-1 cursor-pointer">
+                  <span class="material-symbols-outlined text-[14px]">content_paste</span>
+                  <span>Pegar</span>
+                </button>
+                <button type="button" onclick="clearText()" class="px-2.5 py-1 rounded-lg bg-surface-container-high hover:bg-error/20 text-on-surface-variant hover:text-error text-xs transition-all flex items-center gap-1 cursor-pointer">
+                  <span class="material-symbols-outlined text-[14px]">delete</span>
+                  <span>Limpiar</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="rounded-xl bg-surface-container-lowest p-space-sm border border-outline-variant/20 focus-within:ring-1 focus-within:ring-secondary transition-all">
+              <textarea id="tts-input" rows="4" oninput="handleTextChange()" class="w-full bg-transparent text-on-surface font-body-lg text-body-lg resize-none outline-none placeholder:text-outline-variant leading-relaxed text-sm selection:bg-secondary-container selection:text-on-secondary-container" placeholder="Escribe aquí el texto que te gustaría escuchar en voz alta...">¡Hola a todos! Bienvenidos a esta demostración de voz neural con Transformers. Gracias a la inteligencia artificial de Meta MMS, podemos generar voz con entonación natural en cuestión de segundos.</textarea>
+            </div>
+
+            <div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm text-xs px-1">
+              <span id="char-counter">195 caracteres</span>
+              <span id="time-estimate" class="text-tertiary">⏱️ Lectura estimada: ~10 segundos</span>
+            </div>
+          </div>
+
+          <!-- PASO 2: Elige la Voz y Velocidad -->
+          <div class="bg-surface-container rounded-2xl p-space-md shadow-md border border-outline-variant/30 flex flex-col gap-space-sm">
+            <div class="flex items-center gap-2 pb-2 border-b border-outline-variant/20">
+              <span class="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold text-xs">2</span>
+              <span class="font-headline-md text-headline-md font-semibold text-on-surface text-sm">Configuración de Voz y Velocidad</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+              <!-- Selector de Idioma -->
+              <div class="flex flex-col gap-1.5">
+                <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider text-[11px] font-semibold">Modelo de Lenguaje:</span>
+                <div class="grid grid-cols-2 gap-2">
+                  <button type="button" id="lang-es-btn" onclick="selectLanguage('es')" class="flex items-center justify-center gap-2 p-2.5 rounded-xl border text-center transition-all bg-secondary/20 text-secondary border-secondary/40 shadow-sm font-label-md text-label-md font-semibold cursor-pointer">
+                    <span class="text-[20px]">🇪🇸</span>
+                    <div class="flex flex-col text-left">
+                      <span class="text-xs">Español</span>
+                      <span class="text-[10px] text-tertiary font-normal">mms-tts-spa</span>
+                    </div>
+                  </button>
+                  <button type="button" id="lang-en-btn" onclick="selectLanguage('en')" class="flex items-center justify-center gap-2 p-2.5 rounded-xl border text-center transition-all bg-surface-container-high hover:bg-surface-container-highest text-on-surface-variant border-transparent cursor-pointer font-label-md text-label-md">
+                    <span class="text-[20px]">🇬🇧</span>
+                    <div class="flex flex-col text-left">
+                      <span class="text-xs">Inglés</span>
+                      <span class="text-[10px] text-on-surface-variant font-normal">mms-tts-eng</span>
+                    </div>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Selector de Velocidad -->
+              <div class="flex flex-col gap-1.5">
+                <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider text-[11px] font-semibold">Velocidad de Reproducción:</span>
+                <div class="flex items-center gap-1 bg-surface-container-lowest p-1 rounded-xl border border-outline-variant/20 h-full">
+                  <button type="button" onclick="setSpeed(0.8, this)" class="speed-pill flex-1 py-2 text-center rounded-lg font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-all cursor-pointer text-xs">🐢 0.8x</button>
+                  <button type="button" onclick="setSpeed(1.0, this)" class="speed-pill flex-1 py-2 text-center rounded-lg font-label-sm text-label-sm bg-secondary text-on-secondary font-bold transition-all shadow-sm cursor-pointer text-xs">✨ 1.0x</button>
+                  <button type="button" onclick="setSpeed(1.25, this)" class="speed-pill flex-1 py-2 text-center rounded-lg font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-all cursor-pointer text-xs">⚡ 1.25x</button>
+                  <button type="button" onclick="setSpeed(1.5, this)" class="speed-pill flex-1 py-2 text-center rounded-lg font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-all cursor-pointer text-xs">🚀 1.5x</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PASO 3: Botón de Conversión Grande -->
+          <div>
+            <button type="button" id="generate-btn" onclick="triggerSynthesis()" class="w-full relative group overflow-hidden rounded-2xl p-0.5 transition-all duration-300 hover:scale-[1.003] active:scale-[0.998] shadow-lg cursor-pointer">
+              <span class="absolute inset-0 bg-gradient-to-r from-primary-container via-secondary-container to-tertiary opacity-90 blur-sm group-hover:opacity-100 transition-opacity"></span>
+              <div class="relative flex items-center justify-center gap-space-sm bg-surface-container-lowest/95 px-space-xl py-space-md rounded-[14px] backdrop-blur-md">
+                <span class="material-symbols-outlined text-secondary text-[26px] group-hover:scale-110 transition-transform" id="gen-btn-icon">volume_up</span>
+                <span class="font-headline-md text-headline-md font-bold tracking-tight text-white text-base" id="gen-btn-text">Convertir Texto a Voz con MMS-TTS</span>
+              </div>
+            </button>
+          </div>
+
+          <!-- REPRODUCTOR DE AUDIO REAL E INTERACTIVO -->
+          <div class="bg-surface-container rounded-2xl p-space-md shadow-md border border-outline-variant/30 flex flex-col gap-space-md">
+            
+            <div class="flex items-center justify-between pb-space-xs">
+              <div class="flex items-center gap-space-sm">
+                <!-- Visualizador de Ondas -->
+                <div id="equalizer-box" class="h-9 px-2 rounded-lg bg-surface-container-lowest border border-outline-variant/20 flex items-center gap-1">
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                </div>
+
+                <div class="flex flex-col">
+                  <span id="player-title" class="font-label-md text-label-md text-on-surface font-semibold text-xs">Reproductor de Audio Neuronal</span>
+                  <span id="player-status-subtitle" class="font-label-sm text-label-sm text-on-surface-variant text-[11px]">Listo para sintetizar</span>
+                </div>
+              </div>
+
+              <button type="button" onclick="triggerDownloadAudio()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-surface-container-high hover:bg-surface-container-highest text-tertiary hover:text-white transition-all shadow-sm font-label-md text-label-md font-medium cursor-pointer text-xs border border-outline-variant/20">
+                <span class="material-symbols-outlined text-[16px]">download</span>
+                <span>Descargar WAV</span>
+              </button>
+            </div>
+
+            <!-- Barra de Progreso Interactiva (Clic para avanzar/retroceder) -->
+            <div class="bg-surface-container-lowest rounded-xl p-space-sm flex flex-col gap-2 border border-outline-variant/20">
+              <div class="h-3 w-full bg-surface-container-highest rounded-full cursor-pointer relative overflow-hidden" id="waveform-track" onclick="scrubTimeline(event)" title="Haz clic en cualquier punto para avanzar o retroceder el audio">
+                <div class="h-full bg-gradient-to-r from-tertiary to-secondary rounded-full shadow-[0_0_8px_#4cd7f6] transition-all" id="progress-bar" style="width: 0%;"></div>
+              </div>
+              <div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm font-mono pt-0.5 text-xs">
+                <span id="current-timestamp">00:00</span>
+                <span id="total-duration">--:--</span>
+              </div>
+            </div>
+
+            <!-- Controles de Audio Básicos y Volumen -->
+            <div class="flex items-center justify-between bg-surface-container-low p-2 rounded-xl border border-outline-variant/20">
+              <div class="flex items-center gap-space-sm">
+                <button type="button" id="play-pause-btn" onclick="togglePlayAudio()" class="w-10 h-10 rounded-xl bg-secondary text-on-secondary hover:brightness-110 transition-all flex items-center justify-center shadow-md cursor-pointer">
+                  <span class="material-symbols-outlined text-[24px]" id="play-icon">play_arrow</span>
+                </button>
+                <span id="playback-hint" class="font-body-sm text-body-sm text-on-surface-variant text-xs">Haz clic para reproducir</span>
+              </div>
+
+              <!-- Control de Volumen -->
+              <div class="flex items-center gap-2 pr-space-xs">
+                <span class="material-symbols-outlined text-[18px] text-on-surface-variant">volume_up</span>
+                <input type="range" min="0" max="100" value="100" id="volume-slider" oninput="handleVolumeChange(event)" class="w-24 accent-secondary bg-surface-container-highest rounded-lg h-1.5 cursor-pointer">
+              </div>
+            </div>
+
+          </div>
+
+          <!-- BOTONES DE ACCIÓN MULTIMODAL CON OTROS MÓDULOS -->
+          <div class="bg-surface-container rounded-2xl p-space-md shadow-md border border-outline-variant/30 flex flex-col sm:flex-row items-center justify-between gap-space-sm">
+            <span class="font-label-sm text-label-sm text-on-surface-variant text-xs">Conectar con otros módulos:</span>
+            <div class="flex items-center gap-2 w-full sm:w-auto">
+              <button type="button" onclick="translateAndSpeak()" class="flex-1 sm:flex-none px-4 py-2 rounded-xl bg-surface-container-high hover:bg-secondary/20 text-on-surface hover:text-secondary font-label-md text-label-md font-semibold text-xs flex items-center justify-center gap-1.5 transition-all border border-outline-variant/30 cursor-pointer">
+                <span class="material-symbols-outlined text-[16px] text-secondary">translate</span>
+                <span>Traducir con MarianMT</span>
+              </button>
+              <button type="button" onclick="sendToMultimodalChat()" class="flex-1 sm:flex-none px-4 py-2 rounded-xl bg-surface-container-high hover:bg-primary/20 text-on-surface hover:text-primary font-label-md text-label-md font-semibold text-xs flex items-center justify-center gap-1.5 transition-all border border-outline-variant/30 cursor-pointer">
+                <span class="material-symbols-outlined text-[16px] text-primary">chat</span>
+                <span>Preguntar en Chat</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- COLUMNA DERECHA: EXPLICACIÓN DIDÁCTICA & CONSEJOS (4 COLS) -->
+        <div class="lg:col-span-4 flex flex-col gap-space-md">
+          
+          <!-- Tarjeta Didáctica -->
+          <div class="bg-surface-container rounded-2xl p-space-md shadow-md border border-secondary/20 flex flex-col gap-space-sm">
+            <div class="flex items-center gap-space-xs text-secondary">
+              <span class="material-symbols-outlined text-[22px]">lightbulb</span>
+              <h3 class="font-headline-md text-headline-md font-semibold text-on-surface text-sm">¿Cómo funciona MMS-TTS?</h3>
+            </div>
+            <p class="font-body-md text-body-md text-on-surface-variant text-xs leading-relaxed">
+              Facebook MMS (Massively Multilingual Speech) emplea una arquitectura basada en VITS (Variational Inference with adversarial learning for end-to-end Text-to-Speech) que transforma texto directamente en forma de onda acústica.
+            </p>
+            <div class="mt-space-xs flex flex-col gap-2 pt-space-xs border-t border-outline-variant/30 text-xs">
+              <div class="flex items-start gap-space-xs">
+                <span class="material-symbols-outlined text-secondary text-[16px] mt-0.5">check_circle</span>
+                <span class="text-on-surface-variant">Generación directa de espectrogramas y audio WAV a 16 kHz.</span>
+              </div>
+              <div class="flex items-start gap-space-xs">
+                <span class="material-symbols-outlined text-secondary text-[16px] mt-0.5">check_circle</span>
+                <span class="text-on-surface-variant">Respeta pausas mediante comas, puntos y signos interrogativos.</span>
+              </div>
+              <div class="flex items-start gap-space-xs">
+                <span class="material-symbols-outlined text-secondary text-[16px] mt-0.5">check_circle</span>
+                <span class="text-on-surface-variant">Inferencia optimizada en memoria con latencia ultrabaja.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Métricas del Modelo en Ejecución -->
+          <div class="bg-surface-container rounded-2xl p-space-md shadow-md border border-outline-variant/30 flex flex-col gap-2">
+            <div class="flex items-center gap-space-xs text-on-surface pb-1 border-b border-outline-variant/20">
+              <span class="material-symbols-outlined text-tertiary text-[18px]">analytics</span>
+              <span class="font-label-md text-label-md font-semibold text-xs">Parámetros del Pipeline</span>
+            </div>
+            <div class="flex items-center justify-between text-xs py-1">
+              <span class="text-on-surface-variant">Modelo Español:</span>
+              <span class="font-mono text-tertiary">facebook/mms-tts-spa</span>
+            </div>
+            <div class="flex items-center justify-between text-xs py-1 border-t border-outline-variant/10">
+              <span class="text-on-surface-variant">Modelo Inglés:</span>
+              <span class="font-mono text-secondary">facebook/mms-tts-eng</span>
+            </div>
+            <div class="flex items-center justify-between text-xs py-1 border-t border-outline-variant/10">
+              <span class="text-on-surface-variant">Muestreo (Sampling):</span>
+              <span class="font-mono text-on-surface">16,000 muestras/seg</span>
+            </div>
+            <div class="flex items-center justify-between text-xs py-1 border-t border-outline-variant/10">
+              <span class="text-on-surface-variant">Codificación:</span>
+              <span class="font-mono text-on-surface">Linear PCM 16-bit WAV</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
   </div>
 
-  <!-- Right Column: Tarjeta Didáctica Explicativa & Ayuda -->
-  <div class="lg:col-span-4 flex flex-col gap-space-md">
-    <!-- Tarjeta Didáctica -->
-    <div class="bg-surface-container-low rounded-2xl p-space-md shadow-md border border-primary/20 flex flex-col gap-space-sm relative overflow-hidden">
-      <div class="flex items-center gap-space-xs text-primary">
-        <span class="material-symbols-outlined text-[22px]">lightbulb</span>
-        <h3 class="font-headline-md text-headline-md font-semibold text-on-surface">¿Cómo funciona?</h3>
-      </div>
-      <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-        El modelo lee el texto, comprende la entonación y crea una voz humana natural en segundos.
-      </p>
-      <div class="mt-space-xs flex flex-col gap-space-xs pt-space-xs border-t border-outline-variant/30">
-        <div class="flex items-start gap-space-xs">
-          <span class="material-symbols-outlined text-tertiary text-[18px] mt-0.5">check_circle</span>
-          <span class="font-body-sm text-body-sm text-on-surface-variant">Interpreta pausas, signos y acentos automáticamente.</span>
-        </div>
-        <div class="flex items-start gap-space-xs">
-          <span class="material-symbols-outlined text-tertiary text-[18px] mt-0.5">check_circle</span>
-          <span class="font-body-sm text-body-sm text-on-surface-variant">Sintetiza de inmediato sin esperas complejas.</span>
-        </div>
-        <div class="flex items-start gap-space-xs">
-          <span class="material-symbols-outlined text-tertiary text-[18px] mt-0.5">check_circle</span>
-          <span class="font-body-sm text-body-sm text-on-surface-variant">Archivos listos para reproducir o descargar.</span>
-        </div>
-      </div>
-    </div>
+  <!-- CONTENEDOR FLOTANTE PARA TOASTS -->
+  <div id="toast-container" class="fixed top-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
 
-    <!-- Consejos Rápidos -->
-    <div class="bg-surface-container-low rounded-2xl p-space-md shadow-md border border-outline-variant/30 flex flex-col gap-space-xs">
-      <div class="flex items-center gap-space-xs text-on-surface">
-        <span class="material-symbols-outlined text-tertiary text-[18px]">tips_and_updates</span>
-        <span class="font-label-md text-label-md font-semibold">Consejos para mejor voz</span>
-      </div>
-      <ul class="font-body-sm text-body-sm text-on-surface-variant flex flex-col gap-1.5 list-none pt-1">
-        <li class="">• Usa comas y puntos para crear pausas expresivas naturales.</li>
-        <li class="">• Si una palabra suena extraña, puedes escribirla fonéticamente.</li>
-        <li class="">• Ajusta a velocidad lenta para narraciones infantiles o educativas.</li>
-      </ul>
-    </div>
-  </div>
-</div>
+  <!-- LÓGICA JAVASCRIPT DINÁMICA -->
+  <script>
+    let activeLang = 'es';
+    let currentSpeed = 1.0;
+    let ttsAudio = null;
+    let rawAudioBase64 = null;
+    let isPlaying = false;
 
-</div>
-</main></div>
-<script>
-  let isPlaying = false;
-  let activeLang = 'spa';
-  let ttsAudio = null;
-  let rawAudioData = null;
-
-  function handleTextChange() {
-    const area = document.getElementById('tts-input');
-    if (!area) return;
-    const text = area.value;
-    const charCount = text.length;
-    const words = text.trim() ? text.trim().split(/\s+/).length : 0;
-    const estSeconds = Math.max(1, Math.round(words / 2.5));
-
-    const counterEl = document.getElementById('char-counter');
-    const estimateEl = document.getElementById('time-estimate');
-    if (counterEl) counterEl.textContent = charCount + ' caracteres';
-    if (estimateEl) estimateEl.textContent = '⏱️ Lectura estimada: ~' + estSeconds + ' segundos';
-  }
-
-  function selectLanguage(lang) {
-    activeLang = lang;
-    const engBtn = document.getElementById('lang-eng-btn');
-    const spaBtn = document.getElementById('lang-spa-btn');
-    if (!engBtn || !spaBtn) return;
-
-    if (lang === 'spa') {
-      spaBtn.className = 'flex items-center justify-center gap-2 p-space-sm rounded-xl border text-center transition-all bg-primary/15 text-primary-fixed border-primary/40 shadow-sm font-label-md text-label-md font-semibold cursor-pointer';
-      engBtn.className = 'flex items-center justify-center gap-2 p-space-sm rounded-xl border text-center transition-all bg-surface-container hover:bg-surface-container-high text-on-surface-variant border-transparent cursor-pointer font-label-md text-label-md';
-    } else {
-      engBtn.className = 'flex items-center justify-center gap-2 p-space-sm rounded-xl border text-center transition-all bg-primary/15 text-primary-fixed border-primary/40 shadow-sm font-label-md text-label-md font-semibold cursor-pointer';
-      spaBtn.className = 'flex items-center justify-center gap-2 p-space-sm rounded-xl border text-center transition-all bg-surface-container hover:bg-surface-container-high text-on-surface-variant border-transparent cursor-pointer font-label-md text-label-md';
-    }
-  }
-
-  function setSpeed(speed, el) {
-    document.querySelectorAll('.speed-pill').forEach(function(btn) {
-      btn.className = 'speed-pill flex-1 py-2 text-center rounded-lg font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-all cursor-pointer';
-    });
-    el.className = 'speed-pill flex-1 py-2 text-center rounded-lg font-label-sm text-label-sm bg-surface-container-high text-tertiary font-bold transition-all shadow-sm cursor-pointer';
-    if (ttsAudio) {
-      ttsAudio.playbackRate = speed;
-    }
-  }
-
-  function loadSampleText() {
-    const sample = activeLang === 'spa' 
-      ? '¡Hola a todos! Bienvenidos a esta demostración de voz neural con Transformers. Gracias a la inteligencia artificial de Meta MMS, podemos generar voz con entonación natural.'
-      : 'Hello everyone! Welcome to this neural voice demonstration using Transformers. Thanks to Meta MMS speech synthesis, we can generate natural voice output in seconds.';
-    const area = document.getElementById('tts-input');
-    if (area) {
-      area.value = sample;
-      handleTextChange();
-    }
-  }
-
-  function clearText() {
-    const area = document.getElementById('tts-input');
-    if (area) {
-      area.value = '';
-      handleTextChange();
-      area.focus();
-    }
-  }
-
-  function formatTime(seconds) {
-    const s = Math.floor(seconds || 0);
-    const m = Math.floor(s / 60);
-    const rem = s % 60;
-    return (m < 10 ? '0' + m : m) + ':' + (rem < 10 ? '0' + rem : rem);
-  }
-
-  async function triggerSynthesis() {
-    const area = document.getElementById('tts-input');
-    const text = area ? area.value.trim() : '';
-    if (!text) {
-      alert('Por favor escribe texto a sintetizar');
-      return;
-    }
-    const btn = document.getElementById('generate-btn');
-    if (btn) btn.classList.add('opacity-75', 'pointer-events-none');
-
-    try {
-      const langCode = activeLang === 'spa' ? 'es' : 'en';
-      const res = await fetch('/api/tts', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({text: text, lang: langCode})
+    // Toasts flotantes
+    function showAppToast(message, type = 'info') {
+      const container = document.getElementById('toast-container');
+      if (!container) return;
+      const toast = document.createElement('div');
+      const bgClass = type === 'error' ? 'bg-error text-on-error' :
+                      type === 'warning' ? 'bg-amber-600 text-white' :
+                      type === 'success' ? 'bg-emerald-600 text-white' :
+                      'bg-surface-container-highest text-on-surface';
+      toast.className = `${bgClass} px-4 py-2.5 rounded-xl shadow-lg font-body-sm text-body-sm flex items-center gap-2 pointer-events-auto transform transition-all duration-300 translate-y-2 opacity-0 border border-white/10 text-xs`;
+      toast.innerHTML = `<span>${message}</span>`;
+      container.appendChild(toast);
+      
+      requestAnimationFrame(() => {
+        toast.classList.remove('translate-y-2', 'opacity-0');
       });
-      const data = await res.json();
-      if (data.status === 'success' && data.audio_base64) {
-        rawAudioData = data.audio_base64;
-        if (ttsAudio) ttsAudio.pause();
-        ttsAudio = new Audio('data:audio/wav;base64,' + data.audio_base64);
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'translate-y-2');
+        setTimeout(() => toast.remove(), 300);
+      }, 4000);
+    }
 
-        ttsAudio.onloadedmetadata = () => {
-          const totalDurationSpan = document.querySelector('#current-timestamp + span');
-          if (totalDurationSpan) totalDurationSpan.textContent = formatTime(ttsAudio.duration);
-          const topDurSpan = document.querySelector('.flex.flex-col span.font-label-sm.text-on-surface-variant');
-          if (topDurSpan && topDurSpan.innerText.includes('Duración')) {
-            topDurSpan.textContent = 'Duración total: ' + formatTime(ttsAudio.duration) + ' min';
-          }
-        };
+    // Calcular estadísticas de texto en tiempo real
+    function handleTextChange() {
+      const area = document.getElementById('tts-input');
+      if (!area) return;
+      const text = area.value;
+      const chars = text.length;
+      const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+      const estSeconds = Math.max(1, Math.round(words / 2.6));
 
-        ttsAudio.ontimeupdate = () => {
-          if (ttsAudio.duration) {
-            const pct = (ttsAudio.currentTime / ttsAudio.duration) * 100;
-            const bar = document.getElementById('progress-bar');
-            if (bar) bar.style.width = pct + '%';
-            const ts = document.getElementById('current-timestamp');
-            if (ts) ts.textContent = formatTime(ttsAudio.currentTime);
-          }
-        };
+      const counterEl = document.getElementById('char-counter');
+      const estimateEl = document.getElementById('time-estimate');
+      if (counterEl) counterEl.textContent = `${chars} caracteres (${words} palabras)`;
+      if (estimateEl) estimateEl.textContent = `⏱️ Lectura estimada: ~${estSeconds} segundos`;
+    }
 
-        ttsAudio.onended = () => {
-          isPlaying = false;
-          const playIcon = document.getElementById('play-icon');
-          if (playIcon) playIcon.textContent = 'play_arrow';
-        };
+    // Seleccionar Idioma
+    function selectLanguage(lang) {
+      activeLang = lang;
+      const esBtn = document.getElementById('lang-es-btn');
+      const enBtn = document.getElementById('lang-en-btn');
+      if (!esBtn || !enBtn) return;
 
-        ttsAudio.play();
-        isPlaying = true;
-        const playIcon = document.getElementById('play-icon');
-        if (playIcon) playIcon.textContent = 'pause';
+      if (lang === 'es') {
+        esBtn.className = 'flex items-center justify-center gap-2 p-2.5 rounded-xl border text-center transition-all bg-secondary/20 text-secondary border-secondary/40 shadow-sm font-label-md text-label-md font-semibold cursor-pointer';
+        enBtn.className = 'flex items-center justify-center gap-2 p-2.5 rounded-xl border text-center transition-all bg-surface-container-high hover:bg-surface-container-highest text-on-surface-variant border-transparent cursor-pointer font-label-md text-label-md';
+        showAppToast('Idioma cambiado a Español (facebook/mms-tts-spa)', 'info');
       } else {
-        alert('Error en síntesis: ' + (data.error || ''));
+        enBtn.className = 'flex items-center justify-center gap-2 p-2.5 rounded-xl border text-center transition-all bg-secondary/20 text-secondary border-secondary/40 shadow-sm font-label-md text-label-md font-semibold cursor-pointer';
+        esBtn.className = 'flex items-center justify-center gap-2 p-2.5 rounded-xl border text-center transition-all bg-surface-container-high hover:bg-surface-container-highest text-on-surface-variant border-transparent cursor-pointer font-label-md text-label-md';
+        showAppToast('Language switched to English (facebook/mms-tts-eng)', 'info');
       }
-    } catch(err) {
-      console.error(err);
-      alert('Error al conectar con el servidor.');
-    } finally {
-      if (btn) btn.classList.remove('opacity-75', 'pointer-events-none');
     }
-  }
 
-  function togglePlayAudio() {
-    if (!ttsAudio) {
-      triggerSynthesis();
-      return;
-    }
-    if (ttsAudio.paused) {
-      ttsAudio.play();
-      isPlaying = true;
-    } else {
-      ttsAudio.pause();
-      isPlaying = false;
-    }
-    const playIcon = document.getElementById('play-icon');
-    if (playIcon) playIcon.textContent = isPlaying ? 'pause' : 'play_arrow';
-  }
-
-  function scrubTimeline(e) {
-    if (!ttsAudio || !ttsAudio.duration) return;
-    const track = document.getElementById('waveform-track');
-    if (!track) return;
-    const rect = track.getBoundingClientRect();
-    const x = Math.max(0, Math.min(e.clientX - rect.left, rect.width));
-    const percent = x / rect.width;
-    ttsAudio.currentTime = percent * ttsAudio.duration;
-  }
-
-  function triggerDownloadAlert() {
-    if (!rawAudioData) {
-      alert('Primero genera un audio para descargarlo.');
-      return;
-    }
-    const a = document.createElement('a');
-    a.href = 'data:audio/wav;base64,' + rawAudioData;
-    a.download = 'transformer_audio_' + activeLang + '.wav';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    handleTextChange();
-    const vol = document.querySelector('input[type=range]');
-    if (vol) {
-      vol.addEventListener('input', (e) => {
-        if (ttsAudio) ttsAudio.volume = e.target.value / 100;
+    // Ajustar velocidad
+    function setSpeed(speed, el) {
+      currentSpeed = speed;
+      document.querySelectorAll('.speed-pill').forEach(btn => {
+        btn.className = 'speed-pill flex-1 py-2 text-center rounded-lg font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-all cursor-pointer text-xs';
       });
+      el.className = 'speed-pill flex-1 py-2 text-center rounded-lg font-label-sm text-label-sm bg-secondary text-on-secondary font-bold transition-all shadow-sm cursor-pointer text-xs';
+      
+      if (ttsAudio) {
+        ttsAudio.playbackRate = currentSpeed;
+      }
+      showAppToast(`Velocidad configurada a ${speed}x`, 'info');
     }
-  });
-</script>
 
+    // Cargar muestras académicas de 1 clic
+    function loadPreset(type) {
+      const presets = {
+        'ciencia': {
+          lang: 'es',
+          text: 'Los modelos Transformer procesan secuencias completas en paralelo utilizando mecanismos de auto-atención multi-cabezal, superando las limitaciones secuenciales de las redes neuronales recurrentes tradicionales.'
+        },
+        'english': {
+          lang: 'en',
+          text: 'Artificial Intelligence and neural speech synthesis generate natural human voices in real time. Transformers utilize self-attention mechanisms to capture complex contextual dependencies.'
+        },
+        'fisica': {
+          lang: 'es',
+          text: 'La constante de Planck y la ecuación de equivalencia entre masa y energía de Einstein describen el comportamiento fundamental de las partículas a escala subatómica en la física moderna.'
+        }
+      };
 
-</body></html>
+      const p = presets[type] || presets['ciencia'];
+      const area = document.getElementById('tts-input');
+      if (area) {
+        area.value = p.text;
+        selectLanguage(p.lang);
+        handleTextChange();
+        showAppToast('Muestra académica cargada. Haz clic en Convertir texto a voz.', 'info');
+      }
+    }
+
+    function clearText() {
+      const area = document.getElementById('tts-input');
+      if (area) {
+        area.value = '';
+        handleTextChange();
+        area.focus();
+      }
+    }
+
+    async function pasteFromClipboard() {
+      try {
+        const text = await navigator.clipboard.readText();
+        const area = document.getElementById('tts-input');
+        if (area && text) {
+          area.value = text;
+          handleTextChange();
+          showAppToast('Texto pegado del portapapeles', 'success');
+        }
+      } catch(e) {
+        showAppToast('Permiso de portapapeles no disponible en el navegador', 'warning');
+      }
+    }
+
+    function formatTime(seconds) {
+      const s = Math.floor(seconds || 0);
+      const m = Math.floor(s / 60);
+      const rem = s % 60;
+      return (m < 10 ? '0' + m : m) + ':' + (rem < 10 ? '0' + rem : rem);
+    }
+
+    // Iniciar Síntesis Neuronal con Facebook MMS-TTS
+    async function triggerSynthesis() {
+      const area = document.getElementById('tts-input');
+      const text = area ? area.value.trim() : '';
+      if (!text) {
+        showAppToast('Por favor escribe o pega un texto para sintetizar.', 'warning');
+        return;
+      }
+
+      const btn = document.getElementById('generate-btn');
+      const btnIcon = document.getElementById('gen-btn-icon');
+      const btnText = document.getElementById('gen-btn-text');
+      const statusSubtitle = document.getElementById('player-status-subtitle');
+
+      if (btn) btn.classList.add('opacity-75', 'pointer-events-none');
+      if (btnIcon) {
+        btnIcon.textContent = 'sync';
+        btnIcon.classList.add('animate-spin');
+      }
+      if (btnText) btnText.textContent = 'Sintetizando voz con Facebook MMS...';
+      if (statusSubtitle) statusSubtitle.textContent = 'Generando ondas acústicas...';
+
+      showAppToast(`Sintetizando voz en ${activeLang.toUpperCase()} con Facebook MMS...`, 'info');
+
+      try {
+        const res = await fetch('/api/tts', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text: text, lang: activeLang })
+        });
+        const data = await res.json();
+
+        if (data.status === 'success' && data.audio_base64) {
+          rawAudioBase64 = data.audio_base64;
+          if (ttsAudio) {
+            ttsAudio.pause();
+            ttsAudio = null;
+          }
+
+          ttsAudio = new Audio('data:audio/wav;base64,' + data.audio_base64);
+          ttsAudio.playbackRate = currentSpeed;
+
+          ttsAudio.onloadedmetadata = () => {
+            const totalSpan = document.getElementById('total-duration');
+            if (totalSpan) totalSpan.textContent = formatTime(ttsAudio.duration);
+            if (statusSubtitle) {
+              statusSubtitle.textContent = `Audio generado (${formatTime(ttsAudio.duration)} min - ${data.time_seconds}s)`;
+            }
+          };
+
+          ttsAudio.ontimeupdate = () => {
+            if (ttsAudio && ttsAudio.duration) {
+              const pct = (ttsAudio.currentTime / ttsAudio.duration) * 100;
+              const bar = document.getElementById('progress-bar');
+              if (bar) bar.style.width = pct + '%';
+              const curSpan = document.getElementById('current-timestamp');
+              if (curSpan) curSpan.textContent = formatTime(ttsAudio.currentTime);
+            }
+          };
+
+          ttsAudio.onplay = () => {
+            isPlaying = true;
+            updatePlayerUI();
+          };
+
+          ttsAudio.onpause = () => {
+            isPlaying = false;
+            updatePlayerUI();
+          };
+
+          ttsAudio.onended = () => {
+            isPlaying = false;
+            const bar = document.getElementById('progress-bar');
+            if (bar) bar.style.width = '0%';
+            const curSpan = document.getElementById('current-timestamp');
+            if (curSpan) curSpan.textContent = '00:00';
+            updatePlayerUI();
+          };
+
+          // Reproducir automáticamente
+          await ttsAudio.play();
+          showAppToast(`✅ Audio generado en ${data.time_seconds}s. Reproduciendo...`, 'success');
+        } else {
+          showAppToast('Error al generar síntesis: ' + (data.error || 'Desconocido'), 'error');
+          if (statusSubtitle) statusSubtitle.textContent = 'Error en síntesis';
+        }
+      } catch (err) {
+        showAppToast('Error de conexión con el servidor de voz', 'error');
+        if (statusSubtitle) statusSubtitle.textContent = 'Error de conexión';
+      } finally {
+        if (btn) btn.classList.remove('opacity-75', 'pointer-events-none');
+        if (btnIcon) {
+          btnIcon.textContent = 'volume_up';
+          btnIcon.classList.remove('animate-spin');
+        }
+        if (btnText) btnText.textContent = 'Convertir Texto a Voz con MMS-TTS';
+      }
+    }
+
+    function updatePlayerUI() {
+      const playIcon = document.getElementById('play-icon');
+      const hint = document.getElementById('playback-hint');
+      const eqBox = document.getElementById('equalizer-box');
+
+      if (playIcon) playIcon.textContent = isPlaying ? 'pause' : 'play_arrow';
+      if (hint) hint.textContent = isPlaying ? 'Reproduciendo audio...' : 'Pausado (clic para reproducir)';
+      if (eqBox) {
+        if (isPlaying) {
+          eqBox.classList.add('playing');
+        } else {
+          eqBox.classList.remove('playing');
+        }
+      }
+    }
+
+    function togglePlayAudio() {
+      if (!ttsAudio) {
+        triggerSynthesis();
+        return;
+      }
+      if (ttsAudio.paused) {
+        ttsAudio.play();
+      } else {
+        ttsAudio.pause();
+      }
+    }
+
+    function scrubTimeline(e) {
+      if (!ttsAudio || !ttsAudio.duration) return;
+      const track = document.getElementById('waveform-track');
+      if (!track) return;
+      const rect = track.getBoundingClientRect();
+      const x = Math.max(0, Math.min(e.clientX - rect.left, rect.width));
+      const percent = x / rect.width;
+      ttsAudio.currentTime = percent * ttsAudio.duration;
+    }
+
+    function handleVolumeChange(e) {
+      if (ttsAudio) {
+        ttsAudio.volume = e.target.value / 100;
+      }
+    }
+
+    function triggerDownloadAudio() {
+      if (!rawAudioBase64) {
+        showAppToast('Primero genera un audio para poder descargarlo.', 'warning');
+        return;
+      }
+      const a = document.createElement('a');
+      a.href = 'data:audio/wav;base64,' + rawAudioBase64;
+      a.download = `sintesis_mms_${activeLang}_${Date.now()}.wav`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      showAppToast('✅ Descargando archivo de audio WAV a 16kHz', 'success');
+    }
+
+    // Traducir con MarianMT y cargar traducción
+    async function translateAndSpeak() {
+      const area = document.getElementById('tts-input');
+      const text = area ? area.value.trim() : '';
+      if (!text) {
+        showAppToast('Escribe un texto primero para traducirlo.', 'warning');
+        return;
+      }
+
+      const targetLang = activeLang === 'es' ? 'en' : 'es';
+      showAppToast(`Traduciendo con MarianMT a ${targetLang.toUpperCase()}...`, 'info');
+
+      try {
+        const res = await fetch('/api/translate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text: text, source_lang: activeLang, target_lang: targetLang })
+        });
+        const data = await res.json();
+        if (data.status === 'success' && data.translated) {
+          area.value = data.translated;
+          selectLanguage(targetLang);
+          handleTextChange();
+          showAppToast(`✅ Traducción lista en ${targetLang.toUpperCase()}. Generando audio...`, 'success');
+          triggerSynthesis();
+        } else {
+          showAppToast('Error al traducir: ' + (data.error || ''), 'error');
+        }
+      } catch (e) {
+        showAppToast('Error de conexión con el traductor', 'error');
+      }
+    }
+
+    // Enviar consulta al Chat Multimodal
+    function sendToMultimodalChat() {
+      const area = document.getElementById('tts-input');
+      const text = area ? area.value.trim() : '';
+      if (!text) {
+        showAppToast('Escribe un texto antes de enviar al asistente.', 'warning');
+        return;
+      }
+
+      sessionStorage.setItem('pendingChatQuery', text);
+      showAppToast('Transfiriendo consulta al Asistente Multimodal...', 'info');
+      setTimeout(() => {
+        window.location.href = '/chat';
+      }, 500);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      handleTextChange();
+    });
+  </script>
+</body>
+</html>
