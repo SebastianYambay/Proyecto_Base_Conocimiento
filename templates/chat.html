@@ -54,6 +54,7 @@
 </div>
 </div>
 </div>
+</main></div>
 <script>
   let currentAudio = null;
 
@@ -66,24 +67,11 @@
   }
 
   function togglePlayAudio() {
-    if (!currentAudio) {
-      // Synthesize default response
-      const p = document.querySelector('p.font-body-lg');
-      if (p) playTTS(p.innerText, 'es');
-      return;
-    }
-    if (currentAudio.paused) {
-      currentAudio.play();
-      updatePlayIcon('pause');
-    } else {
-      currentAudio.pause();
-      updatePlayIcon('play_arrow');
-    }
+    const p = document.querySelector('p.font-body-lg');
+    if (p) playTTS(p.innerText, 'es');
   }
 
   function updatePlayIcon(name) {
-    const icon = document.querySelector('button span.material-symbols-outlined');
-    // find play icon
     document.querySelectorAll('span.material-symbols-outlined').forEach(span => {
       if (span.innerText === 'play_circle' || span.innerText === 'pause_circle' || span.innerText === 'play_arrow' || span.innerText === 'pause') {
         span.innerText = name === 'pause' ? 'pause_circle' : 'play_circle';
@@ -93,11 +81,12 @@
 
   async function playTTS(text, lang='es') {
     if (!text) return;
+    const cleanText = text.replace(/«|»/g, '').trim();
     try {
       const res = await fetch('/api/tts', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({text: text, lang: lang})
+        body: JSON.stringify({text: cleanText, lang: lang})
       });
       const data = await res.json();
       if (data.status === 'success' && data.audio_base64) {
@@ -117,7 +106,8 @@
   async function translateResponse(targetLang='en') {
     const p = document.querySelector('p.font-body-lg');
     if (!p) return;
-    const text = p.innerText.replace(/«|»/g, '');
+    const text = p.innerText.replace(/«|»/g, '').trim();
+    p.innerText = 'Traduciendo...';
     try {
       const res = await fetch('/api/translate', {
         method: 'POST',
@@ -132,10 +122,10 @@
       if (data.status === 'success') {
         p.innerText = '«' + data.translated + '»';
       } else {
-        alert('Error traduciendo: ' + (data.error || ''));
+        p.innerText = '«' + text + '»';
       }
     } catch(err) {
-      console.error(err);
+      p.innerText = '«' + text + '»';
     }
   }
 
@@ -162,9 +152,9 @@
       const data = await res.json();
       if (aiP) {
         if (data.status === 'success') {
-          aiP.innerText = '«Traducción al inglés: ' + data.translated + '»';
+          aiP.innerText = '«' + data.translated + '»';
         } else {
-          aiP.innerText = '«Mensaje recibido. Puedes convertir este texto en voz o traducirlo con los botones de abajo.»';
+          aiP.innerText = '«' + text + '»';
         }
       }
     } catch(e) {
@@ -172,7 +162,6 @@
     }
   }
 
-  // Bind direct action buttons
   document.addEventListener('DOMContentLoaded', () => {
     // Escuchar button
     const ttsBtn = document.querySelector('button.bg-tertiary');
@@ -192,7 +181,18 @@
         translateResponse('en');
       });
     }
+
+    // Enter key sends
+    const area = document.getElementById('chat-textarea');
+    if (area) {
+      area.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault();
+          handleSendMessage();
+        }
+      });
+    }
   });
-</script></main></div>
+</script>
 
 </body></html>

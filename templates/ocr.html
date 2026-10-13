@@ -13,6 +13,7 @@
 <!-- Main Split Layout (12 Columns) -->
 <div class="flex flex-col gap-space-lg"><div class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg"><div class="bg-surface-container rounded-xl p-space-md shadow-md flex flex-col gap-space-md"><div class="flex items-center justify-between pb-space-xs border-b border-surface-container-high"><div class="flex items-center gap-space-xs"><span class="w-7 h-7 rounded-full bg-tertiary-container/30 text-tertiary flex items-center justify-center font-bold text-label-md">1</span><span class="font-headline-md text-headline-md font-semibold text-on-surface">Imagen o Documento</span></div><span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container-high px-2 py-1 rounded">Muestra activa</span></div><div class="relative w-full h-80 rounded-lg overflow-hidden bg-surface-container-lowest select-none"><img class="w-full h-full object-cover filter contrast-125 brightness-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXM1NaFuCTcHtHiQN1RzZIWTUbkqY5F3JJSaTpV5NjuTJtgM6oym5dywUHnplEeXIfrQz_mlyL4uAepfT6FRITQf6kDqwfIk4jyqxBNRCt_BlP6xhzIy-b-NNx7t1jqX-WCkbKXElzPQ4ayimhD7FAmVjKx3KSSR9-UqrsaHgXqCgipMfBr5V1vboeqAI955b1rOMHc1S1JtPcwF5u_F4_dLH5jSUNS9j4Z2HzAKHIdkYbNBfqFNd9Aw" alt="Documento escaneado"><div class="absolute top-8 left-6 w-3/4 h-14 bg-tertiary-container/30 rounded border border-tertiary pointer-events-none shadow-sm flex items-start"><span class="font-label-sm text-label-sm bg-tertiary text-on-tertiary font-semibold px-2 py-0.5 rounded-br text-[11px]">Título identificado</span></div><div class="absolute top-28 left-6 w-5/6 h-24 bg-tertiary-container/20 rounded border border-tertiary pointer-events-none shadow-sm flex items-start"><span class="font-label-sm text-label-sm bg-tertiary-container text-on-surface font-semibold px-2 py-0.5 rounded-br text-[11px]">Párrafo de texto detectado</span></div><div class="absolute bottom-3 right-3 bg-surface-container-lowest/90 backdrop-blur-md px-3 py-1.5 rounded-lg flex items-center gap-1.5 text-on-surface font-label-sm text-label-sm"><span class="material-symbols-outlined text-[16px] text-tertiary">check_circle</span><span class="">Texto localizado con éxito</span></div></div><div class="flex items-center justify-between gap-space-sm p-space-sm bg-surface-container-lowest rounded-lg"><div class="flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm"><span class="material-symbols-outlined text-[18px] text-tertiary">upload_file</span><span class="">paper_abstract_scan.png</span></div><button class="flex items-center gap-1 px-space-md py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-md text-label-md transition-all"><span class="material-symbols-outlined text-[16px]">add_photo_alternate</span><span class="">Subir otra imagen</span></button></div></div><div class="bg-surface-container rounded-xl p-space-md shadow-md flex flex-col justify-between gap-space-md"><div class="flex flex-col gap-space-md"><div class="flex items-center justify-between pb-space-xs border-b border-surface-container-high"><div class="flex items-center gap-space-xs"><span class="w-7 h-7 rounded-full bg-secondary-container/40 text-secondary flex items-center justify-center font-bold text-label-md">2</span><span class="font-headline-md text-headline-md font-semibold text-on-surface">Texto extraído por la IA</span></div><div class="flex items-center gap-1.5 bg-tertiary-container/20 text-tertiary px-2 py-1 rounded font-label-sm text-label-sm font-medium"><span class="material-symbols-outlined text-[14px]">verified</span><span class="">96.4% de precisión</span></div></div><div class="flex flex-col gap-space-xs"><label class="font-body-sm text-body-sm text-on-surface-variant">Texto editable extraído en tiempo real:</label><textarea class="w-full bg-surface-container-lowest text-on-surface p-space-md rounded-lg font-body-md text-body-md leading-relaxed resize-none focus:outline-none focus:ring-1 focus:ring-tertiary select-text h-52" id="ocr-raw-text">Neural Transformer architectures demonstrate exceptional zero-shot cross-lingual transfer when pre-trained on diverse multilingual corpora. By leveraging shared self-attention representations across self-supervised token streams, multi-task downstream fine-tuning achieves state-of-the-art BLEU benchmarks while diminishing semantic latency in distributed inference nodes.</textarea></div></div><div class="flex flex-col sm:flex-row items-center gap-space-sm pt-space-xs"><button class="flex items-center justify-center gap-2 w-full py-2.5 px-space-md rounded-lg bg-tertiary text-on-tertiary font-label-md text-label-md font-semibold hover:brightness-110 shadow-sm transition-all"><span class="material-symbols-outlined text-[20px]">volume_up</span><span class="">🔊 Escuchar este texto</span></button><button class="flex items-center justify-center gap-2 w-full py-2.5 px-space-md rounded-lg bg-secondary text-on-secondary font-label-md text-label-md font-semibold hover:brightness-110 shadow-sm transition-all"><span class="material-symbols-outlined text-[20px]">translate</span><span class="">🌐 Traducir a Español</span></button></div></div></div><div class="flex items-center gap-space-md p-space-md bg-surface-container-low rounded-xl border border-surface-container-high"><div class="w-10 h-10 rounded-full bg-tertiary-container/20 text-tertiary flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-[22px]">lightbulb</span></div><div class="flex flex-col"><span class="font-headline-md text-label-md font-semibold text-on-surface">¿Qué hace la IA?</span><p class="font-body-md text-body-md text-on-surface-variant">Analiza la imagen, reconoce las letras y palabras, y las convierte en texto editable al instante.</p></div></div></div>
 </div>
+</main></div>
 <script>
   let currentOcrAudio = null;
 
@@ -33,7 +34,7 @@
     if (nameSpan) nameSpan.innerText = file.name;
 
     const textarea = document.getElementById('ocr-raw-text');
-    if (textarea) textarea.value = 'Analizando imagen y extrayendo texto con Tesseract OCR...';
+    if (textarea) textarea.value = 'Analizando imagen y extrayendo texto con OCR...';
 
     // Call OCR endpoint
     const formData = new FormData();
@@ -44,9 +45,9 @@
       const data = await res.json();
       if (textarea) {
         if (data.status === 'success' || data.text) {
-          textarea.value = data.text || 'No se detectó texto en la imagen.';
+          textarea.value = data.text || 'No se detectó texto claro en la imagen.';
           // Update confidence
-          const confBadge = document.querySelector('.bg-tertiary-container\/20 span:last-child');
+          const confBadge = document.querySelector('.bg-tertiary-container\/20 span:last-child') || document.querySelector('.bg-tertiary-container span:last-child');
           if (confBadge && data.confidence !== undefined) {
             confBadge.innerText = data.confidence + '% de precisión';
           }
@@ -107,8 +108,6 @@
   }
 
   document.addEventListener('DOMContentLoaded', () => {
-    // Add file input listener
-    const uploadBtn = document.querySelector('button:has(span:contains("Subir otra imagen"))') || document.querySelectorAll('button')[1];
     const fileInput = document.createElement('input');
     fileInput.type = 'file';
     fileInput.accept = 'image/*';
@@ -116,17 +115,26 @@
     fileInput.addEventListener('change', handleImageUpload);
     document.body.appendChild(fileInput);
 
-    // Bind upload buttons
     document.querySelectorAll('button').forEach(btn => {
-      if (btn.innerText.includes('Subir')) {
-        btn.addEventListener('click', () => fileInput.click());
-      } else if (btn.innerText.includes('Escuchar')) {
-        btn.addEventListener('click', listenOcrText);
-      } else if (btn.innerText.includes('Traducir')) {
-        btn.addEventListener('click', translateOcrText);
+      const txt = btn.innerText || '';
+      if (txt.includes('Subir')) {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          fileInput.click();
+        });
+      } else if (txt.includes('Escuchar')) {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          listenOcrText();
+        });
+      } else if (txt.includes('Traducir')) {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          translateOcrText();
+        });
       }
     });
   });
-</script></main></div>
+</script>
 
 </body></html>

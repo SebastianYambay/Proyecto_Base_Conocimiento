@@ -198,7 +198,9 @@
   let rawAudioData = null;
 
   function handleTextChange() {
-    const text = document.getElementById('tts-input').value;
+    const area = document.getElementById('tts-input');
+    if (!area) return;
+    const text = area.value;
     const charCount = text.length;
     const words = text.trim() ? text.trim().split(/\s+/).length : 0;
     const estSeconds = Math.max(1, Math.round(words / 2.5));
@@ -254,8 +256,16 @@
     }
   }
 
+  function formatTime(seconds) {
+    const s = Math.floor(seconds || 0);
+    const m = Math.floor(s / 60);
+    const rem = s % 60;
+    return (m < 10 ? '0' + m : m) + ':' + (rem < 10 ? '0' + rem : rem);
+  }
+
   async function triggerSynthesis() {
-    const text = document.getElementById('tts-input').value.trim();
+    const area = document.getElementById('tts-input');
+    const text = area ? area.value.trim() : '';
     if (!text) {
       alert('Por favor escribe texto a sintetizar');
       return;
@@ -276,14 +286,22 @@
         if (ttsAudio) ttsAudio.pause();
         ttsAudio = new Audio('data:audio/wav;base64,' + data.audio_base64);
 
+        ttsAudio.onloadedmetadata = () => {
+          const totalDurationSpan = document.querySelector('#current-timestamp + span');
+          if (totalDurationSpan) totalDurationSpan.textContent = formatTime(ttsAudio.duration);
+          const topDurSpan = document.querySelector('.flex.flex-col span.font-label-sm.text-on-surface-variant');
+          if (topDurSpan && topDurSpan.innerText.includes('Duración')) {
+            topDurSpan.textContent = 'Duración total: ' + formatTime(ttsAudio.duration) + ' min';
+          }
+        };
+
         ttsAudio.ontimeupdate = () => {
           if (ttsAudio.duration) {
             const pct = (ttsAudio.currentTime / ttsAudio.duration) * 100;
             const bar = document.getElementById('progress-bar');
             if (bar) bar.style.width = pct + '%';
-            const cur = Math.floor(ttsAudio.currentTime);
             const ts = document.getElementById('current-timestamp');
-            if (ts) ts.textContent = '00:' + (cur < 10 ? '0' + cur : cur);
+            if (ts) ts.textContent = formatTime(ttsAudio.currentTime);
           }
         };
 
@@ -349,7 +367,14 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     handleTextChange();
+    const vol = document.querySelector('input[type=range]');
+    if (vol) {
+      vol.addEventListener('input', (e) => {
+        if (ttsAudio) ttsAudio.volume = e.target.value / 100;
+      });
+    }
   });
 </script>
+
 
 </body></html>
