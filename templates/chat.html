@@ -320,6 +320,15 @@
 
         <!-- Panel de entrada -->
         <div class="bg-surface-container-low rounded-xl p-space-sm shadow-xl flex flex-col gap-space-xs border border-outline-variant/40">
+          <!-- Banner de Estado de Dictado por Voz -->
+          <div id="mic-status-banner" class="hidden items-center justify-between bg-error/15 border border-error/30 px-3 py-1.5 rounded-lg text-xs font-medium text-error transition-all">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-error animate-ping"></span>
+              <span id="mic-status-text">🎙️ <b>Escuchando...</b> Habla a tu micrófono. Clic en el micrófono para finalizar.</span>
+            </div>
+            <button type="button" id="mic-stop-btn" class="px-2.5 py-0.5 rounded bg-error text-white hover:bg-error/80 text-[11px] font-semibold transition-all cursor-pointer">Finalizar</button>
+          </div>
+
           <textarea class="w-full bg-transparent resize-none text-on-surface placeholder:text-outline font-body-md text-body-md p-space-xs focus:outline-none" id="chat-textarea" placeholder="Escribe tu pregunta aquí (ej: ¿Qué es la gravedad?), dicta por voz o sube una imagen..." rows="2"></textarea>
 
           <!-- Barra de controles -->
@@ -332,7 +341,7 @@
               </label>
 
               <!-- Botón Micrófono -->
-              <button id="mic-btn" class="p-space-xs rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-tertiary transition-colors flex items-center justify-center cursor-pointer" title="Dictar por voz con micrófono">
+              <button id="mic-btn" type="button" class="p-space-xs rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-tertiary transition-colors flex items-center justify-center cursor-pointer" title="Dictar por voz con micrófono">
                 <span class="material-symbols-outlined text-[20px]">mic</span>
               </button>
 
@@ -772,38 +781,260 @@
         });
       }
 
-      // Dictado por voz (Web Speech API)
+      // Dictado por voz (Web Speech API) Inteligente y Robusto
       const micBtn = document.getElementById('mic-btn');
-      if (micBtn && ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) {
-        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-        const recognizer = new SpeechRecognition();
-        recognizer.lang = 'es-ES';
-        recognizer.continuous = false;
-        recognizer.interimResults = false;
-
-        recognizer.onresult = (ev) => {
-          const spoken = ev.results[0][0].transcript;
-          if (area) {
-            area.value = spoken;
-            handleSendMessage();
-          }
-        };
-
+      if (micBtn) {
         micBtn.addEventListener('click', (e) => {
           e.preventDefault();
-          try {
-            recognizer.start();
-            micBtn.classList.add('text-error', 'animate-pulse');
-            if (area) area.placeholder = 'Escuchando... habla ahora.';
-          } catch(err) {}
+          toggleDictation();
         });
+      }
 
-        recognizer.onend = () => {
-          micBtn.classList.remove('text-error', 'animate-pulse');
-          if (area) area.placeholder = 'Escribe tu pregunta aquí (ej: ¿Qué es la gravedad?), dicta por voz o sube una imagen...';
-        };
+      const stopBannerBtn = document.getElementById('mic-stop-btn');
+      if (stopBannerBtn) {
+        stopBannerBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (recognizer) {
+            try { recognizer.stop(); } catch(err) {}
+          }
+        });
       }
     });
+
+    // Sistema de notificaciones Toast elegantes
+    function showAppToast(message, type = 'info') {
+      const container = document.getElementById('toast-container');
+      if (!container) return;
+      const toast = document.createElement('div');
+      const bgClass = type === 'error' ? 'bg-error text-on-error' :
+                      type === 'warning' ? 'bg-amber-600 text-white' :
+                      type === 'success' ? 'bg-emerald-600 text-white' :
+                      'bg-surface-container-highest text-on-surface';
+      toast.className = `${bgClass} px-4 py-2.5 rounded-xl shadow-lg font-body-sm text-body-sm flex items-center gap-2 pointer-events-auto transform transition-all duration-300 translate-y-2 opacity-0 border border-white/10`;
+      toast.innerHTML = `<span>${message}</span>`;
+      container.appendChild(toast);
+      
+      requestAnimationFrame(() => {
+        toast.classList.remove('translate-y-2', 'opacity-0');
+      });
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'translate-y-2');
+        setTimeout(() => toast.remove(), 300);
+      }, 4500);
+    }
+
+    function showMicModal(title, htmlBody) {
+      const modal = document.getElementById('mic-perm-modal');
+      const titleEl = document.getElementById('mic-modal-title');
+      const bodyEl = document.getElementById('mic-modal-body');
+      if (modal && titleEl && bodyEl) {
+        titleEl.textContent = title;
+        bodyEl.innerHTML = htmlBody;
+        modal.classList.remove('hidden');
+      }
+    }
+
+    function closeMicModal() {
+      const modal = document.getElementById('mic-perm-modal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function testBrowserMic() {
+      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ audio: true })
+          .then(stream => {
+            showAppToast('✅ ¡Micrófono activado con éxito! Ya puedes usar el dictado por voz.', 'success');
+            stream.getTracks().forEach(t => t.stop());
+            closeMicModal();
+          })
+          .catch(err => {
+            showAppToast('⚠️ Acceso denegado: ' + (err.message || err.name), 'error');
+          });
+      } else {
+        showAppToast('⚠️ Tu navegador no permite solicitar el micrófono de forma directa.', 'warning');
+      }
+    }
+
+    // Motor de Dictado por Voz
+    let recognizer = null;
+    let isRecordingVoice = false;
+    let speechBuffer = '';
+
+    function toggleDictation() {
+      const micBtn = document.getElementById('mic-btn');
+      const micStatusBanner = document.getElementById('mic-status-banner');
+      const micStatusText = document.getElementById('mic-status-text');
+      const area = document.getElementById('chat-textarea');
+
+      const isSecure = window.isSecureContext || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      if (!isSecure) {
+        showMicModal(
+          'Acceso Restringido por el Navegador',
+          `Estás navegando desde <b>${window.location.origin}</b>.<br><br>` +
+          `Los navegadores modernos (Google Chrome, Microsoft Edge) <b>bloquean el micrófono</b> en direcciones IP de red local que no usen HTTPS.<br><br>` +
+          `<b>Solución recomendada para la presentación:</b><br>` +
+          `Abre la aplicación directamente en este computador usando:<br>` +
+          `<a href="http://localhost:5000" class="text-tertiary underline font-mono text-sm block mt-2">http://localhost:5000</a>`
+        );
+        return;
+      }
+
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SpeechRecognition) {
+        showMicModal(
+          'Reconocimiento de Voz No Soportado',
+          `Tu navegador actual no tiene activada la Web Speech API nativa.<br><br>` +
+          `<b>Recomendación para la presentación:</b><br>` +
+          `Abre el proyecto en <b>Google Chrome</b> o <b>Microsoft Edge</b> en <code class="bg-surface-container px-2 py-0.5 rounded text-tertiary">http://localhost:5000</code> donde el dictado por voz funciona de manera inmediata.`
+        );
+        return;
+      }
+
+      if (isRecordingVoice) {
+        if (recognizer) {
+          try { recognizer.stop(); } catch(e) {}
+        }
+        return;
+      }
+
+      try {
+        recognizer = new SpeechRecognition();
+      } catch(e) {
+        showAppToast('Error al inicializar el reconocedor: ' + e.message, 'error');
+        return;
+      }
+
+      recognizer.lang = navigator.language && navigator.language.startsWith('es') ? navigator.language : 'es-ES';
+      recognizer.continuous = false;
+      recognizer.interimResults = true;
+      recognizer.maxAlternatives = 1;
+      speechBuffer = '';
+
+      function resetMicUI() {
+        if (micBtn) {
+          micBtn.classList.remove('bg-error/20', 'text-error', 'ring-2', 'ring-error', 'animate-pulse');
+          micBtn.innerHTML = '<span class="material-symbols-outlined text-[20px]">mic</span>';
+          micBtn.setAttribute('title', 'Dictar por voz con micrófono');
+        }
+        if (micStatusBanner) {
+          micStatusBanner.classList.add('hidden');
+          micStatusBanner.classList.remove('flex');
+        }
+        if (area) {
+          area.placeholder = 'Escribe tu pregunta aquí (ej: ¿Qué es la gravedad?), dicta por voz o sube una imagen...';
+        }
+      }
+
+      recognizer.onstart = () => {
+        isRecordingVoice = true;
+        speechBuffer = '';
+        if (micBtn) {
+          micBtn.classList.add('bg-error/20', 'text-error', 'ring-2', 'ring-error', 'animate-pulse');
+          micBtn.innerHTML = '<span class="material-symbols-outlined text-[20px]">graphic_eq</span>';
+          micBtn.setAttribute('title', 'Detener dictado por voz');
+        }
+        if (micStatusBanner) {
+          micStatusBanner.classList.remove('hidden');
+          micStatusBanner.classList.add('flex');
+        }
+        if (micStatusText) {
+          micStatusText.innerHTML = '🎙️ <b>Escuchando tu voz...</b> Habla claro ahora a tu micrófono.';
+        }
+        if (area) {
+          area.placeholder = '🎙️ Escuchando... Di tu pregunta en voz alta.';
+        }
+      };
+
+      recognizer.onresult = (ev) => {
+        let interimText = '';
+        for (let i = ev.resultIndex; i < ev.results.length; ++i) {
+          const piece = ev.results[i][0].transcript;
+          if (ev.results[i].isFinal) {
+            speechBuffer += piece;
+          } else {
+            interimText += piece;
+          }
+        }
+        const displayText = speechBuffer || interimText;
+        if (area && displayText) {
+          area.value = displayText;
+        }
+      };
+
+      recognizer.onerror = (ev) => {
+        console.warn('SpeechRecognition error:', ev.error);
+        isRecordingVoice = false;
+        resetMicUI();
+
+        if (ev.error === 'not-allowed' || ev.error === 'service-not-allowed') {
+          showMicModal(
+            'Permiso de Micrófono Denegado',
+            `El navegador bloqueó el acceso al micrófono.<br><br>` +
+            `<b>Cómo activarlo en 3 sencillos pasos:</b><br>` +
+            `1. Haz clic en el ícono del <b>candado 🔒</b> o <b>ajustes del sitio</b> en la barra de direcciones (al lado de <code>http://localhost:5000</code>).<br>` +
+            `2. Busca la fila de <b>Micrófono</b> y cámbiala a <b>Permitir</b>.<br>` +
+            `3. Asegúrate de que en la configuración de Windows (<b>Privacidad y seguridad > Micrófono</b>) el acceso esté permitido para tu navegador.<br>` +
+            `4. Haz clic en <b>Probar Micrófono</b> abajo o recarga la página.`
+          );
+        } else if (ev.error === 'no-speech') {
+          showAppToast('ℹ️ No se detectó ninguna voz. Por favor habla más cerca del micrófono.', 'warning');
+        } else if (ev.error === 'audio-capture') {
+          showAppToast('⚠️ No se detectó micrófono físico en tu equipo o está en uso por otra aplicación.', 'error');
+        } else if (ev.error === 'network') {
+          showAppToast('⚠️ El reconocimiento de voz de Google necesita conexión a internet.', 'warning');
+        } else if (ev.error !== 'aborted') {
+          showAppToast('Error de micrófono: ' + ev.error, 'error');
+        }
+      };
+
+      recognizer.onend = () => {
+        isRecordingVoice = false;
+        resetMicUI();
+
+        const finalText = (area ? area.value : '').trim();
+        if (finalText && finalText.length > 2) {
+          showAppToast('✅ Dictado capturado: «' + (finalText.length > 30 ? finalText.substring(0, 30) + '...' : finalText) + '»', 'success');
+          setTimeout(() => {
+            handleSendMessage();
+          }, 700);
+        }
+      };
+
+      try {
+        recognizer.start();
+      } catch(err) {
+        console.error('Error starting recognition:', err);
+        showAppToast('Error al iniciar micrófono: ' + err.message, 'error');
+        resetMicUI();
+      }
+    }
   </script>
+
+  <!-- Toast Notification Floating Container -->
+  <div id="toast-container" class="fixed top-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- Modal Informativo de Micrófono / Permisos -->
+  <div id="mic-perm-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm hidden p-4">
+    <div class="bg-surface-container-high border border-outline-variant/40 rounded-2xl max-w-md w-full p-6 shadow-2xl flex flex-col gap-4 text-on-surface">
+      <div class="flex items-center gap-3 text-tertiary">
+        <div class="w-10 h-10 rounded-xl bg-tertiary/20 flex items-center justify-center text-tertiary">
+          <span class="material-symbols-outlined text-[24px]">mic</span>
+        </div>
+        <h3 id="mic-modal-title" class="font-headline-md text-headline-md font-semibold text-on-surface">Configurar Micrófono</h3>
+      </div>
+      <div id="mic-modal-body" class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+        <!-- Contenido dinámico -->
+      </div>
+      <div class="flex items-center justify-between pt-2">
+        <button type="button" onclick="testBrowserMic()" class="px-4 py-2 rounded-xl bg-surface-container hover:bg-surface-container-highest text-on-surface font-body-sm text-body-sm transition-all cursor-pointer border border-outline-variant/30 flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-[16px] text-tertiary">graphic_eq</span>
+          <span>Probar Micrófono</span>
+        </button>
+        <button type="button" onclick="closeMicModal()" class="px-5 py-2 rounded-xl bg-primary-container text-on-primary-container font-semibold font-body-sm hover:opacity-90 transition-all cursor-pointer">
+          Entendido
+        </button>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
