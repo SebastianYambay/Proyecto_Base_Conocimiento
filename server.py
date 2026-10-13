@@ -25,6 +25,14 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, "templates")
 app = Flask(__name__, template_folder=TEMPLATES_DIR)
 
 
+@app.after_request
+def add_header(response):
+    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "0"
+    return response
+
+
 # ==================== RUTAS DE VISTAS (UI) ====================
 
 @app.route("/")
@@ -54,28 +62,38 @@ def generate_assistant_response(prompt: str) -> str:
     """Genera respuestas educativas inteligentes para el chat multimodal."""
     p = prompt.lower().strip()
     if not p:
-        return "Escribe una pregunta para comenzar."
+        return "Por favor, escribe una pregunta o tema para analizar."
 
-    if "fotosíntesis" in p or "fotosintesis" in p:
-        return "La fotosíntesis es el proceso mediante el cual las plantas capturan la luz solar, agua y dióxido de carbono para transformarlos en oxígeno y nutrientes."
-    elif "ciclo del agua" in p:
-        return "El ciclo del agua describe la circulación continua del agua en la Tierra: evaporación hacia la atmósfera, condensación en nubes y precipitación hacia la superficie."
-    elif "cuento" in p or "historia" in p:
-        return "En un vasto universo digital, una pequeña red Transformer descubrió que mirando a todas las palabras al mismo tiempo podía comprender cualquier historia del mundo."
-    elif "transformer" in p:
-        return "La arquitectura Transformer utiliza mecanismos de auto-atención para procesar secuencias en paralelo, capturando relaciones complejas entre palabras sin bucles recurrentes."
-    elif "inteligencia artificial" in p or " ia " in p or "redes neuronales" in p:
-        return "La Inteligencia Artificial permite a los sistemas computacionales emular capacidades cognitivas como traducción de idiomas, reconocimiento de imágenes y síntesis de voz."
-    elif "mms" in p or "voz" in p or "audio" in p or "tts" in p:
-        return "El modelo Meta MMS-TTS transforma representaciones fonéticas en ondas acústicas continuas de 16 kHz con entonación natural y expresiva."
-    elif "marian" in p or "traduc" in p:
-        return "MarianMT es un Transformer Seq2Seq optimizado para traducción automática bidireccional de alta fidelidad entre inglés y español."
-    elif "ocr" in p or "imagen" in p or "foto" in p or "documento" in p:
-        return "El sistema OCR reconoce las letras y palabras contenidas en una imagen, convirtiéndolas en texto editable para traducción o voz."
-    elif "hola" in p or "buenos días" in p or "buenas" in p:
-        return "¡Hola! Bienvenido a Transformer Studio. Puedes hacerme preguntas, traducir contenido o convertir cualquier texto a audio."
+    if any(w in p for w in ["fotosíntesis", "fotosintesis"]):
+        return "La fotosíntesis es el proceso bioquímico mediante el cual las plantas capturan la luz del sol, agua y dióxido de carbono para transformarlos en glucosa y oxígeno vital para la atmósfera."
+    elif any(w in p for w in ["ciclo del agua", "ciclo hidrologico"]):
+        return "El ciclo del agua describe la circulación continua del agua en la Tierra: evaporación hacia la atmósfera, condensación formando nubes y precipitación hacia la superficie en forma de lluvia o nieve."
+    elif any(w in p for w in ["cuento", "historia", "narracion"]):
+        return "En un vasto universo digital, una pequeña red Transformer descubrió que al prestar atención a todas las palabras al mismo tiempo, podía comprender y conectar los pensamientos de toda la humanidad."
+    elif any(w in p for w in ["transformer", "atencion", "self-attention", "mecanismo"]):
+        return "La arquitectura Transformer utiliza mecanismos de auto-atención multi-cabezal para procesar secuencias en paralelo, capturando relaciones complejas entre palabras sin depender de bucles recurrentes."
+    elif any(w in p for w in ["inteligencia artificial", " ia ", "deep learning", "aprendizaje profundo", "redes neuronales"]):
+        return "La Inteligencia Artificial emula capacidades cognitivas humanas. En este sistema integra traducción neuronal bidireccional (MarianMT), síntesis de voz acústica (MMS-TTS) y visión computacional (OCR)."
+    elif any(w in p for w in ["mms", "voz", "audio", "tts", "sintesis", "hablar"]):
+        return "El modelo Meta MMS-TTS transforma representaciones fonéticas en ondas acústicas continuas a 16 kHz con entonación natural, facilitando accesibilidad y aprendizaje auditivo."
+    elif any(w in p for w in ["marian", "traduc", "traduccion", "translation"]):
+        return "MarianMT es un modelo Transformer encoder-decoder desarrollado por Helsinki-NLP, optimizado para traducción automática rápida y de alta fidelidad entre inglés y español."
+    elif any(w in p for w in ["ocr", "imagen", "foto", "vision", "documento", "escaner"]):
+        return "El sistema OCR reconoce los patrones visuales de letras y palabras en imágenes escaneadas o fotografías, convirtiéndolas en texto editable para traducción o lectura en voz alta."
+    elif any(w in p for w in ["gravedad"]):
+        return "La gravedad es la fuerza física de atracción que experimentan los cuerpos con masa. En la teoría de la relatividad general de Einstein, representa la curvatura del espacio-tiempo provocada por la materia y la energía."
+    elif any(w in p for w in ["atomo", "átomo", "materia"]):
+        return "El átomo es la unidad básica de la materia. Consiste en un núcleo denso formado por protones y neutrones, rodeado por electrones organizados en capas cuánticas de energía."
+    elif any(w in p for w in ["celula", "célula", "adn"]):
+        return "La célula es la unidad biológica estructural de todo ser vivo. Alberga el ADN celular, el cual almacena la información genética necesaria para la vida y el funcionamiento del organismo."
+    elif any(w in p for w in ["python", "programacion", "codigo"]):
+        return "Python es un lenguaje de programación de alto nivel apreciado por su sintaxis limpia y su enorme potencia en computación científica, desarrollo web y librerías de Inteligencia Artificial como PyTorch y Transformers."
+    elif any(w in p for w in ["hola", "buenos días", "buenas", "saludos", "que tal"]):
+        return "¡Hola! Bienvenido a Transformer Studio. Puedes hacerme cualquier pregunta técnica o educativa, traducir respuestas en tiempo real o escucharlas en voz alta."
+    elif any(w in p for w in ["quien eres", "que haces", "ayuda"]):
+        return "Soy el Asistente Multimodal de Transformer Studio. Permito formular consultas, generar respuestas explicativas, escucharlas en audio natural mediante MMS-TTS y traducirlas con MarianMT."
     else:
-        return f"Sobre «{prompt}»: Este tema puede analizarse mediante redes neuronales Transformer, traduciéndolo o sintetizándolo en voz con los controles inferiores."
+        return f"Respecto a «{prompt}»: Este tema es analizado por los modelos Transformer del sistema. Puedes escuchar esta explicación o traducirla al inglés con los botones didácticos inferiores."
 
 
 @app.route("/api/chat", methods=["POST"])

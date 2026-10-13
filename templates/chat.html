@@ -1,261 +1,659 @@
-<!DOCTYPE html><html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"tertiary-fixed-dim":"#4cd7f6","tertiary-fixed":"#acedff","primary-fixed-dim":"#c0c1ff","secondary":"#d0bcff","on-background":"#dfe2ee","on-surface-variant":"#c7c4d7","error":"#ffb4ab","background":"#0f131c","on-secondary-fixed":"#23005c","surface-container-low":"#181c24","surface-container":"#1c2028","on-tertiary-fixed":"#001f26","surface-container-lowest":"#0a0e16","on-secondary-container":"#c4abff","on-tertiary-container":"#002f38","surface-tint":"#c0c1ff","on-primary-container":"#0d0096","on-tertiary":"#003640","surface-bright":"#353942","on-secondary-fixed-variant":"#5516be","primary-fixed":"#e1e0ff","primary-container":"#8083ff","secondary-container":"#571bc1","surface-container-highest":"#31353e","inverse-on-surface":"#2c3039","on-secondary":"#3c0091","surface-variant":"#31353e","on-primary-fixed":"#07006c","outline-variant":"#464554","tertiary-container":"#009eb9","secondary-fixed-dim":"#d0bcff","surface-dim":"#0f131c","on-primary":"#1000a9","on-error":"#690005","on-primary-fixed-variant":"#2f2ebe","inverse-primary":"#494bd6","primary":"#c0c1ff","surface":"#0f131c","error-container":"#93000a","on-tertiary-fixed-variant":"#004e5c","on-surface":"#dfe2ee","tertiary":"#4cd7f6","surface-container-high":"#262a33","on-error-container":"#ffdad6","secondary-fixed":"#e9ddff","outline":"#908fa0","inverse-surface":"#dfe2ee"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"space-xl":"2rem","margin-desktop":"2rem","gutter-desktop":"1.5rem","gutter":"1rem","space-2xl":"3rem","space-lg":"1.5rem","space-sm":"0.5rem","space-md":"1rem","space-xs":"0.25rem","margin":"1rem","space-2xs":"0.125rem"},fontFamily:{"body-lg":["Inter"],"body-sm":["Inter"],"headline-xl":["Geist"],"label-md":["JetBrains Mono"],"headline-md":["Geist"],"headline-lg":["Geist"],"headline-lg-mobile":["Geist"],"body-md":["Inter"],"headline-xl-mobile":["Geist"],"metric-stat":["JetBrains Mono"],"label-sm":["JetBrains Mono"]},fontSize:{"body-lg":["1.125rem",{"lineHeight":"1.6","letterSpacing":"-0.005em","fontWeight":"400"}],"body-sm":["0.75rem",{"lineHeight":"1.45","letterSpacing":"0.005em","fontWeight":"400"}],"headline-xl":["3rem",{"lineHeight":"1.15","letterSpacing":"-0.03em","fontWeight":"600"}],"label-md":["0.8125rem",{"lineHeight":"1.3","letterSpacing":"-0.01em","fontWeight":"500"}],"headline-md":["1.25rem",{"lineHeight":"1.4","letterSpacing":"-0.01em","fontWeight":"500"}],"headline-lg":["2rem",{"lineHeight":"1.25","letterSpacing":"-0.02em","fontWeight":"600"}],"headline-lg-mobile":["1.5rem",{"lineHeight":"1.3","letterSpacing":"-0.01em","fontWeight":"600"}],"body-md":["0.875rem",{"lineHeight":"1.5","letterSpacing":"0em","fontWeight":"400"}],"headline-xl-mobile":["2rem",{"lineHeight":"1.2","letterSpacing":"-0.02em","fontWeight":"600"}],"metric-stat":["1.5rem",{"lineHeight":"1","letterSpacing":"-0.03em","fontWeight":"600"}],"label-sm":["0.6875rem",{"lineHeight":"1.25","letterSpacing":"0.02em","fontWeight":"400"}]}}}};</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 bottom-0 w-[280px] bg-surface-container-low/95 backdrop-blur-xl z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col gap-space-md p-space-md"><div class="flex items-center justify-between pb-space-sm"><div class="flex items-center gap-space-sm"><img alt="Transformer Studio Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZwPucOpeNcfAK_HW3TIVBeHEz3pkO4ip_7oP5yb8wGFseAaNAaddDGd_U41ZTU6Wxf3jI0kKUixY1Tc1mNimf56EqXPZLCh-9Za1ACFhnU3lX4BmqhZKq90tpYIc3TfPWEc6Jps7GhaohXSJSSnLprp9XbynejF2HMW2Ln4yy3yyASNBQbAUaROFQFrD8HxU5wSwiCH4am_au9pYis0hy-OY894vAkjS_otPKvMdB3uXlreWp5nb1VA"><div class="flex flex-col"><span class="font-headline-md text-headline-md tracking-tight text-on-surface font-semibold">Transformer</span><span class="font-label-sm text-label-sm text-tertiary-fixed-dim uppercase tracking-wider">Studio Orchestrator</span></div></div><span class="font-label-sm text-label-sm bg-surface-container-high px-space-xs py-space-2xs rounded text-on-surface-variant">v2.4 LTS</span></div><div class="bg-surface-container p-space-sm rounded-xl flex flex-col gap-space-xs"><div class="flex items-center justify-between"><span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Estado del Sistema</span><span class="flex items-center gap-1.5 font-label-sm text-label-sm text-tertiary bg-tertiary-container/30 px-space-xs py-0.5 rounded-full font-medium"><span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>Listo y Activo</span></div><p class="font-body-sm text-body-sm text-on-surface-variant mt-space-2xs">Servidor preparado para procesar texto, voz e imágenes en tiempo real.</p></div><div class="flex flex-col gap-space-xs mt-space-2xs"><div class="flex items-center justify-between px-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-medium">Módulos Activos</span><span class="font-label-sm text-label-sm bg-surface-container-high text-primary px-1.5 py-0.5 rounded-full">3 de 3</span></div><div class="bg-surface-container/60 p-space-sm rounded-xl flex flex-col gap-space-sm"><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary"><span class="material-symbols-outlined text-[18px]">chat</span></div><div class="flex flex-col"><span class="font-label-md text-label-md text-on-surface font-medium">1. Chat &amp; Traducción</span><span class="font-body-sm text-body-sm text-on-surface-variant">Redacta y traduce texto</span></div></div><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-tertiary"><span class="material-symbols-outlined text-[18px]">volume_up</span></div><div class="flex flex-col"><span class="font-label-md text-label-md text-on-surface font-medium">2. Voz y Sonido (TTS)</span><span class="font-body-sm text-body-sm text-on-surface-variant">Convierte texto a audio</span></div></div><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary"><span class="material-symbols-outlined text-[18px]">document_scanner</span></div><div class="flex flex-col"><span class="font-label-md text-label-md text-on-surface font-medium">3. Lector de Imágenes</span><span class="font-body-sm text-body-sm text-on-surface-variant">Extrae texto de fotos/PDF</span></div></div></div></div><button class="flex items-center justify-center gap-space-xs w-full py-space-xs px-space-sm rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-all font-body-sm text-body-sm mt-space-xs"><span class="material-symbols-outlined text-[16px]">delete_sweep</span><span class="">Clear Session History</span></button></div><div class="p-space-md bg-surface-container-lowest/50"><div class="flex items-center justify-between p-space-xs rounded-lg bg-surface-container/70"><div class="flex items-center gap-space-sm"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIPG3b89wQcIGR5iXv3l5UTMg8NYQspUZFUTnG_lAIzQIU24jqFvaF1Mvq1kvSTEBrXG11dHPRLh5SD5Ky72g0vkxq9nj-tCgnPCJ3njYl4r3ObueJ6XJb5OPoA6Pw4UNfEIjclfgGX5JqbgranteulOQ_s1QG8NbujseSahjt9Mdc5o0vsb3k1CY-ae1Z-IVRaXNX-yN3DnjTYUd71-gPx6td4ARY96Y9thfqsL7880ELFILiGfdNSg"><div class="flex flex-col"><span class="font-label-md text-label-md text-on-surface leading-tight font-medium">Dr. Elena Rostova</span><span class="font-label-sm text-label-sm text-on-surface-variant leading-tight">AI Research Lead</span></div></div><button class="p-space-xs text-on-surface-variant hover:text-on-surface transition-colors flex items-center justify-center"><span class="material-symbols-outlined text-[18px]">settings</span></button></div></div></aside><div class="pl-[280px]"><header class="fixed top-0 left-[280px] right-0 h-16 bg-surface-container-low/90 backdrop-blur-xl z-40 px-gutter-desktop flex items-center justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center gap-space-lg"><div class="flex flex-col"><span class="font-headline-md text-headline-md text-on-surface font-semibold">Suite de Inteligencia Artificial</span><span class="font-body-sm text-body-sm text-on-surface-variant">Demostración paso a paso del flujo multimodal</span></div><nav class="flex items-center gap-space-xs bg-surface-container-lowest/60 p-1 rounded-xl"><a class="px-space-md py-space-xs transition-all bg-primary-container text-on-primary-container font-semibold rounded-lg shadow-sm font-body-sm" href="/chat">💬 Chat Multimodal</a><a class="px-space-md py-space-xs text-on-surface-variant hover:text-on-surface font-body-sm transition-all" href="/ocr">🖼️ Visión & OCR</a><a class="px-space-md py-space-xs text-on-surface-variant hover:text-on-surface font-body-sm transition-all" href="/tts">🔊 Texto a Voz (TTS)</a><a class="px-space-md py-space-xs text-on-surface-variant hover:text-on-surface font-body-sm transition-all" href="/translator">🌐 Traductor Neuronal</a></nav></div><div class="flex items-center gap-space-sm"><div class="flex items-center gap-space-xs px-space-md py-1.5 bg-surface-container rounded-lg font-body-sm text-body-sm text-on-surface-variant"><span class="w-2 h-2 rounded-full bg-tertiary"></span><span class="">Modo Demostración</span></div></div></header><main class="relative pt-16 bg-background min-h-screen w-full px-gutter-desktop py-space-lg"><div class="flex flex-col w-full pb-32">
-<!-- Top Context Header Banner -->
-<div class="bg-surface-container-low rounded-xl p-space-md mb-space-lg flex flex-col md:flex-row md:items-center justify-between gap-space-md shadow-sm border border-outline-variant/30"><div class="flex items-center gap-space-md"><div class="w-12 h-12 rounded-xl bg-primary-container/20 text-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-[28px]">school</span></div><div class="flex flex-col"><h1 class="font-headline-md text-headline-md font-semibold text-on-surface">¿Cómo funciona la IA Multimodal?</h1><p class="font-body-md text-body-md text-on-surface-variant">Una sola conversación une texto, sintetizador de voz y traducción automática sin pasos intermedios complicados.</p></div></div><div class="flex items-center gap-space-sm"><span class="px-space-md py-space-xs rounded-lg bg-surface-container font-label-md text-label-md text-tertiary flex items-center gap-space-xs"><span class="material-symbols-outlined text-[18px]">lightbulb</span> 3 funciones en 1 clic</span></div></div>
-<div class="hidden mb-space-md p-space-sm bg-surface-container rounded-lg flex items-center justify-between text-on-surface" id="clear-modal-banner">
-<div class="flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm">
-<span class="material-symbols-outlined text-tertiary text-[18px]">info</span>
-<span class="">¿Reiniciar contexto de embeddings y vocoder de la sesión actual?</span>
-</div>
-<div class="flex items-center gap-space-xs">
-<button class="px-space-sm py-space-2xs bg-surface-container-highest text-on-surface rounded font-body-sm text-body-sm" onclick="document.getElementById('clear-modal-banner').classList.add('hidden')">Cancelar</button>
-<button class="px-space-sm py-space-2xs bg-primary text-on-primary rounded font-body-sm text-body-sm font-medium" onclick="document.getElementById('clear-modal-banner').classList.add('hidden')">Confirmar Purga</button>
-</div>
-</div>
-<!-- Chat History Thread -->
-<div class="flex flex-col gap-space-lg w-full"><div class="flex justify-end w-full"><div class="max-w-2xl bg-surface-container-high rounded-2xl p-space-md text-on-surface shadow-sm"><div class="flex items-center justify-between gap-space-md mb-space-xs"><span class="font-label-sm text-label-sm text-primary font-medium flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">person</span> Paso 1: Tu pregunta</span><span class="font-label-sm text-label-sm text-on-surface-variant">10:30 AM</span></div><p class="font-body-md text-body-md leading-relaxed">¿Puedes explicar en qué consiste la fotosíntesis en una frase sencilla, traducirla al inglés y generar un audio para que los alumnos la escuchen?</p></div></div><div class="flex items-start gap-space-md w-full"><div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center text-on-primary-container font-semibold shrink-0 shadow-md"><span class="material-symbols-outlined text-[22px]">psychology</span></div><div class="flex flex-col flex-1 max-w-4xl bg-surface-container rounded-2xl p-space-lg shadow-sm gap-space-md"><div class="flex items-center justify-between pb-space-xs border-b border-outline-variant/30"><div class="flex items-center gap-space-xs"><span class="font-label-md text-label-md text-on-surface font-semibold">Paso 2: La IA procesa y genera la respuesta</span><span class="bg-surface-container-high text-tertiary px-space-xs py-0.5 rounded font-label-sm text-label-sm font-medium">Respuesta en texto</span></div><span class="font-label-sm text-label-sm text-on-surface-variant">Generado instantáneamente</span></div><p class="font-body-lg text-body-lg text-on-surface leading-relaxed bg-surface-container-lowest p-space-md rounded-xl border border-outline-variant/20">«La fotosíntesis es el proceso mediante el cual las plantas capturan la luz del sol, agua y dióxido de carbono para transformarlos en oxígeno y alimento.»</p><div class="flex flex-col gap-space-xs"><span class="font-label-sm text-label-sm text-on-surface-variant font-medium uppercase tracking-wider">Paso 3: Acciones inmediatas con un solo clic</span><div class="grid grid-cols-1 md:grid-cols-2 gap-space-sm"><div class="bg-surface-container-low p-space-md rounded-xl flex flex-col justify-between gap-space-sm border border-outline-variant/20 hover:border-tertiary transition-all"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-tertiary text-[22px]">volume_up</span><span class="font-label-md text-label-md text-on-surface font-semibold">Escuchar en voz alta</span></div><p class="font-body-sm text-body-sm text-on-surface-variant">Genera un audio con entonación natural para aprender pronunciación o accesibilidad.</p><button class="bg-tertiary text-on-tertiary hover:opacity-90 px-space-md py-space-xs rounded-lg font-body-sm text-body-sm font-medium flex items-center justify-center gap-space-xs transition-all w-full"><span class="material-symbols-outlined text-[18px]">play_circle</span><span class="">Reproducir audio (Español)</span></button></div><div class="bg-surface-container-low p-space-md rounded-xl flex flex-col justify-between gap-space-sm border border-outline-variant/20 hover:border-secondary transition-all"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-secondary text-[22px]">translate</span><span class="font-label-md text-label-md text-on-surface font-semibold">Traducción instantánea</span></div><p class="font-body-sm text-body-sm text-on-surface-variant">Traduce el contenido a cualquier idioma manteniendo el sentido original exacto.</p><button class="bg-surface-container-high hover:bg-surface-container-highest text-on-surface px-space-md py-space-xs rounded-lg font-body-sm text-body-sm font-medium flex items-center justify-center gap-space-xs transition-all w-full"><span class="material-symbols-outlined text-[18px]">g_translate</span><span class="">Ver en Inglés (English)</span></button></div></div></div></div></div></div>
-<!-- Docked Bottom Input Section -->
-<div class="fixed bottom-0 left-[280px] right-0 p-space-md bg-gradient-to-t from-background via-background/95 to-transparent backdrop-blur-md z-30">
-<div class="max-w-5xl mx-auto flex flex-col gap-space-xs">
-<!-- Quick Prompt Chips -->
-<div class="flex items-center gap-space-xs overflow-x-auto pb-1 scrollbar-none"><button class="shrink-0 bg-surface-container hover:bg-surface-container-high text-on-surface px-space-md py-1.5 rounded-full font-body-sm text-body-sm flex items-center gap-space-xs transition-all shadow-sm" onclick="insertPrompt('¿Cómo explicar el ciclo del agua?')"><span class="">✨</span> Explicar un concepto</button><button class="shrink-0 bg-surface-container hover:bg-surface-container-high text-on-surface px-space-md py-1.5 rounded-full font-body-sm text-body-sm flex items-center gap-space-xs transition-all shadow-sm" onclick="document.getElementById('chat-file-input').click()"><span class="">📷</span> Leer texto de una foto</button><button class="shrink-0 bg-surface-container hover:bg-surface-container-high text-on-surface px-space-md py-1.5 rounded-full font-body-sm text-body-sm flex items-center gap-space-xs transition-all shadow-sm" onclick="insertPrompt('Convierte esta historia en un cuento en audio')"><span class="">🎙️</span> Crear narración en audio</button></div>
-<!-- Main Input Surface Panel -->
-<div class="bg-surface-container-low rounded-xl p-space-sm shadow-xl flex flex-col gap-space-xs">
-<textarea class="w-full bg-transparent resize-none text-on-surface placeholder:text-outline font-body-md text-body-md p-space-xs focus:outline-none" id="chat-textarea" placeholder="Escribe un mensaje, pega un fragmento de código o arrastra un archivo..." rows="2"></textarea>
-<!-- Dock Bottom Toolbar -->
-<div class="flex items-center justify-between pt-space-xs">
-<div class="flex items-center gap-space-xs">
-<!-- OCR File Upload Button -->
-<label class="p-space-xs rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors flex items-center justify-center" title="Subir imagen para OCR">
-<input accept="image/*" class="hidden" id="chat-file-input" type="file">
-<span class="material-symbols-outlined text-[20px]">add_photo_alternate</span>
-</label>
-<!-- Audio Input Button -->
-<button class="p-space-xs rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors flex items-center justify-center" title="Dictado por voz">
-<span class="material-symbols-outlined text-[20px]">mic</span>
-</button>
-<!-- Model Switcher Pill -->
-<div class="bg-surface-container px-space-sm py-1 rounded-lg flex items-center gap-space-xs">
-<span class="w-2 h-2 rounded-full bg-tertiary"></span>
-<span class="font-label-sm text-label-sm text-on-surface font-medium">Claude + MMS-TTS</span>
-<span class="material-symbols-outlined text-[14px] text-on-surface-variant">expand_more</span>
-</div>
-</div>
-<div class="flex items-center gap-space-sm">
-<span class="hidden sm:inline font-label-sm text-label-sm text-on-surface-variant">Presiona ⌘ + Enter para enviar</span>
-<!-- Primary Send Button with Indigo-Violet Glow Gradient -->
-<button class="bg-gradient-to-r from-primary-container to-secondary-container hover:opacity-95 text-on-primary px-space-md py-space-xs rounded-lg font-body-md text-body-md font-semibold flex items-center gap-space-xs shadow-[0_0_16px_rgba(128,131,255,0.4)] transition-all" onclick="handleSendMessage()">
-<span class="">Enviar</span>
-<span class="material-symbols-outlined text-[18px]">send</span>
-</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</main></div>
-<script>
-  let currentAudio = null;
-  let currentAiText = '';
-
-  function insertPrompt(text) {
-    const area = document.getElementById('chat-textarea');
-    if (area) {
-      area.value = text;
-      area.focus();
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="web_dashboard" name="shell-type">
+  <title>Transformer Studio - Chat Multimodal</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+  <style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
     }
-  }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "tertiary-fixed-dim": "#4cd7f6",
+            "tertiary-fixed": "#acedff",
+            "primary-fixed-dim": "#c0c1ff",
+            "secondary": "#d0bcff",
+            "on-background": "#dfe2ee",
+            "on-surface-variant": "#c7c4d7",
+            "error": "#ffb4ab",
+            "background": "#0f131c",
+            "on-secondary-fixed": "#23005c",
+            "surface-container-low": "#181c24",
+            "surface-container": "#1c2028",
+            "on-tertiary-fixed": "#001f26",
+            "surface-container-lowest": "#0a0e16",
+            "on-secondary-container": "#c4abff",
+            "on-tertiary-container": "#002f38",
+            "surface-tint": "#c0c1ff",
+            "on-primary-container": "#0d0096",
+            "on-tertiary": "#003640",
+            "surface-bright": "#353942",
+            "on-secondary-fixed-variant": "#5516be",
+            "primary-fixed": "#e1e0ff",
+            "primary-container": "#8083ff",
+            "secondary-container": "#571bc1",
+            "surface-container-highest": "#31353e",
+            "inverse-on-surface": "#2c3039",
+            "on-secondary": "#3c0091",
+            "surface-variant": "#31353e",
+            "on-primary-fixed": "#07006c",
+            "outline-variant": "#464554",
+            "tertiary-container": "#009eb9",
+            "secondary-fixed-dim": "#d0bcff",
+            "surface-dim": "#0f131c",
+            "on-primary": "#1000a9",
+            "on-error": "#690005",
+            "on-primary-fixed-variant": "#2f2ebe",
+            "inverse-primary": "#494bd6",
+            "primary": "#c0c1ff",
+            "surface": "#0f131c",
+            "error-container": "#93000a",
+            "on-tertiary-fixed-variant": "#004e5c",
+            "on-surface": "#dfe2ee",
+            "tertiary": "#4cd7f6",
+            "surface-container-high": "#262a33",
+            "on-error-container": "#ffdad6",
+            "secondary-fixed": "#e9ddff",
+            "outline": "#908fa0",
+            "inverse-surface": "#dfe2ee"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "space-xl": "2rem",
+            "margin-desktop": "2rem",
+            "gutter-desktop": "1.5rem",
+            "gutter": "1rem",
+            "space-2xl": "3rem",
+            "space-lg": "1.5rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem",
+            "margin": "1rem",
+            "space-2xs": "0.125rem"
+          },
+          fontFamily: {
+            "body-lg": ["Inter"],
+            "body-sm": ["Inter"],
+            "headline-xl": ["Geist"],
+            "label-md": ["JetBrains Mono"],
+            "headline-md": ["Geist"],
+            "headline-lg": ["Geist"],
+            "headline-lg-mobile": ["Geist"],
+            "body-md": ["Inter"],
+            "headline-xl-mobile": ["Geist"],
+            "metric-stat": ["JetBrains Mono"],
+            "label-sm": ["JetBrains Mono"]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-background font-body-md text-on-surface antialiased">
+  <!-- Sidebar lateral -->
+  <aside class="fixed left-0 top-0 bottom-0 w-[280px] bg-surface-container-low/95 backdrop-blur-xl z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+    <div class="flex flex-col gap-space-md p-space-md">
+      <div class="flex items-center justify-between pb-space-sm">
+        <div class="flex items-center gap-space-sm">
+          <img alt="Transformer Studio Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZwPucOpeNcfAK_HW3TIVBeHEz3pkO4ip_7oP5yb8wGFseAaNAaddDGd_U41ZTU6Wxf3jI0kKUixY1Tc1mNimf56EqXPZLCh-9Za1ACFhnU3lX4BmqhZKq90tpYIc3TfPWEc6Jps7GhaohXSJSSnLprp9XbynejF2HMW2Ln4yy3yyASNBQbAUaROFQFrD8HxU5wSwiCH4am_au9pYis0hy-OY894vAkjS_otPKvMdB3uXlreWp5nb1VA">
+          <div class="flex flex-col">
+            <span class="font-headline-md text-headline-md tracking-tight text-on-surface font-semibold">Transformer</span>
+            <span class="font-label-sm text-label-sm text-tertiary-fixed-dim uppercase tracking-wider">Studio Orchestrator</span>
+          </div>
+        </div>
+        <span class="font-label-sm text-label-sm bg-surface-container-high px-space-xs py-space-2xs rounded text-on-surface-variant">v2.4 LTS</span>
+      </div>
 
-  function updatePlayIcon(name) {
-    document.querySelectorAll('span.material-symbols-outlined').forEach(span => {
-      if (span.innerText === 'play_circle' || span.innerText === 'pause_circle' || span.innerText === 'play_arrow' || span.innerText === 'pause') {
-        span.innerText = name === 'pause' ? 'pause_circle' : 'play_circle';
+      <div class="bg-surface-container p-space-sm rounded-xl flex flex-col gap-space-xs">
+        <div class="flex items-center justify-between">
+          <span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Estado del Sistema</span>
+          <span class="flex items-center gap-1.5 font-label-sm text-label-sm text-tertiary bg-tertiary-container/30 px-space-xs py-0.5 rounded-full font-medium">
+            <span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>Listo y Activo
+          </span>
+        </div>
+        <p class="font-body-sm text-body-sm text-on-surface-variant mt-space-2xs">Servidor preparado para procesar texto, voz e imágenes en tiempo real.</p>
+      </div>
+
+      <div class="flex flex-col gap-space-xs mt-space-2xs">
+        <div class="flex items-center justify-between px-space-xs">
+          <span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-medium">Módulos Activos</span>
+          <span class="font-label-sm text-label-sm bg-surface-container-high text-primary px-1.5 py-0.5 rounded-full">3 de 3</span>
+        </div>
+        <div class="bg-surface-container/60 p-space-sm rounded-xl flex flex-col gap-space-sm">
+          <div class="flex items-center gap-space-sm">
+            <div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+              <span class="material-symbols-outlined text-[18px]">chat</span>
+            </div>
+            <div class="flex flex-col">
+              <span class="font-label-md text-label-md text-on-surface font-medium">1. Chat &amp; Traducción</span>
+              <span class="font-body-sm text-body-sm text-on-surface-variant">Redacta y traduce texto</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-space-sm">
+            <div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-tertiary">
+              <span class="material-symbols-outlined text-[18px]">volume_up</span>
+            </div>
+            <div class="flex flex-col">
+              <span class="font-label-md text-label-md text-on-surface font-medium">2. Voz y Sonido (TTS)</span>
+              <span class="font-body-sm text-body-sm text-on-surface-variant">Convierte texto a audio</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-space-sm">
+            <div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary">
+              <span class="material-symbols-outlined text-[18px]">document_scanner</span>
+            </div>
+            <div class="flex flex-col">
+              <span class="font-label-md text-label-md text-on-surface font-medium">3. Lector de Imágenes</span>
+              <span class="font-body-sm text-body-sm text-on-surface-variant">Extrae texto de fotos/PDF</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button id="clear-history-btn" onclick="clearChatHistory()" class="flex items-center justify-center gap-space-xs w-full py-space-xs px-space-sm rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-error transition-all font-body-sm text-body-sm mt-space-xs cursor-pointer">
+        <span class="material-symbols-outlined text-[16px]">delete_sweep</span>
+        <span>Limpiar Historial de Chat</span>
+      </button>
+    </div>
+
+    <div class="p-space-md bg-surface-container-lowest/50">
+      <div class="flex items-center justify-between p-space-xs rounded-lg bg-surface-container/70">
+        <div class="flex items-center gap-space-sm">
+          <div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold">
+            <span class="material-symbols-outlined text-[18px]">smart_toy</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-label-md text-label-md text-on-surface leading-tight font-medium">Transformer Studio</span>
+            <span class="font-label-sm text-label-sm text-on-surface-variant leading-tight">Inferencia Local</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Contenedor Principal -->
+  <div class="pl-[280px]">
+    <!-- Cabecera de navegación -->
+    <header class="fixed top-0 left-[280px] right-0 h-16 bg-surface-container-low/90 backdrop-blur-xl z-40 px-gutter-desktop flex items-center justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+      <div class="flex items-center gap-space-lg">
+        <div class="flex flex-col">
+          <span class="font-headline-md text-headline-md text-on-surface font-semibold">Suite de Inteligencia Artificial</span>
+          <span class="font-body-sm text-body-sm text-on-surface-variant">Demostración interactiva multimodal</span>
+        </div>
+        <nav class="flex items-center gap-space-xs bg-surface-container-lowest/60 p-1 rounded-xl">
+          <a class="px-space-md py-space-xs transition-all bg-primary-container text-on-primary-container font-semibold rounded-lg shadow-sm font-body-sm" href="/chat">💬 Chat Multimodal</a>
+          <a class="px-space-md py-space-xs text-on-surface-variant hover:text-on-surface font-body-sm transition-all" href="/ocr">🖼️ Visión &amp; OCR</a>
+          <a class="px-space-md py-space-xs text-on-surface-variant hover:text-on-surface font-body-sm transition-all" href="/tts">🔊 Texto a Voz (TTS)</a>
+          <a class="px-space-md py-space-xs text-on-surface-variant hover:text-on-surface font-body-sm transition-all" href="/translator">🌐 Traductor Neuronal</a>
+        </nav>
+      </div>
+      <div class="flex items-center gap-space-sm">
+        <div class="flex items-center gap-space-xs px-space-md py-1.5 bg-surface-container rounded-lg font-body-sm text-body-sm text-on-surface-variant">
+          <span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+          <span>Modo Activo 100%</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Área de Contenido Principal -->
+    <main class="relative pt-20 bg-background min-h-screen w-full px-gutter-desktop py-space-lg">
+      <div class="flex flex-col w-full pb-44">
+        <!-- Banner Explicativo Superior -->
+        <div class="bg-surface-container-low rounded-xl p-space-md mb-space-lg flex flex-col md:flex-row md:items-center justify-between gap-space-md shadow-sm border border-outline-variant/30">
+          <div class="flex items-center gap-space-md">
+            <div class="w-12 h-12 rounded-xl bg-primary-container/20 text-primary flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[28px]">school</span>
+            </div>
+            <div class="flex flex-col">
+              <h1 class="font-headline-md text-headline-md font-semibold text-on-surface">¿Cómo funciona la IA Multimodal?</h1>
+              <p class="font-body-md text-body-md text-on-surface-variant">Escribe cualquier pregunta, extrae texto de imágenes o dicta con tu micrófono. Cada respuesta puede escucharse con voz natural o traducirse al instante.</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-space-sm">
+            <span class="px-space-md py-space-xs rounded-lg bg-surface-container font-label-md text-label-md text-tertiary flex items-center gap-space-xs">
+              <span class="material-symbols-outlined text-[18px]">lightbulb</span> 3 funciones en 1 clic
+            </span>
+          </div>
+        </div>
+
+        <!-- HILO DE CONVERSACIÓN DINÁMICO (MENSAJES) -->
+        <div id="chat-messages-container" class="flex flex-col gap-space-lg w-full">
+          <!-- Mensaje de Demostración Inicial -->
+          <div id="demo-user-box" class="flex justify-end w-full">
+            <div class="max-w-2xl bg-surface-container-high rounded-2xl p-space-md text-on-surface shadow-sm border border-outline-variant/30">
+              <div class="flex items-center justify-between gap-space-md mb-space-xs">
+                <span class="font-label-sm text-label-sm text-primary font-semibold flex items-center gap-1">
+                  <span class="material-symbols-outlined text-[16px]">person</span> Ejemplo: Tu pregunta
+                </span>
+                <span class="font-label-sm text-label-sm text-on-surface-variant">Demostración</span>
+              </div>
+              <p class="font-body-md text-body-md leading-relaxed">¿Puedes explicar en qué consiste la fotosíntesis en una frase sencilla, traducirla al inglés y generar un audio para que los alumnos la escuchen?</p>
+            </div>
+          </div>
+
+          <!-- Respuesta de Demostración Inicial -->
+          <div id="demo-ai-box" class="flex items-start gap-space-md w-full">
+            <div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center text-on-primary-container font-semibold shrink-0 shadow-md">
+              <span class="material-symbols-outlined text-[22px]">psychology</span>
+            </div>
+            <div class="flex flex-col flex-1 max-w-4xl bg-surface-container rounded-2xl p-space-lg shadow-sm gap-space-md border border-outline-variant/30">
+              <div class="flex items-center justify-between pb-space-xs border-b border-outline-variant/30">
+                <div class="flex items-center gap-space-xs">
+                  <span class="font-label-md text-label-md text-on-surface font-semibold">Respuesta de la IA</span>
+                  <span class="bg-surface-container-high text-tertiary px-space-xs py-0.5 rounded font-label-sm text-label-sm font-medium">Ejemplo Listo</span>
+                </div>
+                <span class="font-label-sm text-label-sm text-on-surface-variant">Instantáneo</span>
+              </div>
+              <p id="demo-ai-text" class="font-body-lg text-body-lg text-on-surface leading-relaxed bg-surface-container-lowest p-space-md rounded-xl border border-outline-variant/20">«La fotosíntesis es el proceso mediante el cual las plantas capturan la luz del sol, agua y dióxido de carbono para transformarlos en oxígeno y alimento.»</p>
+              
+              <div class="flex flex-col gap-space-xs">
+                <span class="font-label-sm text-label-sm text-on-surface-variant font-medium uppercase tracking-wider">Acciones inmediatas con un solo clic:</span>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-space-sm">
+                  <div class="bg-surface-container-low p-space-md rounded-xl flex flex-col justify-between gap-space-sm border border-outline-variant/20 hover:border-tertiary transition-all">
+                    <div class="flex items-center gap-space-xs">
+                      <span class="material-symbols-outlined text-tertiary text-[22px]">volume_up</span>
+                      <span class="font-label-md text-label-md text-on-surface font-semibold">Escuchar en voz alta</span>
+                    </div>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">Genera un audio con entonación natural (Meta MMS-TTS).</p>
+                    <button onclick="playTTS('demo-ai-text', 'es')" class="bg-tertiary text-on-tertiary hover:opacity-90 px-space-md py-space-xs rounded-lg font-body-sm text-body-sm font-semibold flex items-center justify-center gap-space-xs transition-all w-full cursor-pointer shadow-sm">
+                      <span class="material-symbols-outlined text-[18px]">play_circle</span>
+                      <span>Reproducir audio (Español)</span>
+                    </button>
+                  </div>
+                  <div class="bg-surface-container-low p-space-md rounded-xl flex flex-col justify-between gap-space-sm border border-outline-variant/20 hover:border-secondary transition-all">
+                    <div class="flex items-center gap-space-xs">
+                      <span class="material-symbols-outlined text-secondary text-[22px]">translate</span>
+                      <span class="font-label-md text-label-md text-on-surface font-semibold">Traducción instantánea</span>
+                    </div>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">Traduce con MarianMT conservando el sentido exacto.</p>
+                    <button id="demo-trans-btn" onclick="toggleTranslate('demo-ai-text', 'demo-trans-btn')" class="bg-surface-container-high hover:bg-surface-container-highest text-on-surface px-space-md py-space-xs rounded-lg font-body-sm text-body-sm font-semibold flex items-center justify-center gap-space-xs transition-all w-full cursor-pointer shadow-sm">
+                      <span class="material-symbols-outlined text-[18px]">g_translate</span>
+                      <span>Ver en Inglés (English)</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Barra Inferior Fija para Enviar Mensajes -->
+    <div class="fixed bottom-0 left-[280px] right-0 p-space-md bg-gradient-to-t from-background via-background/95 to-transparent backdrop-blur-md z-30">
+      <div class="max-w-5xl mx-auto flex flex-col gap-space-xs">
+        <!-- Botones de sugerencias rápidas -->
+        <div class="flex items-center gap-space-xs overflow-x-auto pb-1 scrollbar-none">
+          <button class="shrink-0 bg-surface-container hover:bg-surface-container-high text-on-surface px-space-md py-1.5 rounded-full font-body-sm text-body-sm flex items-center gap-space-xs transition-all shadow-sm cursor-pointer" onclick="quickSend('¿Cómo explicar el ciclo del agua?')">
+            <span>✨</span> Explicar ciclo del agua
+          </button>
+          <button class="shrink-0 bg-surface-container hover:bg-surface-container-high text-on-surface px-space-md py-1.5 rounded-full font-body-sm text-body-sm flex items-center gap-space-xs transition-all shadow-sm cursor-pointer" onclick="quickSend('¿Qué es la arquitectura Transformer y cómo funciona la auto-atención?')">
+            <span>🤖</span> ¿Qué es Transformer?
+          </button>
+          <button class="shrink-0 bg-surface-container hover:bg-surface-container-high text-on-surface px-space-md py-1.5 rounded-full font-body-sm text-body-sm flex items-center gap-space-xs transition-all shadow-sm cursor-pointer" onclick="document.getElementById('chat-file-input').click()">
+            <span>📷</span> Leer texto de foto (OCR)
+          </button>
+          <button class="shrink-0 bg-surface-container hover:bg-surface-container-high text-on-surface px-space-md py-1.5 rounded-full font-body-sm text-body-sm flex items-center gap-space-xs transition-all shadow-sm cursor-pointer" onclick="quickSend('Crea un cuento breve sobre la inteligencia artificial')">
+            <span>🎙️</span> Crear narración en audio
+          </button>
+        </div>
+
+        <!-- Panel de entrada -->
+        <div class="bg-surface-container-low rounded-xl p-space-sm shadow-xl flex flex-col gap-space-xs border border-outline-variant/40">
+          <textarea class="w-full bg-transparent resize-none text-on-surface placeholder:text-outline font-body-md text-body-md p-space-xs focus:outline-none" id="chat-textarea" placeholder="Escribe tu pregunta aquí (ej: ¿Qué es la gravedad?), dicta por voz o sube una imagen..." rows="2"></textarea>
+
+          <!-- Barra de controles -->
+          <div class="flex items-center justify-between pt-space-xs">
+            <div class="flex items-center gap-space-xs">
+              <!-- Botón OCR -->
+              <label class="p-space-xs rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-tertiary cursor-pointer transition-colors flex items-center justify-center" title="Subir imagen para extraer texto con OCR">
+                <input accept="image/*" class="hidden" id="chat-file-input" type="file">
+                <span class="material-symbols-outlined text-[20px]">add_photo_alternate</span>
+              </label>
+
+              <!-- Botón Micrófono -->
+              <button id="mic-btn" class="p-space-xs rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-tertiary transition-colors flex items-center justify-center cursor-pointer" title="Dictar por voz con micrófono">
+                <span class="material-symbols-outlined text-[20px]">mic</span>
+              </button>
+
+              <!-- Indicador de Modelo -->
+              <div class="bg-surface-container px-space-sm py-1 rounded-lg flex items-center gap-space-xs">
+                <span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+                <span class="font-label-sm text-label-sm text-on-surface font-medium">MarianMT + MMS-TTS</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-space-sm">
+              <span class="hidden sm:inline font-label-sm text-label-sm text-on-surface-variant">Presiona Enter para enviar</span>
+              <button id="send-btn" class="bg-gradient-to-r from-primary-container to-secondary-container hover:opacity-95 text-on-primary px-space-md py-space-xs rounded-lg font-body-md text-body-md font-semibold flex items-center gap-space-xs shadow-[0_0_16px_rgba(128,131,255,0.4)] transition-all cursor-pointer" onclick="handleSendMessage()">
+                <span>Enviar</span>
+                <span class="material-symbols-outlined text-[18px]">send</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LÓGICA JAVASCRIPT DINÁMICA -->
+  <script>
+    let currentAudio = null;
+    let messageCounter = 0;
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    function scrollToBottom() {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+
+    function quickSend(promptText) {
+      const area = document.getElementById('chat-textarea');
+      if (area) {
+        area.value = promptText;
+        handleSendMessage();
+      }
+    }
+
+    function clearChatHistory() {
+      const container = document.getElementById('chat-messages-container');
+      if (container) {
+        container.innerHTML = `
+          <div class="p-space-md bg-surface-container rounded-xl text-center text-on-surface-variant font-body-md">
+            <span>✨ Historial limpiado. Escribe una nueva pregunta abajo para comenzar.</span>
+          </div>
+        `;
+      }
+    }
+
+    // Reproducción de audio con Meta MMS-TTS
+    async function playTTS(textElementId, lang='es') {
+      const el = document.getElementById(textElementId);
+      if (!el) return;
+      const text = el.innerText.replace(/«|»/g, '').trim();
+      if (!text) return;
+
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio = null;
+      }
+
+      try {
+        const res = await fetch('/api/tts', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({text: text, lang: lang})
+        });
+        const data = await res.json();
+        if (data.status === 'success' && data.audio_base64) {
+          currentAudio = new Audio('data:audio/wav;base64,' + data.audio_base64);
+          currentAudio.play();
+        } else {
+          alert('Error al generar síntesis de voz: ' + (data.error || 'Desconocido'));
+        }
+      } catch(err) {
+        console.error(err);
+        alert('Error de conexión al generar audio.');
+      }
+    }
+
+    // Traducción instantánea con MarianMT
+    async function toggleTranslate(textElementId, btnId) {
+      const el = document.getElementById(textElementId);
+      const btn = document.getElementById(btnId);
+      if (!el) return;
+
+      const rawText = el.innerText.replace(/«|»/g, '').trim();
+      if (!rawText) return;
+
+      const btnSpan = btn ? btn.querySelector('span:last-child') : null;
+      const isEnglishNow = btnSpan && btnSpan.innerText.includes('Español');
+      const targetLang = isEnglishNow ? 'es' : 'en';
+      const sourceLang = isEnglishNow ? 'en' : 'es';
+
+      const prev = el.innerText;
+      el.innerText = '«Traduciendo con MarianMT...»';
+
+      try {
+        const res = await fetch('/api/translate', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            text: rawText,
+            source_lang: sourceLang,
+            target_lang: targetLang
+          })
+        });
+        const data = await res.json();
+        if (data.status === 'success' && data.translated) {
+          el.innerText = '«' + data.translated + '»';
+          if (btnSpan) {
+            btnSpan.innerText = targetLang === 'en' ? 'Ver en Español (Spanish)' : 'Ver en Inglés (English)';
+          }
+        } else {
+          el.innerText = prev;
+          alert('Error al traducir: ' + (data.error || ''));
+        }
+      } catch(err) {
+        el.innerText = prev;
+        console.error(err);
+      }
+    }
+
+    // Envío y agregación de nuevos mensajes en el chat
+    async function handleSendMessage() {
+      const area = document.getElementById('chat-textarea');
+      const text = area.value.trim();
+      if (!text) return;
+
+      area.value = '';
+      messageCounter++;
+      const currentIdx = messageCounter;
+      const container = document.getElementById('chat-messages-container');
+      const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+      // 1. Agregar burbuja de usuario
+      const userHtml = `
+        <div class="flex justify-end w-full animate-fade-in">
+          <div class="max-w-2xl bg-surface-container-high rounded-2xl p-space-md text-on-surface shadow-sm border border-outline-variant/30">
+            <div class="flex items-center justify-between gap-space-md mb-space-xs">
+              <span class="font-label-sm text-label-sm text-primary font-semibold flex items-center gap-1">
+                <span class="material-symbols-outlined text-[16px]">person</span> Tu pregunta
+              </span>
+              <span class="font-label-sm text-label-sm text-on-surface-variant">${timeStr}</span>
+            </div>
+            <p class="font-body-md text-body-md leading-relaxed whitespace-pre-wrap">${escapeHtml(text)}</p>
+          </div>
+        </div>
+      `;
+      container.insertAdjacentHTML('beforeend', userHtml);
+
+      // 2. Agregar burbuja de IA en estado de carga
+      const aiLoadingId = 'ai-loading-' + currentIdx;
+      const aiHtml = `
+        <div id="${aiLoadingId}" class="flex items-start gap-space-md w-full animate-fade-in">
+          <div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center text-on-primary-container font-semibold shrink-0 shadow-md">
+            <span class="material-symbols-outlined text-[22px] animate-spin">sync</span>
+          </div>
+          <div class="flex flex-col flex-1 max-w-4xl bg-surface-container rounded-2xl p-space-lg shadow-sm gap-space-md border border-outline-variant/30">
+            <div class="flex items-center justify-between pb-space-xs border-b border-outline-variant/30">
+              <span class="font-label-md text-label-md text-tertiary font-semibold flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-tertiary animate-ping"></span>
+                Procesando con Transformer...
+              </span>
+            </div>
+            <p class="font-body-md text-body-md text-on-surface-variant italic">Generando respuesta y preparando opciones multimodales...</p>
+          </div>
+        </div>
+      `;
+      container.insertAdjacentHTML('beforeend', aiHtml);
+      scrollToBottom();
+
+      // 3. Petición al endpoint /api/chat
+      try {
+        const res = await fetch('/api/chat', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({prompt: text})
+        });
+        const data = await res.json();
+        const responseText = (data.status === 'success' && data.response) ? data.response : 'Consulta procesada con éxito.';
+
+        const loadingElem = document.getElementById(aiLoadingId);
+        if (loadingElem) {
+          const aiTextId = 'ai-text-' + currentIdx;
+          const transBtnId = 'ai-trans-btn-' + currentIdx;
+
+          loadingElem.innerHTML = `
+            <div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center text-on-primary-container font-semibold shrink-0 shadow-md">
+              <span class="material-symbols-outlined text-[22px]">psychology</span>
+            </div>
+            <div class="flex flex-col flex-1 max-w-4xl bg-surface-container rounded-2xl p-space-lg shadow-sm gap-space-md border border-outline-variant/30">
+              <div class="flex items-center justify-between pb-space-xs border-b border-outline-variant/30">
+                <div class="flex items-center gap-space-xs">
+                  <span class="font-label-md text-label-md text-on-surface font-semibold">Respuesta de la IA</span>
+                  <span class="bg-surface-container-high text-tertiary px-space-xs py-0.5 rounded font-label-sm text-label-sm font-medium">Instantáneo</span>
+                </div>
+                <span class="font-label-sm text-label-sm text-on-surface-variant">${timeStr}</span>
+              </div>
+              <p id="${aiTextId}" class="font-body-lg text-body-lg text-on-surface leading-relaxed bg-surface-container-lowest p-space-md rounded-xl border border-outline-variant/20">«${escapeHtml(responseText)}»</p>
+              
+              <div class="flex flex-col gap-space-xs">
+                <span class="font-label-sm text-label-sm text-on-surface-variant font-medium uppercase tracking-wider">Acciones inmediatas con un solo clic:</span>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-space-sm">
+                  <div class="bg-surface-container-low p-space-md rounded-xl flex flex-col justify-between gap-space-sm border border-outline-variant/20 hover:border-tertiary transition-all">
+                    <div class="flex items-center gap-space-xs">
+                      <span class="material-symbols-outlined text-tertiary text-[22px]">volume_up</span>
+                      <span class="font-label-md text-label-md text-on-surface font-semibold">Escuchar en voz alta</span>
+                    </div>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">Genera audio con entonación natural (Meta MMS-TTS).</p>
+                    <button onclick="playTTS('${aiTextId}', 'es')" class="bg-tertiary text-on-tertiary hover:opacity-90 px-space-md py-space-xs rounded-lg font-body-sm text-body-sm font-semibold flex items-center justify-center gap-space-xs transition-all w-full cursor-pointer shadow-sm">
+                      <span class="material-symbols-outlined text-[18px]">play_circle</span>
+                      <span>Reproducir audio (Español)</span>
+                    </button>
+                  </div>
+                  <div class="bg-surface-container-low p-space-md rounded-xl flex flex-col justify-between gap-space-sm border border-outline-variant/20 hover:border-secondary transition-all">
+                    <div class="flex items-center gap-space-xs">
+                      <span class="material-symbols-outlined text-secondary text-[22px]">translate</span>
+                      <span class="font-label-md text-label-md text-on-surface font-semibold">Traducción instantánea</span>
+                    </div>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">Traduce con MarianMT conservando el significado exacto.</p>
+                    <button id="${transBtnId}" onclick="toggleTranslate('${aiTextId}', '${transBtnId}')" class="bg-surface-container-high hover:bg-surface-container-highest text-on-surface px-space-md py-space-xs rounded-lg font-body-sm text-body-sm font-semibold flex items-center justify-center gap-space-xs transition-all w-full cursor-pointer shadow-sm">
+                      <span class="material-symbols-outlined text-[18px]">g_translate</span>
+                      <span>Ver en Inglés (English)</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+          scrollToBottom();
+        }
+      } catch(err) {
+        console.error(err);
+        const loadingElem = document.getElementById(aiLoadingId);
+        if (loadingElem) {
+          loadingElem.innerHTML = `
+            <div class="p-space-md bg-error/10 text-error rounded-xl w-full">
+              Error al conectar con el servidor. Por favor verifica que server.py esté en ejecución.
+            </div>
+          `;
+        }
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const area = document.getElementById('chat-textarea');
+      if (area) {
+        area.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            handleSendMessage();
+          }
+        });
+      }
+
+      // Input de imagen para OCR
+      const fileInput = document.getElementById('chat-file-input');
+      if (fileInput) {
+        fileInput.addEventListener('change', async (e) => {
+          const file = e.target.files[0];
+          if (!file) return;
+
+          if (area) area.value = 'Analizando imagen con EasyOCR...';
+          const fd = new FormData();
+          fd.append('file', file);
+
+          try {
+            const res = await fetch('/api/ocr', { method: 'POST', body: fd });
+            const data = await res.json();
+            if (data.status === 'success' && data.text) {
+              if (area) area.value = data.text;
+            } else {
+              if (area) area.value = 'No se detectó texto claro en la imagen.';
+            }
+          } catch(err) {
+            if (area) area.value = 'Error al procesar la imagen.';
+          }
+        });
+      }
+
+      // Dictado por voz (Web Speech API)
+      const micBtn = document.getElementById('mic-btn');
+      if (micBtn && ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) {
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        const recognizer = new SpeechRecognition();
+        recognizer.lang = 'es-ES';
+        recognizer.continuous = false;
+        recognizer.interimResults = false;
+
+        recognizer.onresult = (ev) => {
+          const spoken = ev.results[0][0].transcript;
+          if (area) {
+            area.value = spoken;
+            handleSendMessage();
+          }
+        };
+
+        micBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          try {
+            recognizer.start();
+            micBtn.classList.add('text-error', 'animate-pulse');
+            if (area) area.placeholder = 'Escuchando... habla ahora.';
+          } catch(err) {}
+        });
+
+        recognizer.onend = () => {
+          micBtn.classList.remove('text-error', 'animate-pulse');
+          if (area) area.placeholder = 'Escribe tu pregunta aquí (ej: ¿Qué es la gravedad?), dicta por voz o sube una imagen...';
+        };
       }
     });
-  }
-
-  async function playTTS(text, lang='es') {
-    if (!text) return;
-    const cleanText = text.replace(/«|»/g, '').trim();
-    if (!cleanText) return;
-
-    updatePlayIcon('pause');
-    try {
-      const res = await fetch('/api/tts', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({text: cleanText, lang: lang})
-      });
-      const data = await res.json();
-      if (data.status === 'success' && data.audio_base64) {
-        if (currentAudio) currentAudio.pause();
-        currentAudio = new Audio('data:audio/wav;base64,' + data.audio_base64);
-        currentAudio.onended = () => updatePlayIcon('play_arrow');
-        currentAudio.play();
-      } else {
-        updatePlayIcon('play_arrow');
-        alert('Error generando audio: ' + (data.error || 'Desconocido'));
-      }
-    } catch(err) {
-      updatePlayIcon('play_arrow');
-      console.error(err);
-    }
-  }
-
-  async function translateResponse(targetLang='en') {
-    const p = document.querySelector('p.font-body-lg');
-    if (!p) return;
-    const text = p.innerText.replace(/«|»/g, '').trim();
-    if (!text) return;
-
-    const prev = p.innerText;
-    p.innerText = 'Traduciendo con MarianMT...';
-    try {
-      const res = await fetch('/api/translate', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-          text: text,
-          source_lang: targetLang === 'en' ? 'es' : 'en',
-          target_lang: targetLang
-        })
-      });
-      const data = await res.json();
-      if (data.status === 'success') {
-        currentAiText = data.translated;
-        p.innerText = '«' + data.translated + '»';
-        // Toggle label
-        const btnText = document.querySelector('button.bg-surface-container-high span:last-child');
-        if (btnText) {
-          btnText.innerText = targetLang === 'en' ? 'Ver en Español (Spanish)' : 'Ver en Inglés (English)';
-        }
-      } else {
-        p.innerText = prev;
-      }
-    } catch(err) {
-      p.innerText = prev;
-    }
-  }
-
-  async function handleSendMessage() {
-    const area = document.getElementById('chat-textarea');
-    const text = area.value.trim();
-    if (!text) return;
-
-    // Update user prompt display
-    const userP = document.querySelector('.max-w-2xl p.font-body-md');
-    if (userP) userP.innerText = text;
-    area.value = '';
-
-    const aiP = document.querySelector('p.font-body-lg');
-    if (aiP) aiP.innerText = 'Procesando consulta con la arquitectura Transformer...';
-
-    // Call chat API
-    try {
-      const res = await fetch('/api/chat', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({prompt: text})
-      });
-      const data = await res.json();
-      if (aiP) {
-        if (data.status === 'success' && data.response) {
-          currentAiText = data.response;
-          aiP.innerText = '«' + data.response + '»';
-        } else {
-          aiP.innerText = '«Consulta procesada con éxito.»';
-        }
-      }
-    } catch(e) {
-      if (aiP) aiP.innerText = '«' + text + '»';
-    }
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    // Escuchar button
-    const ttsBtn = document.querySelector('button.bg-tertiary');
-    if (ttsBtn) {
-      ttsBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const p = document.querySelector('p.font-body-lg');
-        if (p) playTTS(p.innerText, 'es');
-      });
-    }
-
-    // Traducir button
-    const transBtn = document.querySelector('button.bg-surface-container-high');
-    if (transBtn) {
-      transBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const btnText = transBtn.querySelector('span:last-child');
-        const isEnglishNow = btnText && btnText.innerText.includes('Español');
-        translateResponse(isEnglishNow ? 'es' : 'en');
-      });
-    }
-
-    // Enter key sends
-    const area = document.getElementById('chat-textarea');
-    if (area) {
-      area.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' && !e.shiftKey) {
-          e.preventDefault();
-          handleSendMessage();
-        }
-      });
-    }
-
-    // File input for OCR
-    const fileInput = document.getElementById('chat-file-input');
-    if (fileInput) {
-      fileInput.addEventListener('change', async (e) => {
-        const file = e.target.files[0];
-        if (!file) return;
-        if (area) area.value = 'Analizando imagen con OCR...';
-        const fd = new FormData();
-        fd.append('file', file);
-        try {
-          const res = await fetch('/api/ocr', { method: 'POST', body: fd });
-          const data = await res.json();
-          if (data.status === 'success' && data.text) {
-            if (area) area.value = data.text;
-          } else {
-            if (area) area.value = 'No se detectó texto en la imagen.';
-          }
-        } catch(err) {
-          if (area) area.value = 'Error al procesar la imagen.';
-        }
-      });
-    }
-
-    // Mic dictation (Web Speech API)
-    const micBtn = document.querySelector('button[title="Dictado por voz"]');
-    if (micBtn && ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) {
-      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-      const recognizer = new SpeechRecognition();
-      recognizer.lang = 'es-ES';
-      recognizer.continuous = false;
-      recognizer.interimResults = false;
-
-      recognizer.onresult = (ev) => {
-        const spoken = ev.results[0][0].transcript;
-        if (area) area.value = spoken;
-      };
-
-      micBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        try {
-          recognizer.start();
-          if (area) area.placeholder = 'Escuchando... habla ahora.';
-        } catch(err) {}
-      });
-
-      recognizer.onend = () => {
-        if (area) area.placeholder = 'Escribe un mensaje, pega un fragmento de código o arrastra un archivo...';
-      };
-    }
-  });
-</script>
-
-
-</body></html>
+  </script>
+</body>
+</html>
