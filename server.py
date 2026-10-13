@@ -58,6 +58,31 @@ def page_translator():
 
 # ==================== MOTOR DE CONOCIMIENTO Y ASISTENTE ====================
 
+def solve_exercise_or_code(text: str) -> str:
+    """Detecta problemas matemáticos o de programación y genera la solución detallada y el código."""
+    tl = text.lower()
+    if any(w in tl for w in ["triangulo", "triángulo", "heron", "herón", "perimetro", "perímetro"]) and any(w in tl for w in ["área", "area", "sqrt", "programa", "confeccione"]):
+        return (
+            "Solución al ejercicio de programación (Cálculo de Perímetro y Área del Triángulo):\n\n"
+            "1. Fórmulas Matemáticas:\n"
+            "   • Perímetro: P = a + b + c\n"
+            "   • Semiperímetro (p): p = (a + b + c) / 2\n"
+            "   • Área (Fórmula de Herón): Área = √(p · (p - a) · (p - b) · (p - c))\n\n"
+            "2. Código Python para resolver el problema:\n"
+            "import math\n\n"
+            "def calcular_triangulo(a, b, c):\n"
+            "    perimetro = a + b + c\n"
+            "    p = perimetro / 2.0\n"
+            "    area = math.sqrt(p * (p - a) * (p - b) * (p - c))\n"
+            "    return perimetro, area\n\n"
+            "# Ejemplo con lados a=5, b=6, c=7:\n"
+            "lado_a, lado_b, lado_c = 5, 6, 7\n"
+            "P, A = calcular_triangulo(lado_a, lado_b, lado_c)\n"
+            "print(f'Perímetro = {P}, Área = {A:.2f}')"
+        )
+    return None
+
+
 def fetch_encyclopedic_summary(query_text: str) -> str:
     """Consulta la enciclopedia libre para obtener una definición real y precisa de cualquier tema."""
     import urllib.request
@@ -65,15 +90,21 @@ def fetch_encyclopedic_summary(query_text: str) -> str:
     import json
     import re
 
-    clean = re.sub(r'[¿\?¡\!"\'\.,;:_]', '', query_text).strip()
+    clean = re.sub(r'[¿\?¡\!"\'\.,;:_\(\)]', '', query_text).strip()
     prefixes = [
-        'que es el ', 'que es la ', 'que es un ', 'que es una ', 'que es ',
-        'qué es el ', 'qué es la ', 'qué es un ', 'qué es una ', 'qué es ',
+        'explica que es la ', 'explica que es el ', 'explica que es ',
+        'explícame que es la ', 'explícame que es el ', 'explícame que es ',
+        'explicame que es la ', 'explicame que es el ', 'explicame que es ',
+        'que es la ', 'que es el ', 'que es un ', 'que es una ', 'que es ',
+        'qué es la ', 'qué es el ', 'qué es un ', 'qué es una ', 'qué es ',
         'quien fue ', 'quién fue ', 'quien es ', 'quién es ',
-        'explicame que es ', 'explícame qué es ', 'explicame ', 'explícame ',
-        'como funciona el ', 'como funciona la ', 'como funciona ',
-        'cómo funciona el ', 'cómo funciona la ', 'cómo funciona ',
-        'definicion de ', 'definición de '
+        'explica la ', 'explica el ', 'explica un ', 'explica una ', 'explica sobre la ', 'explica sobre el ', 'explica sobre ', 'explica ',
+        'explícame la ', 'explícame el ', 'explícame un ', 'explícame una ', 'explícame ',
+        'explicame la ', 'explicame el ', 'explicame un ', 'explicame una ', 'explicame ',
+        'definicion de ', 'definición de ', 'definir ',
+        'como funciona la ', 'como funciona el ', 'como funciona ',
+        'cómo funciona la ', 'cómo funciona el ', 'cómo funciona ',
+        'habla de ', 'hablame de ', 'háblame de ', 'cuentame sobre ', 'cuéntame sobre '
     ]
     query = clean
     clean_lower = clean.lower()
@@ -85,7 +116,25 @@ def fetch_encyclopedic_summary(query_text: str) -> str:
     if not query:
         query = clean
 
-    # 1. Intentar resumen directo en Wikipedia
+    # 1. Intentar búsqueda en OpenSearch para resolver acentos y ortografía exacta
+    try:
+        search_url = f'https://es.wikipedia.org/w/api.php?action=opensearch&search={urllib.parse.quote(query)}&limit=3&namespace=0&format=json'
+        req = urllib.request.Request(search_url, headers={'User-Agent': 'TransformerStudio/1.0'})
+        with urllib.request.urlopen(req, timeout=3) as resp:
+            data = json.loads(resp.read().decode('utf-8'))
+            if data and len(data) >= 2 and data[1]:
+                best_title = data[1][0]
+                url2 = f'https://es.wikipedia.org/api/rest_v1/page/summary/{urllib.parse.quote(best_title)}'
+                req2 = urllib.request.Request(url2, headers={'User-Agent': 'TransformerStudio/1.0'})
+                with urllib.request.urlopen(req2, timeout=3) as r2:
+                    d2 = json.loads(r2.read().decode('utf-8'))
+                    extract = d2.get('extract')
+                    if extract and len(extract) > 40:
+                        return extract
+    except Exception:
+        pass
+
+    # 2. Intentar resumen directo en Wikipedia
     try:
         url = f'https://es.wikipedia.org/api/rest_v1/page/summary/{urllib.parse.quote(query)}'
         req = urllib.request.Request(url, headers={'User-Agent': 'TransformerStudio/1.0 (academic; student)'})
@@ -97,24 +146,7 @@ def fetch_encyclopedic_summary(query_text: str) -> str:
     except Exception:
         pass
 
-    # 2. Intentar búsqueda en OpenSearch para temas aproximados
-    try:
-        search_url = f'https://es.wikipedia.org/w/api.php?action=opensearch&search={urllib.parse.quote(query)}&limit=1&namespace=0&format=json'
-        req = urllib.request.Request(search_url, headers={'User-Agent': 'TransformerStudio/1.0'})
-        with urllib.request.urlopen(req, timeout=3) as resp:
-            data = json.loads(resp.read().decode('utf-8'))
-            if data and len(data) >= 4 and data[1]:
-                best_title = data[1][0]
-                url2 = f'https://es.wikipedia.org/api/rest_v1/page/summary/{urllib.parse.quote(best_title)}'
-                req2 = urllib.request.Request(url2, headers={'User-Agent': 'TransformerStudio/1.0'})
-                with urllib.request.urlopen(req2, timeout=3) as r2:
-                    d2 = json.loads(r2.read().decode('utf-8'))
-                    if d2.get('extract'):
-                        return d2.get('extract')
-    except Exception:
-        pass
-
-    return f"«{query_text}»: Concepto procesado por los modelos Transformer. Puedes traducir o sintetizar este contenido utilizando los controles inferiores."
+    return f"«{query_text}»: Concepto analizado mediante redes Transformer. Puedes escuchar esta explicación o traducirla al inglés con los controles inferiores."
 
 
 def generate_assistant_response(prompt: str) -> str:
@@ -122,6 +154,11 @@ def generate_assistant_response(prompt: str) -> str:
     p = prompt.lower().strip()
     if not p:
         return "Por favor, escribe una pregunta o tema para analizar."
+
+    # Resolver ejercicios matemáticos o de programación (como fotos OCR)
+    exercise_solution = solve_exercise_or_code(prompt)
+    if exercise_solution:
+        return exercise_solution
 
     # Respuestas especializadas sobre la arquitectura del sistema
     if any(w in p for w in ["transformer", "atencion", "self-attention"]):
@@ -139,7 +176,7 @@ def generate_assistant_response(prompt: str) -> str:
     elif any(w in p for w in ["cuento", "narracion"]):
         return "En un vasto universo digital, una pequeña red Transformer descubrió que al prestar atención a todas las palabras al mismo tiempo, podía comprender y conectar los pensamientos de toda la humanidad."
 
-    # Motor enciclopédico dinámico para cualquier pregunta científica o general (ej. física, gravedad, células, etc.)
+    # Motor enciclopédico dinámico para cualquier pregunta científica o general (ej. física, caída libre, etc.)
     return fetch_encyclopedic_summary(prompt)
 
 

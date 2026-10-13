@@ -12,22 +12,37 @@ import time
 
 logger = logging.getLogger(__name__)
 
-DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+import threading
+import torch
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+import logging
+from typing import Dict
+import time
 
+logger = logging.getLogger(__name__)
+
+USE_CUDA = torch.cuda.is_available()
+DEVICE = "cuda" if USE_CUDA else "cpu"
+
+# Lock para evitar que dos hilos inicialicen el modelo simultáneamente
+_model_lock = threading.Lock()
 # Caché en memoria para no recargar los modelos en cada petición
 _models_cache = {}
 
 
 def get_model_and_tokenizer(model_name: str):
-    """Carga y cachea el modelo y tokenizer en RAM/VRAM una sola vez."""
-    if model_name not in _models_cache:
-        logger.info(f"Cargando y cacheando modelo en memoria: {model_name}...")
-        tokenizer = AutoTokenizer.from_pretrained(model_name)
-        model = AutoModelForSeq2SeqLM.from_pretrained(model_name).to(DEVICE)
-        model.eval()
-        _models_cache[model_name] = (tokenizer, model)
-        logger.info(f"Modelo {model_name} cargado y listo en {DEVICE}.")
-    return _models_cache[model_name]
+    """Carga y cachea el modelo y tokenizer en RAM/VRAM de forma segura y sin meta tensors."""
+    with _model_lock:
+        if model_name not in _models_cache:
+            logger.info(f"Cargando y cacheando modelo en memoria: {model_name}...")
+            tokenizer = AutoTokenizer.from_pretrained(model_name)
+            model = AutoModelForSeq2SeqLM.from_pretrained(model_name, low_cpu_mem_usage=False)
+            if USE_CUDA:
+                model = model.to("cuda")
+            model.eval()
+            _models_cache[model_name] = (tokenizer, model)
+            logger.info(f"Modelo {model_name} cargado y listo.")
+        return _models_cache[model_name]
 
 
 def preload_translation_models():
@@ -54,7 +69,9 @@ def translate_en_to_es(text: str, max_length: int = 512) -> Dict[str, str]:
         text = text[:max_length * 4]
 
         # Tokenizar y generar traducción
-        inputs = tokenizer(text, return_tensors="pt", max_length=512, truncation=True).to(DEVICE)
+        inputs = tokenizer(text, return_tensors="pt", max_length=512, truncation=True)
+        if USE_CUDA:
+            inputs = {k: v.to("cuda") for k, v in inputs.items()}
 
         with torch.no_grad():
             outputs = model.generate(**inputs, max_length=max_length, num_beams=4)
@@ -73,6 +90,7 @@ def translate_en_to_es(text: str, max_length: int = 512) -> Dict[str, str]:
 
     except Exception as e:
         logger.error(f"Error en traducción EN->ES: {str(e)}")
+        _models_cache.pop("Helsinki-NLP/opus-mt-en-es", None)
         return {"original": text, "translated": "", "error": str(e), "status": "error"}
 
 
@@ -88,7 +106,9 @@ def translate_es_to_en(text: str, max_length: int = 512) -> Dict[str, str]:
 
         text = text[:max_length * 4]
 
-        inputs = tokenizer(text, return_tensors="pt", max_length=512, truncation=True).to(DEVICE)
+        inputs = tokenizer(text, return_tensors="pt", max_length=512, truncation=True)
+        if USE_CUDA:
+            inputs = {k: v.to("cuda") for k, v in inputs.items()}
 
         with torch.no_grad():
             outputs = model.generate(**inputs, max_length=max_length, num_beams=4)
