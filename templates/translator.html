@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"tertiary-fixed-dim":"#4cd7f6","tertiary-fixed":"#acedff","primary-fixed-dim":"#c0c1ff","secondary":"#d0bcff","on-background":"#dfe2ee","on-surface-variant":"#c7c4d7","error":"#ffb4ab","background":"#0f131c","on-secondary-fixed":"#23005c","surface-container-low":"#181c24","surface-container":"#1c2028","on-tertiary-fixed":"#001f26","surface-container-lowest":"#0a0e16","on-secondary-container":"#c4abff","on-tertiary-container":"#002f38","surface-tint":"#c0c1ff","on-primary-container":"#0d0096","on-tertiary":"#003640","surface-bright":"#353942","on-secondary-fixed-variant":"#5516be","primary-fixed":"#e1e0ff","primary-container":"#8083ff","secondary-container":"#571bc1","surface-container-highest":"#31353e","inverse-on-surface":"#2c3039","on-secondary":"#3c0091","surface-variant":"#31353e","on-primary-fixed":"#07006c","outline-variant":"#464554","tertiary-container":"#009eb9","secondary-fixed-dim":"#d0bcff","surface-dim":"#0f131c","on-primary":"#1000a9","on-error":"#690005","on-primary-fixed-variant":"#2f2ebe","inverse-primary":"#494bd6","primary":"#c0c1ff","surface":"#0f131c","error-container":"#93000a","on-tertiary-fixed-variant":"#004e5c","on-surface":"#dfe2ee","tertiary":"#4cd7f6","surface-container-high":"#262a33","on-error-container":"#ffdad6","secondary-fixed":"#e9ddff","outline":"#908fa0","inverse-surface":"#dfe2ee"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"space-xl":"2rem","margin-desktop":"2rem","gutter-desktop":"1.5rem","gutter":"1rem","space-2xl":"3rem","space-lg":"1.5rem","space-sm":"0.5rem","space-md":"1rem","space-xs":"0.25rem","margin":"1rem","space-2xs":"0.125rem"},fontFamily:{"body-lg":["Inter"],"body-sm":["Inter"],"headline-xl":["Geist"],"label-md":["JetBrains Mono"],"headline-md":["Geist"],"headline-lg":["Geist"],"headline-lg-mobile":["Geist"],"body-md":["Inter"],"headline-xl-mobile":["Geist"],"metric-stat":["JetBrains Mono"],"label-sm":["JetBrains Mono"]},fontSize:{"body-lg":["1.125rem",{"lineHeight":"1.6","letterSpacing":"-0.005em","fontWeight":"400"}],"body-sm":["0.75rem",{"lineHeight":"1.45","letterSpacing":"0.005em","fontWeight":"400"}],"headline-xl":["3rem",{"lineHeight":"1.15","letterSpacing":"-0.03em","fontWeight":"600"}],"label-md":["0.8125rem",{"lineHeight":"1.3","letterSpacing":"-0.01em","fontWeight":"500"}],"headline-md":["1.25rem",{"lineHeight":"1.4","letterSpacing":"-0.01em","fontWeight":"500"}],"headline-lg":["2rem",{"lineHeight":"1.25","letterSpacing":"-0.02em","fontWeight":"600"}],"headline-lg-mobile":["1.5rem",{"lineHeight":"1.3","letterSpacing":"-0.01em","fontWeight":"600"}],"body-md":["0.875rem",{"lineHeight":"1.5","letterSpacing":"0em","fontWeight":"400"}],"headline-xl-mobile":["2rem",{"lineHeight":"1.2","letterSpacing":"-0.02em","fontWeight":"600"}],"metric-stat":["1.5rem",{"lineHeight":"1","letterSpacing":"-0.03em","fontWeight":"600"}],"label-sm":["0.6875rem",{"lineHeight":"1.25","letterSpacing":"0.02em","fontWeight":"400"}]}}}};</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 bottom-0 w-[280px] bg-surface-container-low/95 backdrop-blur-xl z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col gap-space-md p-space-md"><div class="flex items-center justify-between pb-space-sm"><div class="flex items-center gap-space-sm"><img alt="Transformer Studio Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZwPucOpeNcfAK_HW3TIVBeHEz3pkO4ip_7oP5yb8wGFseAaNAaddDGd_U41ZTU6Wxf3jI0kKUixY1Tc1mNimf56EqXPZLCh-9Za1ACFhnU3lX4BmqhZKq90tpYIc3TfPWEc6Jps7GhaohXSJSSnLprp9XbynejF2HMW2Ln4yy3yyASNBQbAUaROFQFrD8HxU5wSwiCH4am_au9pYis0hy-OY894vAkjS_otPKvMdB3uXlreWp5nb1VA"/><div class="flex flex-col"><span class="font-headline-md text-headline-md tracking-tight text-on-surface font-semibold">Transformer</span><span class="font-label-sm text-label-sm text-tertiary-fixed-dim uppercase tracking-wider">Studio Orchestrator</span></div></div><span class="font-label-sm text-label-sm bg-surface-container-high px-space-xs py-space-2xs rounded text-on-surface-variant">v2.4 LTS</span></div><div class="bg-surface-container p-space-sm rounded-lg flex flex-col gap-space-xs"><div class="flex items-center justify-between"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-[16px] text-tertiary">memory</span><span class="font-label-md text-label-md text-on-surface font-medium">RTX 4090</span></div><span class="font-label-sm text-label-sm text-on-surface-variant">CUDA 12.4</span></div><div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm mt-space-2xs"><span>VRAM Allocated</span><span class="text-tertiary-fixed-dim">6.2 / 24 GB (26%)</span></div><div class="w-full h-1.5 bg-surface-container-highest rounded-full overflow-hidden"><div class="h-full bg-tertiary rounded-full" style="width: 26%"></div></div><div class="flex items-center justify-between pt-space-2xs font-label-sm text-label-sm"><span class="text-on-surface-variant flex items-center gap-space-2xs"><span class="material-symbols-outlined text-[13px] text-error">thermostat</span> 48°C</span><span class="text-on-surface-variant flex items-center gap-space-2xs"><span class="material-symbols-outlined text-[13px] text-tertiary">timer</span> 12ms p99</span></div></div><div class="flex flex-col gap-space-xs mt-space-2xs"><div class="flex items-center justify-between px-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-medium">Loaded Models</span><span class="font-label-sm text-label-sm bg-surface-container-high text-primary px-1.5 py-0.5 rounded-full">3 Live</span></div><div class="bg-surface-container/60 p-space-sm rounded-lg flex flex-col gap-space-sm"><div class="flex items-start justify-between gap-space-xs"><div class="flex items-center gap-space-xs"><span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span><div class="flex flex-col"><span class="font-label-md text-label-md text-on-surface">Facebook MMS-TTS</span><span class="font-label-sm text-label-sm text-on-surface-variant">EN/ES Vocoder Pipeline</span></div></div><span class="font-label-sm text-label-sm text-tertiary bg-tertiary-container/30 px-1.5 py-0.5 rounded">Audio</span></div><div class="flex items-start justify-between gap-space-xs"><div class="flex items-center gap-space-xs"><span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span><div class="flex flex-col"><span class="font-label-md text-label-md text-on-surface">MarianMT Seq2Seq</span><span class="font-label-sm text-label-sm text-on-surface-variant">en-es / es-en Bilingual</span></div></div><span class="font-label-sm text-label-sm text-secondary bg-secondary-container/40 px-1.5 py-0.5 rounded">NLP</span></div><div class="flex items-start justify-between gap-space-xs"><div class="flex items-center gap-space-xs"><span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim animate-pulse"></span><div class="flex flex-col"><span class="font-label-md text-label-md text-on-surface">Tesseract OCR 5.3</span><span class="font-label-sm text-label-sm text-on-surface-variant">Spatial Bounding Engine</span></div></div><span class="font-label-sm text-label-sm text-tertiary-fixed-dim bg-surface-container-high px-1.5 py-0.5 rounded">Vision</span></div></div></div><button class="flex items-center justify-center gap-space-xs w-full py-space-xs px-space-sm rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-all font-body-sm text-body-sm mt-space-xs"><span class="material-symbols-outlined text-[16px]">delete_sweep</span><span>Clear Session History</span></button></div><div class="p-space-md bg-surface-container-lowest/50"><div class="flex items-center justify-between p-space-xs rounded-lg bg-surface-container/70"><div class="flex items-center gap-space-sm"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIPG3b89wQcIGR5iXv3l5UTMg8NYQspUZFUTnG_lAIzQIU24jqFvaF1Mvq1kvSTEBrXG11dHPRLh5SD5Ky72g0vkxq9nj-tCgnPCJ3njYl4r3ObueJ6XJb5OPoA6Pw4UNfEIjclfgGX5JqbgranteulOQ_s1QG8NbujseSahjt9Mdc5o0vsb3k1CY-ae1Z-IVRaXNX-yN3DnjTYUd71-gPx6td4ARY96Y9thfqsL7880ELFILiGfdNSg"/><div class="flex flex-col"><span class="font-label-md text-label-md text-on-surface leading-tight font-medium">Dr. Elena Rostova</span><span class="font-label-sm text-label-sm text-on-surface-variant leading-tight">AI Research Lead</span></div></div><button class="p-space-xs text-on-surface-variant hover:text-on-surface transition-colors flex items-center justify-center"><span class="material-symbols-outlined text-[18px]">settings</span></button></div></div></aside><div class="pl-[280px]"><header class="fixed top-0 left-[280px] right-0 h-16 bg-surface-container-low/90 backdrop-blur-xl z-40 px-gutter-desktop flex items-center justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm"><div class="flex flex-col"><span class="font-headline-md text-headline-md text-on-surface font-semibold">Multimodal AI Suite</span><div class="flex items-center gap-space-2xs"><span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span><span class="font-label-sm text-label-sm text-on-surface-variant">Cluster Online • 99.98% Uptime</span></div></div></div><nav class="flex items-center gap-space-xs bg-surface-container-lowest/60 p-1 rounded-xl"><a class="px-space-md py-space-xs text-on-surface-variant hover:text-on-surface font-body-sm transition-all" href="/chat">💬 Chat Multimodal</a><a class="px-space-md py-space-xs text-on-surface-variant hover:text-on-surface font-body-sm transition-all" href="/ocr">🖼️ Visión & OCR</a><a class="px-space-md py-space-xs text-on-surface-variant hover:text-on-surface font-body-sm transition-all" href="/tts">🔊 Texto a Voz (TTS)</a><a class="px-space-md py-space-xs transition-all bg-primary-container text-on-primary-container font-semibold rounded-lg shadow-sm font-body-sm" href="/translator">🌐 Traductor Neuronal</a></nav></div><div class="flex items-center gap-space-md"><div class="hidden xl:flex items-center gap-space-xs px-space-sm py-1 bg-surface-container rounded-lg font-label-sm text-label-sm text-on-surface-variant"><span class="material-symbols-outlined text-[15px] text-tertiary">bolt</span><span>Engine Latency: <span class="text-tertiary-fixed-dim font-medium">12ms</span></span></div><a class="flex items-center gap-space-2xs text-on-surface-variant hover:text-on-surface font-body-sm text-body-sm transition-colors" href="#"><span class="material-symbols-outlined text-[18px]">menu_book</span><span class="hidden md:inline">Docs API</span></a><div class="flex items-center gap-space-2xs p-1 bg-surface-container rounded-lg"><span class="material-symbols-outlined text-[16px] text-tertiary-fixed-dim px-1">dark_mode</span></div></div></header><main class="relative pt-16 bg-background min-h-screen w-full px-gutter-desktop py-space-lg"><div class="flex flex-col w-full gap-space-lg pb-space-2xl">
+<!-- Top Command & Status Ribbon -->
+<div class="relative overflow-hidden rounded-2xl bg-surface-container p-space-lg shadow-xl">
+<div class="absolute -right-20 -top-24 w-96 h-96 rounded-full bg-gradient-to-br from-secondary/15 via-tertiary/10 to-transparent blur-3xl pointer-events-none"></div>
+<div class="absolute -left-16 -bottom-16 w-80 h-80 rounded-full bg-gradient-to-tr from-primary-container/20 to-transparent blur-2xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col xl:flex-row xl:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-space-2xs">
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-container/40 text-secondary font-label-sm text-label-sm uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-ping"></span>
+            MarianMT Engine v3.1
+          </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container-high px-2 py-0.5 rounded-full">
+            Zero-Cloud Egress
+          </span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight mt-1">
+          Traductor Neuronal Bidireccional
+        </h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+          Modelos locales optimizados para latencia ultra-baja y privacidad total, procesados en hardware cliente con aceleración CUDA/TensorRT.
+        </p>
+</div>
+<!-- Quick Mode Switcher & Pipeline Status -->
+<div class="flex flex-wrap items-center gap-space-xs self-start xl:self-auto bg-surface-container-low p-1.5 rounded-xl shadow-inner">
+<button class="mode-tab px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-1.5" id="mode-general">
+<span class="material-symbols-outlined text-[16px]">chat_bubble_outline</span>
+          General
+        </button>
+<button class="mode-tab active bg-primary text-on-primary font-semibold shadow-sm px-space-md py-1.5 rounded-lg font-body-sm text-body-sm transition-all flex items-center gap-1.5" id="mode-tech">
+<span class="material-symbols-outlined text-[16px]">terminal</span>
+          Técnico
+        </button>
+<button class="mode-tab px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-1.5" id="mode-academic">
+<span class="material-symbols-outlined text-[16px]">school</span>
+          Investigación Académica
+        </button>
+</div>
+</div>
+<!-- Language Pairing Bar -->
+<div class="relative z-10 mt-space-lg grid grid-cols-1 md:grid-cols-[1fr,auto,1fr] items-center gap-space-sm p-space-sm bg-surface-container-lowest/80 rounded-xl">
+<!-- Source Selector -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-high/60 hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-[18px]">
+            🇬🇧
+          </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md text-on-surface font-semibold" id="source-lang-name">Inglés (English)</span>
+<span class="font-label-sm text-label-sm text-tertiary-fixed-dim bg-tertiary-container/30 px-1.5 py-0.2 rounded font-mono">SRC</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono truncate max-w-[260px] sm:max-w-none" id="source-model-tag">Helsinki-NLP/opus-mt-en-es</span>
+</div>
+</div>
+<button class="p-1 text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined text-[20px]">expand_more</span>
+</button>
+</div>
+<!-- Swap Button -->
+<div class="flex justify-center -my-2 md:my-0 z-10">
+<button class="group relative flex items-center justify-center w-11 h-11 rounded-full bg-primary-container text-on-primary-container hover:bg-primary hover:text-on-primary shadow-lg transition-transform duration-300 hover:rotate-180 active:scale-95" id="swap-lang-btn" title="Invertir dirección de traducción">
+<span class="material-symbols-outlined text-[22px] transition-transform">swap_horiz</span>
+</button>
+</div>
+<!-- Target Selector -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-high/60 hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-[18px]">
+            🇪🇸
+          </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md text-on-surface font-semibold" id="target-lang-name">Español (Spanish)</span>
+<span class="font-label-sm text-label-sm text-secondary bg-secondary-container/40 px-2 py-0.5 rounded-full inline-flex items-center gap-1 font-mono">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Live Stream
+              </span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono truncate max-w-[260px] sm:max-w-none" id="target-model-tag">MarianMT Autoregressive Decoder</span>
+</div>
+</div>
+<button class="p-1 text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined text-[20px]">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Dual Split-Screen Translation Deck -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter-desktop items-stretch">
+<!-- LEFT CARD: Source Editor -->
+<div class="relative flex flex-col justify-between rounded-2xl bg-surface-container p-space-lg shadow-xl">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] text-tertiary">edit_note</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold text-on-surface">Texto de Origen</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm px-2 py-0.5 rounded-md bg-surface-container-high text-on-surface-variant">
+<span class="material-symbols-outlined text-[13px] text-secondary">spellcheck</span> Tokenizer: SentencePiece
+            </span>
+</div>
+</div>
+<div class="relative min-h-[300px] w-full flex flex-col">
+<textarea class="w-full h-full min-h-[300px] bg-surface-container-lowest/70 text-on-surface p-space-md rounded-xl font-body-lg text-body-lg leading-relaxed resize-none focus:outline-none focus:bg-surface-container-lowest transition-colors placeholder:text-outline" id="source-text" placeholder="Escribe o pega texto técnico aquí para inferencia en tiempo real...">Transformers utilize self-attention mechanisms to capture long-range token dependencies in parallel across multi-head projections without recurrent loops.</textarea>
+</div>
+</div>
+<!-- Source Card Bottom Rail -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm pt-space-md mt-space-sm">
+<div class="flex items-center gap-space-xs">
+<button class="flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface-variant hover:text-error transition-all font-body-sm text-body-sm" id="clear-btn" title="Limpiar texto">
+<span class="material-symbols-outlined text-[16px]">delete_sweep</span>
+<span>Limpiar</span>
+</button>
+<button class="flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface-variant hover:text-on-surface transition-all font-body-sm text-body-sm" id="upload-btn" title="Cargar archivo local">
+<span class="material-symbols-outlined text-[16px]">upload_file</span>
+<span>Cargar archivo</span>
+</button>
+<button class="flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface-variant hover:text-on-surface transition-all font-body-sm text-body-sm" id="paste-btn" title="Pegar del portapapeles">
+<span class="material-symbols-outlined text-[16px]">content_paste</span>
+<span>Pegar</span>
+</button>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono" id="char-counter">148 / 5,000 caracteres</span>
+</div>
+</div>
+</div>
+<!-- RIGHT CARD: Realtime Neural Translation -->
+<div class="relative flex flex-col justify-between rounded-2xl bg-surface-container p-space-lg shadow-xl">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] text-secondary">translate</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold text-on-surface">Texto Traducido (Tiempo Real)</span>
+</div>
+<!-- Quality Confidence Pill -->
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-container/30 text-secondary font-label-sm text-label-sm font-mono shadow-sm">
+<span class="material-symbols-outlined text-[15px] text-secondary">auto_awesome</span>
+<span>Calidad: BLEU 44.8 / Alta fidelidad</span>
+</div>
+</div>
+<!-- Translated Content Display -->
+<div class="relative min-h-[300px] w-full flex flex-col justify-between bg-surface-container-lowest/90 rounded-xl p-space-md">
+<div class="flex flex-col gap-space-sm">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed font-normal" id="target-output">
+              Los Transformers utilizan mecanismos de auto-atención para capturar dependencias de tokens de largo alcance en paralelo a través de proyecciones multi-cabezal sin bucles recurrentes.
+            </p>
+<!-- Semantic Confidence Heatmap Strip -->
+<div class="mt-space-md p-space-sm bg-surface-container-high/40 rounded-lg flex flex-col gap-space-xs">
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-tertiary">analytics</span>
+                  Alineación de Atención Multi-Cabezal (Score: 0.984)
+                </span>
+<span class="text-tertiary-fixed-dim font-mono">18 / 18 tokens</span>
+</div>
+<div class="grid grid-cols-6 sm:grid-cols-9 gap-1 text-center font-label-sm text-label-sm text-on-surface-variant">
+<span class="bg-surface-container px-1 py-0.5 rounded text-secondary" title="Conf: 99.4%">Los</span>
+<span class="bg-surface-container px-1 py-0.5 rounded text-secondary" title="Conf: 99.8%">Transformers</span>
+<span class="bg-surface-container px-1 py-0.5 rounded text-secondary" title="Conf: 98.7%">utilizan</span>
+<span class="bg-surface-container px-1 py-0.5 rounded text-secondary" title="Conf: 99.1%">mecanismos</span>
+<span class="bg-surface-container px-1 py-0.5 rounded text-secondary" title="Conf: 97.9%">auto-atención</span>
+<span class="bg-surface-container px-1 py-0.5 rounded text-secondary" title="Conf: 98.5%">proyecciones</span>
+</div>
+</div>
+</div>
+<!-- Inline Waveform Preview if TTS is triggered -->
+<div class="hidden mt-space-md p-space-sm bg-surface-container rounded-lg flex items-center justify-between" id="tts-audio-indicator">
+<div class="flex items-center gap-space-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary animate-ping"></span>
+<span class="font-label-sm text-label-sm text-tertiary-fixed-dim">Sintetizando Audio (MMS-TTS Spanish Vocoder)...</span>
+</div>
+<div class="flex items-center gap-1 h-4">
+<span class="w-1 h-3 bg-tertiary rounded-full animate-bounce"></span>
+<span class="w-1 h-4 bg-tertiary rounded-full animate-bounce [animation-delay:0.1s]"></span>
+<span class="w-1 h-2 bg-tertiary rounded-full animate-bounce [animation-delay:0.2s]"></span>
+<span class="w-1 h-5 bg-tertiary rounded-full animate-bounce [animation-delay:0.3s]"></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Target Card Bottom Rail / Actions -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm pt-space-md mt-space-sm">
+<div class="flex items-center gap-space-xs">
+<!-- Copy Button -->
+<div class="relative">
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface hover:text-primary transition-all font-body-sm text-body-sm active:scale-95 shadow-sm" id="copy-btn">
+<span class="material-symbols-outlined text-[17px]">content_copy</span>
+<span>Copiar al portapapeles</span>
+</button>
+<span class="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 transition-opacity duration-200 bg-primary text-on-primary font-label-sm text-label-sm px-2 py-0.5 rounded shadow-lg whitespace-nowrap" id="copy-tooltip">
+              ¡Copiado con éxito!
+            </span>
+</div>
+<!-- Audio TTS Button -->
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface hover:text-tertiary transition-all font-body-sm text-body-sm active:scale-95 shadow-sm" id="tts-btn">
+<span class="material-symbols-outlined text-[17px] text-tertiary">volume_up</span>
+<span>Escuchar (MMS-TTS)</span>
+</button>
+</div>
+<!-- Download Action -->
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface-variant hover:text-on-surface transition-all font-body-sm text-body-sm" id="download-btn">
+<span class="material-symbols-outlined text-[17px]">download</span>
+<span>Descargar (.TXT)</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Deep Architecture Visualizer & Telemetry Bento -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-space-md">
+<!-- Card 1: Latencia -->
+<div class="bg-surface-container p-space-md rounded-xl flex items-center gap-space-md shadow-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[24px]">timer</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-medium">Inferencia p95</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-metric-stat text-metric-stat text-on-surface font-semibold">0.42s</span>
+<span class="font-label-sm text-label-sm text-tertiary-fixed-dim font-mono">-18ms vs FP32</span>
+</div>
+</div>
+</div>
+<!-- Card 2: Velocidad -->
+<div class="bg-surface-container p-space-md rounded-xl flex items-center gap-space-md shadow-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[24px]">bolt</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-medium">Velocidad Generación</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-metric-stat text-metric-stat text-on-surface font-semibold">352</span>
+<span class="font-label-sm text-label-sm text-secondary font-mono">tokens / sec</span>
+</div>
+</div>
+</div>
+<!-- Card 3: Cuantización Modelo -->
+<div class="bg-surface-container p-space-md rounded-xl flex items-center gap-space-md shadow-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[24px]">memory</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-medium truncate">Arquitectura &amp; Cuantización</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-label-md text-label-md text-on-surface font-mono font-semibold truncate">MarianMT INT8</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">298MB</span>
+</div>
+</div>
+</div>
+<!-- Card 4: Seguridad & Privacidad -->
+<div class="bg-surface-container p-space-md rounded-xl flex items-center gap-space-md shadow-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center text-tertiary-fixed-dim">
+<span class="material-symbols-outlined text-[24px]">lock</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-medium">Garantía de Privacidad</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-label-md text-label-md text-tertiary-fixed-dim font-semibold">100% Inferencia Local</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono leading-none">Zero Telemetry Logging</span>
+</div>
+</div>
+</div>
+<!-- Realtime Inference Telemetry Graph & Beam-Search Diagnostics -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter-desktop items-stretch">
+<!-- Visual Representation: Model Architecture Node Flow -->
+<div class="lg:col-span-2 bg-surface-container p-space-lg rounded-2xl flex flex-col justify-between shadow-xl">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-tertiary">hub</span>
+<span class="font-headline-md text-headline-md text-on-surface font-semibold">Pipeline de Decodificación Autoregresiva</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono bg-surface-container-high px-2 py-0.5 rounded">
+          Beam Size = 4 • Temperature = 0.0
+        </span>
+</div>
+<!-- Interactive Flow Schematic -->
+<div class="my-space-md p-space-md rounded-xl bg-surface-container-lowest/80 flex flex-col gap-space-md">
+<div class="grid grid-cols-1 sm:grid-cols-4 gap-space-sm text-center">
+<!-- Step 1 -->
+<div class="p-space-sm bg-surface-container rounded-lg flex flex-col items-center">
+<span class="font-label-sm text-label-sm text-tertiary uppercase font-mono">Paso 01</span>
+<span class="font-body-md text-body-md text-on-surface font-medium mt-1">Tokenización BPE</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono mt-0.5">32,000 subwords</span>
+</div>
+<!-- Step 2 -->
+<div class="p-space-sm bg-surface-container rounded-lg flex flex-col items-center">
+<span class="font-label-sm text-label-sm text-secondary uppercase font-mono">Paso 02</span>
+<span class="font-body-md text-body-md text-on-surface font-medium mt-1">Encoder 6-Capas</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono mt-0.5">d_model: 512, 8 heads</span>
+</div>
+<!-- Step 3 -->
+<div class="p-space-sm bg-surface-container rounded-lg flex flex-col items-center">
+<span class="font-label-sm text-label-sm text-primary uppercase font-mono">Paso 03</span>
+<span class="font-body-md text-body-md text-on-surface font-medium mt-1">Cross-Attention</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono mt-0.5">KV-Cache Hit: 99.1%</span>
+</div>
+<!-- Step 4 -->
+<div class="p-space-sm bg-surface-container-high rounded-lg flex flex-col items-center">
+<span class="font-label-sm text-label-sm text-tertiary-fixed-dim uppercase font-mono">Paso 04</span>
+<span class="font-body-md text-body-md text-on-surface font-medium mt-1">Decoder INT8</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono mt-0.5">Greedy Softmax</span>
+</div>
+</div>
+<!-- Inline SVG Performance Sparkline & Latency Jitter Graph -->
+<div class="pt-space-xs flex flex-col gap-1">
+<div class="flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>Variación de Latencia Inter-Token (Jitter)</span>
+<span class="font-mono text-tertiary">StdDev: ±1.4ms</span>
+</div>
+<div class="h-14 w-full flex items-end">
+<svg class="w-full h-full text-secondary" fill="none" preserveaspectratio="none" viewbox="0 0 400 40">
+<path d="M0 25 Q 30 15, 60 22 T 120 18 T 180 26 T 240 12 T 300 20 T 360 14 L 400 18" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+<path d="M0 25 Q 30 15, 60 22 T 120 18 T 180 26 T 240 12 T 300 20 T 360 14 L 400 18 L 400 40 L 0 40 Z" fill="currentColor" fill-opacity="0.1"></path>
+</svg>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>Framework de Inferencia: <strong class="text-on-surface">ONNX Runtime WebAssembly + WebGPU Execution Provider</strong></span>
+<span class="font-mono text-tertiary-fixed-dim">FP16 Fallback Ready</span>
+</div>
+</div>
+<!-- Right Side: Model Card & Checkpoint Specs -->
+<div class="bg-surface-container p-space-lg rounded-2xl flex flex-col justify-between shadow-xl">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-headline-md text-headline-md text-on-surface font-semibold">Checkpoint Info</span>
+<span class="font-label-sm text-label-sm bg-surface-container-high px-2 py-0.5 rounded text-secondary font-mono">Helsinki-NLP</span>
+</div>
+<div class="flex flex-col gap-space-xs mt-space-2xs text-body-sm text-body-sm">
+<div class="flex items-center justify-between py-1.5 bg-surface-container-high/40 px-space-sm rounded-lg">
+<span class="text-on-surface-variant">Parámetros Totales</span>
+<span class="font-mono text-on-surface font-medium">74.4M</span>
+</div>
+<div class="flex items-center justify-between py-1.5 bg-surface-container-high/40 px-space-sm rounded-lg">
+<span class="text-on-surface-variant">Vocabulario BPE</span>
+<span class="font-mono text-on-surface font-medium">58,101 tokens</span>
+</div>
+<div class="flex items-center justify-between py-1.5 bg-surface-container-high/40 px-space-sm rounded-lg">
+<span class="text-on-surface-variant">Entrenamiento</span>
+<span class="font-mono text-on-surface font-medium">OPUS Corpus (2.4B wds)</span>
+</div>
+<div class="flex items-center justify-between py-1.5 bg-surface-container-high/40 px-space-sm rounded-lg">
+<span class="text-on-surface-variant">Cuantización Cu4_0</span>
+<span class="font-mono text-tertiary-fixed-dim font-medium">Activada (-68% RAM)</span>
+</div>
+</div>
+</div>
+<!-- Quick Action / Switch to Vision OCR bridge -->
+<div class="mt-space-md p-space-sm bg-surface-container-lowest/80 rounded-xl flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-medium">¿Traducir desde Imagen?</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Enviar a módulo Tesseract OCR</span>
+</div>
+<button class="p-2 rounded-lg bg-surface-container-high hover:bg-surface-bright text-tertiary hover:text-on-surface transition-colors flex items-center justify-center" title="Abrir Visión &amp; OCR">
+<span class="material-symbols-outlined text-[20px]">document_scanner</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    const sourceText = document.getElementById('source-text');
+    const targetOutput = document.getElementById('target-output');
+    const charCounter = document.getElementById('char-counter');
+    const clearBtn = document.getElementById('clear-btn');
+    const copyBtn = document.getElementById('copy-btn');
+    const copyTooltip = document.getElementById('copy-tooltip');
+    const swapBtn = document.getElementById('swap-lang-btn');
+    const ttsBtn = document.getElementById('tts-btn');
+    const ttsIndicator = document.getElementById('tts-audio-indicator');
+    const pasteBtn = document.getElementById('paste-btn');
+    const downloadBtn = document.getElementById('download-btn');
+    const sourceLangName = document.getElementById('source-lang-name');
+    const targetLangName = document.getElementById('target-lang-name');
+    const sourceModelTag = document.getElementById('source-model-tag');
+    const targetModelTag = document.getElementById('target-model-tag');
+    const modeTabs = document.querySelectorAll('.mode-tab');
+
+    let currentDirection = 'en-es';
+    let translateTimer = null;
+    let currentTTSAudio = null;
+
+    function updateCounter() {
+      if (sourceText && charCounter) {
+        const len = sourceText.value.length;
+        charCounter.textContent = `${len.toLocaleString()} / 5,000 caracteres`;
+      }
+    }
+
+    async function executeTranslation() {
+      const text = sourceText.value.trim();
+      if (!text) {
+        targetOutput.textContent = 'Esperando texto de entrada...';
+        return;
+      }
+      targetOutput.textContent = 'Traduciendo con MarianMT Transformer...';
+      try {
+        const [s, t] = currentDirection.split('-');
+        const res = await fetch('/api/translate', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({text: text, source_lang: s, target_lang: t})
+        });
+        const data = await res.json();
+        if (data.status === 'success') {
+          targetOutput.textContent = data.translated;
+          // Update latency badge if available
+          const latBadge = document.querySelector('.font-metric-stat');
+          if (latBadge && data.time_seconds) {
+            latBadge.textContent = data.time_seconds + 's';
+          }
+        } else {
+          targetOutput.textContent = 'Error: ' + (data.error || 'Fallo en la traducción');
+        }
+      } catch (err) {
+        targetOutput.textContent = 'Error al comunicarse con el servidor.';
+      }
+    }
+
+    if (sourceText) {
+      sourceText.addEventListener('input', function() {
+        updateCounter();
+        clearTimeout(translateTimer);
+        translateTimer = setTimeout(executeTranslation, 600);
+      });
+    }
+
+    if (clearBtn && sourceText) {
+      clearBtn.addEventListener('click', function() {
+        sourceText.value = '';
+        targetOutput.textContent = 'Esperando texto de entrada...';
+        updateCounter();
+        sourceText.focus();
+      });
+    }
+
+    if (pasteBtn && sourceText) {
+      pasteBtn.addEventListener('click', async function() {
+        try {
+          if (navigator.clipboard && navigator.clipboard.readText) {
+            const clipText = await navigator.clipboard.readText();
+            if (clipText) {
+              sourceText.value = clipText;
+              updateCounter();
+              executeTranslation();
+            }
+          }
+        } catch (err) {
+          sourceText.focus();
+        }
+      });
+    }
+
+    if (copyBtn && targetOutput && copyTooltip) {
+      copyBtn.addEventListener('click', function() {
+        const textToCopy = targetOutput.innerText || targetOutput.textContent;
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          copyTooltip.classList.remove('opacity-0');
+          copyTooltip.classList.add('opacity-100');
+          setTimeout(() => {
+            copyTooltip.classList.remove('opacity-100');
+            copyTooltip.classList.add('opacity-0');
+          }, 2000);
+        });
+      });
+    }
+
+    if (swapBtn) {
+      swapBtn.addEventListener('click', function() {
+        if (currentDirection === 'en-es') {
+          currentDirection = 'es-en';
+          sourceLangName.textContent = 'Español (Spanish)';
+          targetLangName.textContent = 'Inglés (English)';
+          sourceModelTag.textContent = 'Helsinki-NLP/opus-mt-es-en';
+          targetModelTag.textContent = 'MarianMT Autoregressive Decoder';
+        } else {
+          currentDirection = 'en-es';
+          sourceLangName.textContent = 'Inglés (English)';
+          targetLangName.textContent = 'Español (Spanish)';
+          sourceModelTag.textContent = 'Helsinki-NLP/opus-mt-en-es';
+          targetModelTag.textContent = 'MarianMT Autoregressive Decoder';
+        }
+
+        const prevTarget = targetOutput.textContent;
+        targetOutput.textContent = sourceText.value;
+        sourceText.value = prevTarget;
+        updateCounter();
+        executeTranslation();
+      });
+    }
+
+    if (ttsBtn) {
+      ttsBtn.addEventListener('click', async function() {
+        const text = targetOutput.innerText || targetOutput.textContent;
+        if (!text || text.startsWith('Esperando') || text.startsWith('Traduciendo')) return;
+        if (ttsIndicator) ttsIndicator.classList.remove('hidden');
+
+        try {
+          const lang = currentDirection.endsWith('es') ? 'es' : 'en';
+          const res = await fetch('/api/tts', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({text: text, lang: lang})
+          });
+          const data = await res.json();
+          if (data.status === 'success' && data.audio_base64) {
+            if (currentTTSAudio) currentTTSAudio.pause();
+            currentTTSAudio = new Audio('data:audio/wav;base64,' + data.audio_base64);
+            currentTTSAudio.play();
+          }
+        } catch(e) {
+          console.error(e);
+        } finally {
+          if (ttsIndicator) setTimeout(() => ttsIndicator.classList.add('hidden'), 2500);
+        }
+      });
+    }
+
+    if (downloadBtn && targetOutput) {
+      downloadBtn.addEventListener('click', function() {
+        const text = targetOutput.innerText;
+        const blob = new Blob([text], {type: 'text/plain;charset=utf-8'});
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = `traduccion_${currentDirection}_${Date.now()}.txt`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      });
+    }
+
+    modeTabs.forEach(tab => {
+      tab.addEventListener('click', function() {
+        modeTabs.forEach(t => {
+          t.classList.remove('active', 'bg-primary', 'text-on-primary', 'font-semibold', 'shadow-sm');
+          t.classList.add('text-on-surface-variant');
+        });
+        this.classList.add('active', 'bg-primary', 'text-on-primary', 'font-semibold', 'shadow-sm');
+        this.classList.remove('text-on-surface-variant');
+      });
+    });
+
+    updateCounter();
+  })();
+</script></main></div></body></html>
